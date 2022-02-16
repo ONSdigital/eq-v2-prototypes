@@ -1,6 +1,6 @@
-# Documentation
+# eQ prototype based on the GOV.UK prototype kit
 
-[Documentation and examples](https://govuk-prototype-kit.herokuapp.com/docs)
+[This repository is automatically deployed to this Heroku application when a commit to the master branch is made.](https://eq-v2-prototypes.herokuapp.com/)
 
-Documentation is also available when running the app locally at http:localhost:3000/docs
+More documentation to be added here soon.
 
