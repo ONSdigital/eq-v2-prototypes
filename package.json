@@ -39,7 +39,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "inquirer": "^8.2.0",
     "lodash": "^4.17.21",
-    "marked": "^3.0.8",
+    "marked": "^4.0.10",
     "node-fetch": "^2.6.0",
     "node-sass": "^7.0.1",
     "normalize-scss": "^7.0.1",
