@@ -1,0 +1,15 @@
+{% set serviceName = "Summary of multiple summaries" %}
+{% extends "base.html" %}
+
+{% block main %}
+<h3>Version 1</h3>
+<p>A mocked up survey with a design which summarises multiple summaries at the end of the transaction.</p>
+
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "text": 'Start prototype',
+        "url": 'v1/start'
+        })
+        }}
+{% endblock %}

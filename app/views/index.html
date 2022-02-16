@@ -1,15 +1,10 @@
 {% set serviceName = "eQ prototypes" %}
-{% extends "base.html" %}
+{% set pageConfig = {title: "eQ prototypes"} %}
 
 {% block main %}
-<h1>List of prototypes</h1>
-<h2>February 2022</h2>
-<p>A prototype of the Low Carbon and Renewable Energy Economy Survey, with design tweaks to the start page guidance and multiple mutually exclusive answer options.</p>
-        {% from "components/button/_macro.njk" import onsButton %}
-        {{
-        onsButton({
-        "text": 'Start prototype',
-        "url": 'v1/start'
-        })
-        }}
+<h1>Prototype index</h1>
+
+<h3>February 2022</h3>
+<a href="summary-of-multiple-summaries/index">Summary of multiple summaries</a>
+
 {% endblock %}

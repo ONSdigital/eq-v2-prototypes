@@ -1,0 +1,55 @@
+{% extends "./includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>Are you able to report for the calendar month 1 March 2020 to 31 March 2020?</h1>
+<p></p>
+<p>If you can only provide figures for part of the period, select 'No, I need to report for a different period'.</p>
+
+<form method="post">
+    <div class="ons-input-items">
+        <div class="ons-radios__items">
+            <span class="ons-radios__item">
+                <span class="ons-radio">
+                    <input class="ons-radio__input ons-js-radio" id="able-to-report-0"
+                           name="ableToReport" type="radio"
+                           value="yes">
+                    <label class="ons-radio__label  " for="able-to-report-0" id="able-to-report-0-label">Yes, I can report for these dates</label>
+                </span>
+            </span>
+            <br>
+            <span class="ons-radios__item">
+                <span class="ons-radio">
+                    <input class="ons-radio__input ons-js-radio" id="able-to-report-1"
+                           name="ableToReport" type="radio"
+                           value="no">
+                    <label class="ons-radio__label  " for="able-to-report-1" id="able-to-report-1-label">No, I need to report for a different period</label>
+                </span>
+            </span>
+        </div>
+    </div>
+
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}
