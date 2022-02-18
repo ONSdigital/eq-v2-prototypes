@@ -23,7 +23,7 @@
 
 <form method="post">
     <div class="ons-question__answer ons-u-mb-m">
-        <fieldset id="whatDates" class="ons-fieldset">
+        <fieldset id="whatDatesFrom" class="ons-fieldset">
             <legend class="ons-fieldset__legend">
                 From
             </legend>
@@ -33,7 +33,9 @@
                     <input type="text" id="whatDateFromDay"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
                            name="whatDateFromDay" min="1" max="31" maxlength="2"
-                           pattern="[0-9]*" inputmode="numeric">
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateFromDay']}}"{% endif %}
+                    >
                 </div>
 
                 <div class="ons-field">
@@ -41,7 +43,9 @@
                     <input type="text" id="whatDateFromMonth"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
                            name="whatDateFromMonth" min="1" max="12" maxlength="2"
-                           pattern="[0-9]*" inputmode="numeric">
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromMonth'] %}value="{{data['whatDateFromMonth']}}"{% endif %}
+                    >
                 </div>
 
                 <div class="ons-field">
@@ -49,13 +53,15 @@
                     <input type="text" id="whatDateFromYear"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
                            name="whatDateFromYear" min="1000" max="3000"
-                           maxlength="4" pattern="[0-9]*" inputmode="numeric">
+                           maxlength="4" pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromYear'] %}value="{{data['whatDateFromYear']}}"{% endif %}
+                    >
                 </div>
             </div>
         </fieldset>
 
 
-        <fieldset id="answer9f57e03d-efb4-4cf1-9b50-1ca381b72a32to" class="ons-fieldset">
+        <fieldset id="whatDatesTo" class="ons-fieldset">
             <legend class="ons-fieldset__legend">
                 To
             </legend>
@@ -65,7 +71,9 @@
                     <input type="text" id="whatDateToDay"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
                            name="whatDateToDay" min="1" max="31" maxlength="2"
-                           pattern="[0-9]*" inputmode="numeric">
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToDay']}}"{% endif %}
+                    >
                 </div>
 
 
@@ -74,7 +82,9 @@
                     <input type="text" id="whatDateToMonth"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
                            name="whatDateToMonth" min="1" max="12" maxlength="2"
-                           pattern="[0-9]*" inputmode="numeric">
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToMonth']}}"{% endif %}
+                    >
                 </div>
 
                 <div class="ons-field">
@@ -82,12 +92,12 @@
                     <input type="text" id="whatDateToYear"
                            class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
                            name="whatDateToYear" min="1000" max="3000" maxlength="4"
-                           pattern="[0-9]*" inputmode="numeric">
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToYear']}}"{% endif %}
+                    >
                 </div>
             </div>
         </fieldset>
-
-
     </div>
     {% from "components/button/_macro.njk" import onsButton %}
         {{

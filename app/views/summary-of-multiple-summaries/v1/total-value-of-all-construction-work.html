@@ -1,0 +1,106 @@
+{% extends "./includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+{% if data['customDates'] === true %}
+<h1>During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total value of all construction work carried out by ESSENTIAL ENTERPRISE LTD.?</h1>
+{% else %}
+<h1>During the period 1 March 2020 to 31 March 2020, what was the total value of all construction work carried out by ESSENTIAL ENTERPRISE LTD.?</h1>
+{% endif %}
+
+<p></p>
+
+<p>This refers to all work on new structures and repair and maintenance on existing structures, carried out on housing, infrastructure, commercial and industrial projects for the public and private sector.</p>
+
+{% from "components/collapsible/_macro.njk" import onsCollapsible %}
+
+{{
+onsCollapsible({
+"id": "collapsible",
+"title": 'What we mean by "total value of all construction work"',
+"content": "<p>This refers to all work on new structures and repair and maintenance on existing structures, carried out on housing, infrastructure, commercial and industrial projects for the public and private sector.</p>",
+"button": {
+"close": "Hide this",
+"contextSuffix": "content",
+"attributes": {
+"aria-hidden": "true"
+}
+}
+})
+}}
+<p></p>
+{% from "components/panel/_macro.njk" import onsPanel %}
+
+{{
+onsPanel({
+"body": '<p>Include:</p>
+<ul class="u-fs-r"><li>new builds, repair and maintenance on housing and other residential properties, infrastructure, commercial structures and industrial structures</li>
+    <li>work done by your own business on its own business premises</li>
+    <li>fixtures, equipment and tools your business made and used in construction</li>
+    <li>materials your business used, overheads and profits</li>
+    <li>labour costs on your payroll</li>
+</ul>
+<p>Exclude:</p>
+<ul class="u-fs-r"><li>value of work done by subcontractors</li>
+    <li>VAT</li>
+    <li>payments for work carried out in previous periods</li>
+    <li>payments made to consultants or architects</li>
+    <li>fixtures, equipment, tools and materials your business made for sale</li>
+    <li>value of land</li>
+</ul>
+'
+})
+}}
+<p></p>
+<form method="post">
+
+    <div class="ons-field">
+
+
+        <label class="ons-label ons-label--with-description" for="totalValueOfAllWork">Total value of all work carried
+            out </label>
+        <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the full value (e.g. 56,234.33) or a value to the nearest £thousand (e.g. 56,000). Do not enter ‘56’ for 56,000. </span>
+
+        <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+
+        <input type="text" id="totalValueOfAllWork"
+               class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
+               title="British pounds (GBP)" name="totalValueOfAllWork" pattern="[0-9]*" inputmode="numeric"
+               autocomplete="off" aria-describedby="description-hint" required="required"
+               {% if data['totalValueOfAllWork'] %}value="{{data['totalValueOfAllWork']}}"{% endif %}
+        >
+
+                    <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"
+                          title="British pounds (GBP)">£</abbr>
+                </span>
+            </span>
+
+
+    </div>
+
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}
