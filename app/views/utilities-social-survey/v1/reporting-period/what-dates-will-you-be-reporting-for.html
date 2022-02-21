@@ -1,0 +1,110 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+<h1>What dates will you be reporting for?</h1>
+<p></p>
+<p>If applicable, ensure dates follow on from previous submission. If you need to provide different dates, please explain in the comments box at the end of the survey.</p>
+
+<form method="post">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset id="whatDatesFrom" class="ons-fieldset">
+            <legend class="ons-fieldset__legend">
+                From
+            </legend>
+            <div class="ons-field-group">
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateFromDay">Day</label>
+                    <input type="text" id="whatDateFromDay"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+                           name="whatDateFromDay" min="1" max="31" maxlength="2"
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateFromDay']}}"{% endif %}
+                    >
+                </div>
+
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateFromMonth">Month</label>
+                    <input type="text" id="whatDateFromMonth"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+                           name="whatDateFromMonth" min="1" max="12" maxlength="2"
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromMonth'] %}value="{{data['whatDateFromMonth']}}"{% endif %}
+                    >
+                </div>
+
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateFromYear">Year</label>
+                    <input type="text" id="whatDateFromYear"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
+                           name="whatDateFromYear" min="1000" max="3000"
+                           maxlength="4" pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromYear'] %}value="{{data['whatDateFromYear']}}"{% endif %}
+                    >
+                </div>
+            </div>
+        </fieldset>
+
+
+        <fieldset id="whatDatesTo" class="ons-fieldset">
+            <legend class="ons-fieldset__legend">
+                To
+            </legend>
+            <div class="ons-field-group">
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateToDay">Day</label>
+                    <input type="text" id="whatDateToDay"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+                           name="whatDateToDay" min="1" max="31" maxlength="2"
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToDay']}}"{% endif %}
+                    >
+                </div>
+
+
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateToMonth">Month</label>
+                    <input type="text" id="whatDateToMonth"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+                           name="whatDateToMonth" min="1" max="12" maxlength="2"
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToMonth']}}"{% endif %}
+                    >
+                </div>
+
+                <div class="ons-field">
+                    <label class="ons-label" for="whatDateToYear">Year</label>
+                    <input type="text" id="whatDateToYear"
+                           class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
+                           name="whatDateToYear" min="1000" max="3000" maxlength="4"
+                           pattern="[0-9]*" inputmode="numeric"
+                           {% if data['whatDateFromDay'] %}value="{{data['whatDateToYear']}}"{% endif %}
+                    >
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}

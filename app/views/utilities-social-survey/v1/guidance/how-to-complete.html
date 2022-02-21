@@ -1,0 +1,23 @@
+{% extends "./../includes/layout.html" %}
+
+{% block main %}
+<h1>How to complete this survey</h1>
+<p></p>
+
+<h2>What you need to do</h2>
+
+<p>You be asked to provide specific values for the amount you have paid in a reporting period for:</p>
+
+<ul><li>Energy utilities - gas, electric and water</li><li>Broadband, telephone and TV</li><li>Household shopping such as groceries</li></ul>
+
+<p>We will then summarise this information and calculate your total spend for the reporting period and ask you to confirm it is correct.</p>
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Continue"
+        })
+        }}
+</form>
+{% endblock %}

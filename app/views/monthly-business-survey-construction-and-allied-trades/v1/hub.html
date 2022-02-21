@@ -1,0 +1,143 @@
+{% extends "./includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>Choose another section to complete</h1>
+<p></p>
+
+<div class="ons-summary ons-u-mt-m ons-summary--hub">
+        <div class="ons-summary__group">
+                <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                                <th>Name of section or person</th>
+                                <th>Section progress</th>
+                                <th>Access section</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        {% if data['reportingPeriodComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                        {% endif %}
+
+                                        <div class="ons-summary__item--text {% if data['reportingPeriodComplete'] === true %}ons-summary__item-title--text{% endif %}">How to
+                                                complete and reporting period
+                                        </div>
+
+                                        {% if data['reportingPeriodComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['reportingPeriodComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['reportingPeriodComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['reportingPeriodComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="reporting-period/check-your-answers"
+                                           class="ons-summary__button"
+                                           aria-label="View answers for How to complete and reporting period">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['reportingPeriodComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="reporting-period/are-you-able-to-report"
+                                           class="ons-summary__button"
+                                           aria-label="Start How to complete and reporting period section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+
+                        </tr>
+                        </tbody>
+
+
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                {% if data['valueOfWorkComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                {% endif %}
+                                        <div class="ons-summary__item--text {% if data['valueOfWorkComplete'] === true %}ons-summary__item-title--text{% endif %}">Value of work</div>
+                                        {% if data['valueOfWorkComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['valueOfWorkComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['valueOfWorkComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['valueOfWorkComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['valueOfWorkComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="value-of-work/check-your-answers"
+                                           class="ons-summary__button"
+                                           aria-label="View answers for value of work">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['valueOfWorkComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="value-of-work/value-of-work"
+                                           class="ons-summary__button"
+                                           aria-label="Start √alue of work section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                </table>
+
+        </div>
+</div>
+
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Continue"
+        })
+        }}
+</form>
+{% endblock %}

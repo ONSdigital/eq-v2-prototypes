@@ -1,0 +1,17 @@
+{% set serviceName = "Monthly Business Survey - Construction and Allied Trades" %}
+{% extends "base.html" %}
+
+{% block main %}
+<h3>Initial version - with grand summary added</h3>
+<div class="ons-text-indent">Design work in progress</div>
+
+<p>A prototype of the Monthly Business Survey - Construction and Allied Trades, with a design which summarises multiple summaries at the end of the transaction.</p>
+
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "text": 'Start prototype',
+        "url": 'v1/start'
+        })
+        }}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "./includes/layout.html" %}
+{% extends "./../includes/layout.html" %}
 
 {% block preMain %}
 {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
@@ -67,7 +67,7 @@ onsBreadcrumbs({
         {{
         onsButton({
         "classes": "ons-u-mt-l",
-        "text": "Save and continue"
+        "text": "Continue"
         })
         }}
 </form>
