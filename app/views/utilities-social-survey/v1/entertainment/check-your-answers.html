@@ -1,0 +1,120 @@
+\{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>We calculate the total amount spent on entertainment to be £{{ data['totalEntertainmentAmountFormatted'] }}.00. Is this correct?</h1>
+<p></p>
+
+<div class="ons-panel ons-panel--success ons-panel--no-title print__hidden ons-u-mb-l">
+        <span class="ons-u-vh">Completed: </span>
+        <div class="ons-panel__body">
+                <p>Please review your answers and confirm these are correct.</p>
+        </div>
+</div>
+
+<div class="ons-summary">
+        <div class="ons-summary__group">
+                <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                                <th>Question</th>
+                                <th>Answer given</th>
+                                <th>Change answer</th>
+                        </tr>
+                        </thead>
+                        <tbody class="ons-summary__item" id="first-number-question">
+                        <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">
+                                                {% if data['customDates'] === true %}
+                                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on TV? (For example Sky, Netflix)?
+                                                {% else %}
+                                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on TV? (For example Sky, Netflix)?
+                                                {% endif %}
+                                        </div>
+                                </td>
+                                <td class="ons-summary__values">
+                                        £{{ data['totalTVSpendFormatted'] }}.00
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="" onclick="showAlert();">Change</a>
+                                </td>
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item" id="second-number-question">
+                        <tr class="ons-summary__row ons-summary__row--has-values" id="second-number-answer">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">
+                                                {% if data['customDates'] === true %}
+                                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on broadband?
+                                                {% else %}
+                                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on broadband?
+                                                {% endif %}
+                                        </div>
+                                </td>
+                                <td class="ons-summary__values">
+                                        £{{ data['totalBroadbandSpendFormatted'] }}.00
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="" onclick="showAlert();">Change</a>
+                                </td>
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item" id="third-number-question">
+                        <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">
+                                                {% if data['customDates'] === true %}
+                                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on cinema each month?
+                                                {% else %}
+                                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on cinema each month?
+                                                {% endif %}
+                                        </div>
+                                </td>
+                                <td class="ons-summary__values">
+                                        £{{ data['totalCinemaSpendFormatted'] }}.00
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="" onclick="showAlert();">Change</a>
+                                </td>
+                        </tr>
+                        </tbody>
+
+                        <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">Total spent on entertainment</div>
+                                </td>
+                                <td class="ons-summary__values" colspan="2">
+                                        £{{ data['totalEntertainmentAmountFormatted'] }}.00
+                                </td>
+                        </tr>
+                        </tbody>
+                </table>
+        </div>
+</div>
+<form method="post">
+        {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Yes, I confirm these are correct"
+        })
+        }}
+</form>
+{% endblock %}

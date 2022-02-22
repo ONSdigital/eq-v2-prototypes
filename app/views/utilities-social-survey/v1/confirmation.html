@@ -1,0 +1,43 @@
+{% extends "./includes/layout.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<div class="ons-panel ons-panel--success ons-panel--no-title ons-u-mb-m">
+
+        <span class="ons-u-vh">Completed: </span>
+        <span class="ons-panel__icon ons-u-fs-xl">
+        <svg class="ons-svg-icon ons-svg-icon--xl" fill="currentColor" focusable="false"
+             viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+                  transform="translate(-1.51 -3.04)"></path>
+        </svg>
+        </span>
+
+        <div class="ons-panel__body ons-svg-icon-margin--xl">
+                <h1 data-qa="title">Thank you for completing the Household Bills Survey</h1>
+                <p data-qa="guidance">
+                        Your answers have been submitted.
+                </p>
+                <dl class="ons-metadata ons-metadata__list ons-grid ons-grid--gutterless ons-u-cf">
+                        <dt class="ons-metadata__term ons-grid__col ons-col-5@m">Submitted on:</dt>
+                        <dd class="ons-metadata__value ons-grid__col ons-col-7@m">22 February 2022 at 20:24</dd>
+                        <dt class="ons-metadata__term ons-grid__col ons-col-5@m">Submission reference:</dt>
+                        <dd class="ons-metadata__value ons-grid__col ons-col-7@m">B17A - 5653 - A468 - 4098</dd>
+                </dl>
+        </div>
+
+
+</div>
+
+<p class="ons-u-mb-s">Your answers will be processed in the next few weeks. We may contact you to query your answers via phone or secure message.</p>
+<p class="ons-u-mb-s">For more information on how we use this data.<br>
+
+<a href="https://www.ons.gov.uk/surveys">https://www.ons.gov.uk/surveys</a></p>
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
+

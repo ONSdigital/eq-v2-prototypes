@@ -92,7 +92,7 @@ onsBreadcrumbs({
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['energyUtilitiesComplete'] === true %}ons-summary__item-title--text{% endif %}">Energy utilities</div>
+                                        <div class="ons-summary__item--text {% if data['energyUtilitiesComplete'] === true %}ons-summary__item-title--text{% endif %}">Utility bills</div>
                                         {% if data['energyUtilitiesComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
@@ -118,9 +118,9 @@ onsBreadcrumbs({
                                 {% endif %}
                                 {% if data['energyUtilitiesComplete'] !== true %}
                                 <td class="ons-summary__actions">
-                                        <a href="energy-utilities/total-spent-on-energy-utilities"
+                                        <a href="energy-utilities/total-spent-on-gas"
                                            class="ons-summary__button"
-                                           aria-label="Start energyUtilities section">
+                                           aria-label="Start energy utilities section">
                                                 Start section</a>
                                 </td>
                                 {% endif %}
@@ -130,42 +130,42 @@ onsBreadcrumbs({
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
-                                {% if data['broadbandPhoneTVComplete'] === true %}
+                                {% if data['entertainmentComplete'] === true %}
                                         <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
                                         <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
                                             <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['broadbandPhoneTVComplete'] === true %}ons-summary__item-title--text{% endif %}">Broadband, phone and TV</div>
-                                        {% if data['broadbandPhoneTVComplete'] === true %}
+                                        <div class="ons-summary__item--text {% if data['entertainmentComplete'] === true %}ons-summary__item-title--text{% endif %}">Entertainment</div>
+                                        {% if data['entertainmentComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
-                                        {% if data['broadbandPhoneTVComplete'] !== true %}
+                                        {% if data['entertainmentComplete'] !== true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
                                         {% endif %}
                                 </td>
                                 <td class="ons-summary__values">
-                                        {% if data['broadbandPhoneTVComplete'] === true %}
+                                        {% if data['entertainmentComplete'] === true %}
                                         Completed
                                         {% endif %}
-                                        {% if data['broadbandPhoneTVComplete'] !== true %}
+                                        {% if data['entertainmentComplete'] !== true %}
                                         Not started
                                         {% endif %}
                                 </td>
-                                {% if data['broadbandPhoneTVComplete'] === true %}
+                                {% if data['entertainmentComplete'] === true %}
                                 <td class="ons-summary__actions">
-                                        <a href="broadband-phone-tv/check-your-answers"
+                                        <a href="entertainment/check-your-answers"
                                            class="ons-summary__button"
-                                           aria-label="View answers for broadband phone tv">
+                                           aria-label="View answers for entertainment">
                                                 View answers</a>
                                 </td>
                                 {% endif %}
-                                {% if data['broadbandPhoneTVComplete'] !== true %}
+                                {% if data['entertainmentComplete'] !== true %}
                                 <td class="ons-summary__actions">
-                                        <a href="broadband-phone-tv/total-spent-on-broadband-phone-tv"
+                                        <a href="entertainment/total-spent-on-tv"
                                            class="ons-summary__button"
-                                           aria-label="Start broadband phone tv section">
+                                           aria-label="Start entertainment">
                                                 Start section</a>
                                 </td>
                                 {% endif %}
@@ -175,42 +175,42 @@ onsBreadcrumbs({
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
-                                {% if data['householdShoppingComplete'] === true %}
+                                {% if data['foodComplete'] === true %}
                                         <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
                                         <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
                                             <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['householdShoppingComplete'] === true %}ons-summary__item-title--text{% endif %}">Household shopping</div>
-                                        {% if data['householdShoppingComplete'] === true %}
+                                        <div class="ons-summary__item--text {% if data['foodComplete'] === true %}ons-summary__item-title--text{% endif %}">Food</div>
+                                        {% if data['foodComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
-                                        {% if data['householdShoppingComplete'] !== true %}
+                                        {% if data['foodComplete'] !== true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
                                         {% endif %}
                                 </td>
                                 <td class="ons-summary__values">
-                                        {% if data['householdShoppingComplete'] === true %}
+                                        {% if data['foodComplete'] === true %}
                                         Completed
                                         {% endif %}
-                                        {% if data['householdShoppingComplete'] !== true %}
+                                        {% if data['foodComplete'] !== true %}
                                         Not started
                                         {% endif %}
                                 </td>
-                                {% if data['householdShoppingComplete'] === true %}
+                                {% if data['foodComplete'] === true %}
                                 <td class="ons-summary__actions">
-                                        <a href="household-shopping/check-your-answers"
+                                        <a href="food/check-your-answers"
                                            class="ons-summary__button"
-                                           aria-label="View answers for household shopping">
+                                           aria-label="View answers for food">
                                                 View answers</a>
                                 </td>
                                 {% endif %}
-                                {% if data['householdShoppingComplete'] !== true %}
+                                {% if data['foodComplete'] !== true %}
                                 <td class="ons-summary__actions">
-                                        <a href="household-shopping/total-spent-on-household-shopping"
+                                        <a href="food/total-spent-on-takeaways"
                                            class="ons-summary__button"
-                                           aria-label="Start household shopping section">
+                                           aria-label="Start food section">
                                                 Start section</a>
                                 </td>
                                 {% endif %}
@@ -218,7 +218,7 @@ onsBreadcrumbs({
                         </tbody>
 
                         {% endif %}
-                        {% if data['reportingPeriodComplete'] === true and data['broadbandPhoneTVComplete'] === true and data['householdShoppingComplete'] === true %}
+                        {% if data['reportingPeriodComplete'] === true and data['entertainmentComplete'] === true and data['foodComplete'] === true %}
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
                                         {% if data['totalAmountComplete'] === true %}
@@ -228,7 +228,7 @@ onsBreadcrumbs({
                                         </svg>
                                         </span>
                                         {% endif %}
-                                        <div class="ons-summary__item--text {% if data['totalAmountComplete'] === true %}ons-summary__item-title--text{% endif %}">Review total amount spent on household bills</div>
+                                        <div class="ons-summary__item--text {% if data['totalAmountComplete'] === true %}ons-summary__item-title--text{% endif %}">Total spend on your household</div>
                                         {% if data['totalAmountComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
@@ -270,7 +270,7 @@ onsBreadcrumbs({
 
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
-        {% if data['reportingPeriodComplete'] === true and data['broadbandPhoneTVComplete'] === true and data['householdShoppingComplete'] === true and data['totalAmountComplete'] === true %}
+        {% if data['reportingPeriodComplete'] === true and data['entertainmentComplete'] === true and data['foodComplete'] === true and data['totalAmountComplete'] === true %}
         {{
         onsButton({
         "classes": "ons-u-mt-l",

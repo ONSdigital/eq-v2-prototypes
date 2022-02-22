@@ -19,47 +19,28 @@
 {% block main %}
 
 {% if data['customDates'] === true %}
-<h1>During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount your household spent on household shopping?</h1>
+<h1>During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on your weekly shop?</h1>
 {% else %}
-<h1>During the period 1 January 2021 to 31 December 2021, what was the total amount your household spent on household shopping?</h1>
+<h1>During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on your weekly shop?</h1>
 {% endif %}
 
-<p></p>
-
-{% from "components/panel/_macro.njk" import onsPanel %}
-
-{{
-onsPanel({
-"body": '<p>Include:</p>
-<ul class="u-fs-r">
-    <li>groceries</li>
-    <li>food</li>
-    <li>toiletries</li>
-</ul>
-<p>Exclude:</p>
-<ul class="u-fs-r">
-    <li>one-off payments for repairs and appliances</li>
-</ul>
-'
-})
-}}
 <p></p>
 <form method="post">
 
     <div class="ons-field">
 
 
-        <label class="ons-label ons-label--with-description" for="totalHouseholdShopping">Total amount paid for household shopping</label>
+        <label class="ons-label ons-label--with-description" for="totalWeeklyShopSpend">Total amount spent on your weekly shop</label>
         <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the full value (e.g. 1,234.33) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
 
         <span class="ons-input-type ons-input-type--prefix">
                 <span class="ons-input-type__inner">
 
-        <input type="text" id="totalHouseholdShopping"
+        <input type="text" id="totalWeeklyShopSpend"
                class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
-               title="British pounds (GBP)" name="totalHouseholdShopping" pattern="[0-9]*" inputmode="numeric"
+               title="British pounds (GBP)" name="totalWeeklyShopSpend" pattern="[0-9]*" inputmode="numeric"
                autocomplete="off" aria-describedby="description-hint" required="required"
-               {% if data['totalHouseholdShopping'] %}value="{{data['totalHouseholdShopping']}}"{% endif %}
+               {% if data['totalWeeklyShopSpend'] %}value="{{data['totalWeeklyShopSpend']}}"{% endif %}
         >
 
                     <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"

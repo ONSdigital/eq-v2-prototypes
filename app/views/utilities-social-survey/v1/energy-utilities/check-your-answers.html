@@ -17,48 +17,103 @@ onsBreadcrumbs({
 {% endblock %}
 
 {% block main %}
-<h1>Energy utilities</h1>
+<h1>We calculate the total amount spent on utility bills to be £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00. Is this correct?</h1>
 <p></p>
 
-<div class="ons-summary">
-        <div id="how-to-complete-and-reporting-period" class="ons-summary__group">
-                <h2 class="ons-summary__group-title">Energy utilities</h2>
-                <table class="ons-summary__items">
-                        <thead class="ons-u-vh">
-                        <tr>
-                                <th>Question</th>
-                                <th>Answer given</th>
-                                <th>Change answer</th>
-                        </tr>
-                        </thead>
-                        <tbody id="check-your-answers-row" class="ons-summary__item">
-                        <tr id="check-your-answers" class="ons-summary__row ons-summary__row--has-values">
-                                <td class="ons-summary__item-title">
-                                        {% if data ['customDates'] === true %}
-                                        <div class="ons-summary__item--text">During the period {{ data['whatDateFromDay'] }} {{ data['whatDateFromMonthText'] }} {{ data['whatDateFromYear'] }} to {{ data['whatDateToDay'] }} {{ data['whatDateToMonthText'] }} {{ data['whatDateToYear'] }}, what was the total amount your household spent on gas, electric and water bills?</div>
-                                        {% endif %}
-                                        {% if data ['customDates'] !== true %}
-                                        <div class="ons-summary__item--text">During the period 1 January 2021 to 31 December 2021, what was the total amount your household spent on gas, electric and water bills?</div>
-                                        {% endif %}
-                                </td>
-                                <td class="ons-summary__values">
-                                        £{{ data ['totalEnergyUtilitiesFormatted'] }}.00
-                                </td>
-                                <td class="ons-summary__actions">
-                                        <a href="" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
-                                </td>
-                        </tr>
-                        </tbody>
-                </table>
+<div class="ons-panel ons-panel--success ons-panel--no-title print__hidden ons-u-mb-l">
+        <span class="ons-u-vh">Completed: </span>
+        <div class="ons-panel__body">
+                <p>Please review your answers and confirm these are correct.</p>
         </div>
 </div>
 
+<div class="ons-summary">
+<div class="ons-summary__group">
+<table class="ons-summary__items">
+        <thead class="ons-u-vh">
+        <tr>
+                <th>Question</th>
+                <th>Answer given</th>
+                <th>Change answer</th>
+        </tr>
+        </thead>
+        <tbody class="ons-summary__item" id="first-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                {% if data['customDates'] === true %}
+                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on gas?
+                                {% else %}
+                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on gas?
+                                {% endif %}
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalGasSpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="" onclick="showAlert();">Change</a>
+                </td>
+        </tr>
+        </tbody>
+        <tbody class="ons-summary__item" id="second-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="second-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                {% if data['customDates'] === true %}
+                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on water?
+                                {% else %}
+                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on water?
+                                {% endif %}
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalWaterSpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="" onclick="showAlert();">Change</a>
+                </td>
+        </tr>
+        </tbody>
+        <tbody class="ons-summary__item" id="third-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                {% if data['customDates'] === true %}
+                                During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on electricity?
+                                {% else %}
+                                During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on electricity?
+                                {% endif %}
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalElectricitySpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="" onclick="showAlert();">Change</a>
+                </td>
+        </tr>
+        </tbody>
+
+        <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
+        <tr class="ons-summary__row ons-summary__row--has-values">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Total spent on utility bills</div>
+                </td>
+                <td class="ons-summary__values" colspan="2">
+                        £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00
+                </td>
+        </tr>
+        </tbody>
+</table>
+</div>
+</div>
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
         {{
         onsButton({
         "classes": "ons-u-mt-l",
-        "text": "Continue"
+        "text": "Yes, I confirm these are correct"
         })
         }}
 </form>
