@@ -18,11 +18,7 @@
 
 {% block main %}
 
-{% if data['customDates'] === true %}
-<h1>During the period {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}, what was the total amount you spent on takeaways?</h1>
-{% else %}
-<h1>During the period 1 January 2021 to 31 December 2021, what was the total amount you spent on takeaways?</h1>
-{% endif %}
+<h1>How much do you spend on takeaways each month?</h1>
 
 <p></p>
 <form method="post">
@@ -30,7 +26,7 @@
     <div class="ons-field">
 
 
-        <label class="ons-label ons-label--with-description" for="totalTakeawaySpend">Total amount spent on takeaways</label>
+        <label class="ons-label ons-label--with-description" for="totalTakeawaySpend">Amount spent on takeaways</label>
         <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the full value (e.g. 1,234.33) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
 
         <span class="ons-input-type ons-input-type--prefix">
