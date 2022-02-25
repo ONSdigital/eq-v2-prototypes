@@ -268,7 +268,7 @@ onsBreadcrumbs({
 
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
-        {% if data['reportingPeriodComplete'] === true and data['entertainmentComplete'] === true and data['foodComplete'] === true and data['totalAmountComplete'] === true %}
+        {% if data['entertainmentComplete'] === true and data['foodComplete'] === true and data['totalAmountComplete'] === true %}
         {{
         onsButton({
         "classes": "ons-u-mt-l",

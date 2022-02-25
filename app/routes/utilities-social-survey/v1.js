@@ -127,22 +127,59 @@ module.exports = function (router) {
   // Total spent on gas page
   router.post(path + v + energyUtilities + 'total-spent-on-gas', function (req, res) {
     req.session.data.totalGasSpendFormatted = numberWithCommas(req.session.data.totalGasSpend)
-    // CTA redirects to water spend page
-    res.redirect(path + v + energyUtilities + 'total-spent-on-water')
+    if (req.session.data.gasChangeMode === true) {
+      req.session.data.gasChangeMode = false
+      res.redirect(path + v + energyUtilities + 'complete')
+    }
+    else {
+      // CTA redirects to water spend page
+      res.redirect(path + v + energyUtilities + 'total-spent-on-water')
+    }
+  })
+
+  // Change total spent on gas
+
+  router.get(path + v + energyUtilities + 'change-gas', function (req, res) {
+    req.session.data.gasChangeMode = true
+    res.redirect(path + v + energyUtilities + 'total-spent-on-gas')
   })
 
   // Total spent on water page
   router.post(path + v + energyUtilities + 'total-spent-on-water', function (req, res) {
     req.session.data.totalWaterSpendFormatted = numberWithCommas(req.session.data.totalWaterSpend)
-    // CTA redirects to electricity spend page
-    res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
+    if (req.session.data.waterChangeMode === true) {
+      req.session.data.waterChangeMode = false
+      res.redirect(path + v + energyUtilities + 'complete')
+    }
+    else {
+      // CTA redirects to electricity spend page
+      res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
+    }
+  })
+
+  // Change total spent on water
+  router.get(path + v + energyUtilities + 'change-water', function (req, res) {
+    req.session.data.waterChangeMode = true
+    res.redirect(path + v + energyUtilities + 'total-spent-on-water')
   })
 
   // Total spent on electricity page
   router.post(path + v + energyUtilities + 'total-spent-on-electricity', function (req, res) {
     req.session.data.totalElectricitySpendFormatted = numberWithCommas(req.session.data.totalElectricitySpend)
-    // CTA redirects to check your answers page
-    res.redirect(path + v + energyUtilities + 'complete')
+    if (req.session.data.electricityChangeMode === true) {
+      req.session.data.electricityChangeMode = false
+      res.redirect(path + v + energyUtilities + 'complete')
+    }
+    else {
+      // CTA redirects to check your answers page
+      res.redirect(path + v + energyUtilities + 'complete')
+    }
+  })
+
+  // Change total spent on electricity
+  router.get(path + v + energyUtilities + 'change-electricity', function (req, res) {
+    req.session.data.electricityChangeMode = true
+    res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
   })
 
   router.get(path + v + energyUtilities + 'complete', function (req, res) {
@@ -164,10 +201,12 @@ module.exports = function (router) {
     req.session.data.energyUtilitiesComplete = true
     if (req.session.data.energyUtiltiesChangeMode === true) {
       req.session.data.energyUtiltiesChangeMode = false
-      res.redirect(path + v + totalAmount + 'check-your-answers')
+      res.redirect(path + v + totalAmount + 'complete')
     }
-    // CTA redirects to 'hub' page
-    res.redirect(path + v + 'hub')
+    else {
+      // CTA redirects to 'hub' page
+      res.redirect(path + v + 'hub')
+    }
   })
 
   // **********************************************************************
@@ -177,22 +216,60 @@ module.exports = function (router) {
   // Total spent on TV
   router.post(path + v + entertainment + 'total-spent-on-tv', function (req, res) {
     req.session.data.totalTVSpendFormatted = numberWithCommas(req.session.data.totalTVSpend)
-    // CTA redirects to 'broadband' page
-    res.redirect(path + v + entertainment + 'total-spent-on-broadband')
+    if (req.session.data.tvChangeMode === true) {
+      req.session.data.tvChangeMode = false
+      res.redirect(path + v + entertainment + 'complete')
+    }
+    else {
+      // CTA redirects to 'broadband' page
+      res.redirect(path + v + entertainment + 'total-spent-on-broadband')
+    }
+  })
+
+  // Change total spent on TV
+
+  router.get(path + v + entertainment + 'change-tv', function (req, res) {
+    req.session.data.tvChangeMode = true
+    res.redirect(path + v + entertainment + 'total-spent-on-tv')
   })
 
   // Total spent on broadband
   router.post(path + v + entertainment + 'total-spent-on-broadband', function (req, res) {
     req.session.data.totalBroadbandSpendFormatted = numberWithCommas(req.session.data.totalBroadbandSpend)
-    // CTA redirects to 'cinema' page
-    res.redirect(path + v + entertainment + 'total-spent-on-cinema')
+    if (req.session.data.broadbandChangeMode === true) {
+      req.session.data.broadbandChangeMode = false
+      res.redirect(path + v + entertainment + 'complete')
+    }
+    else {
+      // CTA redirects to 'cinema' page
+      res.redirect(path + v + entertainment + 'total-spent-on-cinema')
+    }
+  })
+
+  // Change total spent on broadband
+
+  router.get(path + v + entertainment + 'change-broadband', function (req, res) {
+    req.session.data.broadbandChangeMode = true
+    res.redirect(path + v + entertainment + 'total-spent-on-broadband')
   })
 
   // Total spent on cinema
   router.post(path + v + entertainment + 'total-spent-on-cinema', function (req, res) {
     req.session.data.totalCinemaSpendFormatted = numberWithCommas(req.session.data.totalCinemaSpend)
-    // CTA redirects to 'check your answers' page
-    res.redirect(path + v + entertainment + 'complete')
+    if (req.session.data.cinemaChangeMode === true) {
+      req.session.data.cinemaChangeMode = false
+      res.redirect(path + v + entertainment + 'complete')
+    }
+    else {
+      // CTA redirects to 'check your answers' page
+      res.redirect(path + v + entertainment + 'complete')
+    }
+  })
+
+  // Change total spent on cinema
+  router.get(path + v + entertainment + 'change-cinema', function (req, res) {
+    req.session.data.cinemaChangeMode = true
+    res.redirect(path + v + entertainment + 'total-spent-on-cinema')
   })
 
   router.get(path + v + entertainment + 'complete', function (req, res) {
@@ -214,7 +291,7 @@ module.exports = function (router) {
     req.session.data.entertainmentComplete = true
     if (req.session.data.entertainmentChangeMode === true) {
       req.session.data.entertainmentChangeMode = false
-      res.redirect(path + v + totalAmount + 'check-your-answers')
+      res.redirect(path + v + totalAmount + 'complete')
     }
     // CTA redirects to 'hub' page
     res.redirect(path + v + 'hub')
@@ -227,22 +304,58 @@ module.exports = function (router) {
   // Total spent on takeaways
   router.post(path + v + food + 'total-spent-on-takeaways', function (req, res) {
     req.session.data.totalTakeawaySpendFormatted = numberWithCommas(req.session.data.totalTakeawaySpend)
-    // CTA redirects to 'weekly shop' page
-    res.redirect(path + v + food + 'total-spent-on-weekly-shop')
+    if (req.session.data.takeawayChangeMode === true) {
+      req.session.data.takeawayChangeMode = false
+      res.redirect(path + v + food + 'complete')
+    }
+    else {
+      // CTA redirects to 'weekly shop' page
+      res.redirect(path + v + food + 'total-spent-on-weekly-shop')
+    }
+  })
+
+  // Change total spent on takeaways
+  router.get(path + v + food + 'change-takeaways', function (req, res) {
+    req.session.data.takeawayChangeMode = true
+    res.redirect(path + v + food + 'total-spent-on-takeaways')
   })
 
   // Total spent on weekly shop
   router.post(path + v + food + 'total-spent-on-weekly-shop', function (req, res) {
     req.session.data.totalWeeklyShopSpendFormatted = numberWithCommas(req.session.data.totalWeeklyShopSpend)
-    // CTA redirects to 'eating out' page
-    res.redirect(path + v + food + 'total-spent-on-eating-out')
+    if (req.session.data.weeklyShopChangeMode === true) {
+      req.session.data.weeklyShopChangeMode = false
+      res.redirect(path + v + food + 'complete')
+    }
+    else {
+      // CTA redirects to 'eating out' page
+      res.redirect(path + v + food + 'total-spent-on-eating-out')
+    }
   })
 
-  // Total spent on weekly shop
+  // Change total spent on weekly shop
+  router.get(path + v + food + 'change-weekly-shop', function (req, res) {
+    req.session.data.weeklyShopChangeMode = true
+    res.redirect(path + v + food + 'total-spent-on-weekly-shop')
+  })
+
+  // Total spent on eating out
   router.post(path + v + food + 'total-spent-on-eating-out', function (req, res) {
     req.session.data.totalEatingOutSpendFormatted = numberWithCommas(req.session.data.totalEatingOutSpend)
-    // CTA redirects to 'check your answers' page
-    res.redirect(path + v + food + 'complete')
+    if (req.session.data.eatingOutChangeMode === true) {
+      req.session.data.eatingOutChangeMode = false
+      res.redirect(path + v + food + 'complete')
+    }
+    else {
+      // CTA redirects to 'check your answers' page
+      res.redirect(path + v + food + 'complete')
+    }
+  })
+
+  // Change total spent on eating out
+  router.get(path + v + food + 'change-eating-out', function (req, res) {
+    req.session.data.eatingOutChangeMode = true
+    res.redirect(path + v + food + 'total-spent-on-eating-out')
   })
 
   router.get(path + v + food + 'complete', function (req, res) {
@@ -264,7 +377,7 @@ module.exports = function (router) {
     req.session.data.foodComplete = true
     if (req.session.data.foodChangeMode === true) {
       req.session.data.foodChangeMode = false
-      res.redirect(path + v + totalAmount + 'check-your-answers')
+      res.redirect(path + v + totalAmount + 'complete')
     }
     // CTA redirects to 'hub' page
     res.redirect(path + v + 'hub')

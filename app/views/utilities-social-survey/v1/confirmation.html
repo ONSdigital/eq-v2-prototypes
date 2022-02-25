@@ -36,8 +36,129 @@
 <p class="ons-u-mb-s">For more information on how we use this data.<br>
 
 <a href="https://www.ons.gov.uk/surveys">https://www.ons.gov.uk/surveys</a></p>
+
+<div class="ons-feedback ons-u-mt-l">
+    <div class="ons-question" id="question">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend">
+                <h1 class="ons-fieldset__legend-title ">How easy or difficult was it to use this service?</h1>
+            </legend>
+            <div class="ons-input-items">
+                <div class="ons-radios__items">
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="very-satisfied" class="ons-radio__input js-radio"
+                         value="very-satisfied" name="satisfaction">
+                  <label class="ons-radio__label" for="very-satisfied" id="very-satisfied-label">Very easy
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="somewhat-satisfied"
+                         class="ons-radio__input js-radio" value="somewhat-satisfied"
+                         name="satisfaction">
+                  <label class="ons-radio__label" for="somewhat-satisfied" id="somewhat-satisfied-label">Easy
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="neither" class="ons-radio__input js-radio"
+                         value="neither" name="satisfaction">
+                  <label class="ons-radio__label" for="neither" id="neither-label">Neutral
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="somewhat-dissatisfied"
+                         class="ons-radio__input js-radio" value="somewhat-dissatisfied"
+                         name="satisfaction">
+                  <label class="ons-radio__label" for="somewhat-dissatisfied" id="somewhat-dissatisfied-label">Difficult
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="very-dissatisfied" class="ons-radio__input js-radio"
+                         value="very-dissatisfied" name="satisfaction">
+                  <label class="ons-radio__label  " for="very-dissatisfied" id="very-dissatisfied-label">Very difficult
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    {% from "components/textarea/_macro.njk" import onsTextarea %}
+                    {{
+                    onsTextarea({
+                    "id": "textarea",
+                    "name": "feedback",
+                    "label": {
+                    "text": "Please provide some feedback",
+                    "description": "For example, describe any difficulties you experienced in the use of this service"
+                    }
+                    })
+                    }}
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <br>
+    {% from "components/button/_macro.njk" import onsButton %}
+    {{
+    onsButton({
+    "type": 'button',
+    "text": 'Submit feedback',
+    "id": 'feedback-btn',
+    "variants": 'small'
+    })
+    }}
+    <div id="thanks" style="display: none">
+        <h1 class="fieldset__legend-title">Thanks for providing feedback.</h1>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block pageScripts %}
+<script>
+  $( document ).ready(function() {
+    if ($('#feedback-btn').length > 0) {
+      //it doesn't exist
+      var button = document.getElementById('feedback-btn'); // Assumes element with id='button'
+      button.onclick = function () {
+        var div = document.getElementById('question');
+        var thanks = document.getElementById('thanks');
+        if (div.style.display !== 'none') {
+          div.style.display = 'none';
+          button.style.display = 'none';
+          thanks.style.display = 'block';
+        }
+      };
+    }
+  })
+</script>
+
+<script>
+  var initialTimer = "45:01";
+  var interval = setInterval(function() {
+    var timer = initialTimer.split(':');
+    var minutes = parseInt(timer[0], 10);
+    var seconds = parseInt(timer[1], 10);
+    --seconds;
+    minutes = (seconds < 0) ? --minutes : minutes;
+    if (minutes < 0) clearInterval(interval);
+    seconds = (seconds < 0) ? 59 : seconds;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+    $('.countdown-minutes').html(minutes);
+    $('.countdown-seconds').html(seconds);
+    initialTimer = minutes + ':' + seconds;
+  }, 1000);
+</script>
 {% endblock %}
 
