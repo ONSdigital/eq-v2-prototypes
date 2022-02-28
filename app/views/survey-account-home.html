@@ -1,0 +1,56 @@
+{% extends "layout/_template.njk" %}
+{% set pageConfig = {title: "eQ prototypes", pageColNumber: "12"} %}
+
+{% block head %}
+{% include "includes/head.html" %}
+{% endblock %}
+
+{% block header %}
+{{
+onsHeader({
+"title": serviceName,
+"logoHref": '/',
+"mobileLogo": 'ons-logo-stacked-en',
+"button": {
+"text": 'Exit',
+"url": '#0',
+"iconType": 'exit',
+"iconPosition": 'after'
+},"serviceLinks": {
+"itemsList": [
+{
+"title": "My account",
+"url": "#0"
+},
+{
+"title": "Sign out",
+"url": "#0"
+}
+]
+}
+})
+}}
+{% endblock %}
+
+{% if useAutoStoreData %}
+{% block footer %}
+{{
+onsFooter({
+"OGLLink": {
+"pre": 'All content is available under the',
+"link": 'Open Government Licence v3.0',
+"url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+"post": ', except where otherwise stated'
+}
+})
+}}
+{% endblock %}
+{% endif %}
+
+{% block bodyEnd %}
+{% block scripts %}
+{% include "includes/scripts.html" %}
+{% block pageScripts %}{% endblock %}
+{% endblock %}
+<!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+{% endblock %}
