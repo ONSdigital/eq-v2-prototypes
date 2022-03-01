@@ -1,0 +1,87 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+<h1>Your contact details</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-field">
+        <label class="ons-label ons-label--with-description" for="telephone">UK phone number</label>
+
+        <input type="tel" id="telephone" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15" autocomplete="tel" />
+    </div>
+
+    <div class="ons-field">
+        <label class="ons-label ons-label--with-description" for="email">Email address</label>
+
+        <input type="email" id="email" class="ons-input ons-input--text ons-input-type__input" autocomplete="email" />
+    </div>
+
+    <p class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+        <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+        <span class="ons-checkbox ">
+                                    <input onclick="uncheckOtherCheckboxes();" type="checkbox" id="not-sure"
+                                           class="ons-checkbox__input ons-js-exclusive-checkbox" value="not-sure"
+                                           data-deselect-message="Selecting this will uncheck all other checkboxes">
+                                <label class="ons-checkbox__label  " for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> I'd prefer not to be contacted
+                                    </label>
+                                    </span>
+    </p><br>
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function uncheckElements()
+  {
+    var uncheck=document.getElementsByClassName('ons-js-exclusive-checkbox');
+    for(var i=0;i<uncheck.length;i++)
+    {
+      if(uncheck[i].type=='checkbox')
+      {
+        uncheck[i].checked=false;
+      }
+    }
+  }
+</script>
+<script>
+  function uncheckOtherCheckboxes()
+  {
+    var uncheck=document.getElementsByClassName('ons-js-exclusive-group-item');
+    for(var i=0;i<uncheck.length;i++)
+    {
+      if(uncheck[i].type=='checkbox')
+      {
+        uncheck[i].checked=false;
+      }
+    }
+  }
+</script>
+{% endblock %}
+
+

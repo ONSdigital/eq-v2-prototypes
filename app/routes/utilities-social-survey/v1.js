@@ -3,6 +3,7 @@ var pathGet = 'utilities-social-survey/'
 var v = 'v1/'
 
 var guidance = 'guidance/'
+var aboutYou = 'about-your-household/'
 var reportingPeriod = 'reporting-period/'
 var energyUtilities = 'energy-utilities/'
 var entertainment = 'entertainment/'
@@ -39,6 +40,9 @@ module.exports = function (router) {
   // ******* HUB PAGE *******
   // **********************************************************************
   router.post(path + v + 'hub', function (req, res) {
+    if (req.session.data.aboutYouComplete !== true) {
+      res.redirect(path + v + aboutYou + 'benefits-received')
+    }
     if (req.session.data.energyUtilitiesComplete !== true) {
       res.redirect(path + v + energyUtilities + 'total-spent-on-gas')
     }
@@ -120,6 +124,49 @@ module.exports = function (router) {
   // })
   // *************************************************** END COMMENTED OUT SECTION ***************************************************
 
+
+  // Benefits received page
+  router.post(path + v + aboutYou + 'benefits-received', function (req, res) {
+    if (req.session.data.benefitChangeMode === true) {
+      req.session.data.benefitChangeMode = false
+      res.redirect(path + v + aboutYou + 'complete')
+    } else {
+      // CTA redirects to contact you page
+      res.redirect(path + v + aboutYou + 'contact-you')
+    }
+  })
+
+  // Change benefits page
+
+  router.get(path + v + aboutYou + 'change-benefits', function (req, res) {
+    req.session.data.benefitChangeMode = true
+    res.redirect(path + v + aboutYou + 'benefits-received')
+  })
+
+  // Contact you page
+  router.post(path + v + aboutYou + 'contact-you', function (req, res) {
+    if (req.session.data.contactChangeMode === true) {
+      req.session.data.contactChangeMode = false
+      res.redirect(path + v + aboutYou + 'complete')
+    } else {
+      // CTA redirects to complete page
+      res.redirect(path + v + aboutYou + 'complete')
+    }
+  })
+
+  // Change contact you page
+  router.get(path + v + aboutYou + 'change-contact-you', function (req, res) {
+    req.session.data.benefitChangeMode = true
+    res.redirect(path + v + aboutYou + 'contact-you')
+  })
+
+  // Complete about you
+  router.get(path + v + aboutYou + 'complete', function (req, res) {
+    // Mark section as complete
+    req.session.data.aboutYouComplete = true
+    res.redirect(path + v + 'hub')
+  })
+
   // **********************************************************************
   // ******* ENERGY UTILITIES *******
   // **********************************************************************
@@ -130,8 +177,7 @@ module.exports = function (router) {
     if (req.session.data.gasChangeMode === true) {
       req.session.data.gasChangeMode = false
       res.redirect(path + v + energyUtilities + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to water spend page
       res.redirect(path + v + energyUtilities + 'total-spent-on-water')
     }
@@ -150,8 +196,7 @@ module.exports = function (router) {
     if (req.session.data.waterChangeMode === true) {
       req.session.data.waterChangeMode = false
       res.redirect(path + v + energyUtilities + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to electricity spend page
       res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
     }
@@ -169,8 +214,7 @@ module.exports = function (router) {
     if (req.session.data.electricityChangeMode === true) {
       req.session.data.electricityChangeMode = false
       res.redirect(path + v + energyUtilities + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to check your answers page
       res.redirect(path + v + energyUtilities + 'complete')
     }
@@ -202,8 +246,7 @@ module.exports = function (router) {
     if (req.session.data.energyUtiltiesChangeMode === true) {
       req.session.data.energyUtiltiesChangeMode = false
       res.redirect(path + v + totalAmount + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'hub' page
       res.redirect(path + v + 'hub')
     }
@@ -219,8 +262,7 @@ module.exports = function (router) {
     if (req.session.data.tvChangeMode === true) {
       req.session.data.tvChangeMode = false
       res.redirect(path + v + entertainment + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'broadband' page
       res.redirect(path + v + entertainment + 'total-spent-on-broadband')
     }
@@ -239,8 +281,7 @@ module.exports = function (router) {
     if (req.session.data.broadbandChangeMode === true) {
       req.session.data.broadbandChangeMode = false
       res.redirect(path + v + entertainment + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'cinema' page
       res.redirect(path + v + entertainment + 'total-spent-on-cinema')
     }
@@ -259,8 +300,7 @@ module.exports = function (router) {
     if (req.session.data.cinemaChangeMode === true) {
       req.session.data.cinemaChangeMode = false
       res.redirect(path + v + entertainment + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'check your answers' page
       res.redirect(path + v + entertainment + 'complete')
     }
@@ -307,8 +347,7 @@ module.exports = function (router) {
     if (req.session.data.takeawayChangeMode === true) {
       req.session.data.takeawayChangeMode = false
       res.redirect(path + v + food + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'weekly shop' page
       res.redirect(path + v + food + 'total-spent-on-weekly-shop')
     }
@@ -326,8 +365,7 @@ module.exports = function (router) {
     if (req.session.data.weeklyShopChangeMode === true) {
       req.session.data.weeklyShopChangeMode = false
       res.redirect(path + v + food + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'eating out' page
       res.redirect(path + v + food + 'total-spent-on-eating-out')
     }
@@ -345,8 +383,7 @@ module.exports = function (router) {
     if (req.session.data.eatingOutChangeMode === true) {
       req.session.data.eatingOutChangeMode = false
       res.redirect(path + v + food + 'complete')
-    }
-    else {
+    } else {
       // CTA redirects to 'check your answers' page
       res.redirect(path + v + food + 'complete')
     }
