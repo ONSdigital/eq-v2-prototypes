@@ -38,7 +38,7 @@
     <p class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
         <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
         <span class="ons-checkbox ">
-                                    <input onclick="uncheckOtherCheckboxes();" type="checkbox" id="not-sure"
+                                    <input onclick="clearform();" type="checkbox" id="not-sure"
                                            class="ons-checkbox__input ons-js-exclusive-checkbox" value="not-sure"
                                            data-deselect-message="Selecting this will uncheck all other checkboxes">
                                 <label class="ons-checkbox__label  " for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> I'd prefer not to be contacted
@@ -57,30 +57,23 @@
 
 {% block pageScripts %}
 <script>
-  function uncheckElements()
-  {
-    var uncheck=document.getElementsByClassName('ons-js-exclusive-checkbox');
-    for(var i=0;i<uncheck.length;i++)
-    {
-      if(uncheck[i].type=='checkbox')
-      {
-        uncheck[i].checked=false;
-      }
-    }
+  function clearform(){
+    document.getElementById('telephone').value = '';
+    document.getElementById('email').value = '';
   }
 </script>
+
 <script>
-  function uncheckOtherCheckboxes()
-  {
-    var uncheck=document.getElementsByClassName('ons-js-exclusive-group-item');
-    for(var i=0;i<uncheck.length;i++)
-    {
-      if(uncheck[i].type=='checkbox')
-      {
-        uncheck[i].checked=false;
-      }
-    }
+  $(document).ready(clearCheckbox());
+  function clearCheckbox() {
+    $('#telephone').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+    $('#email').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
   }
+
 </script>
 {% endblock %}
 

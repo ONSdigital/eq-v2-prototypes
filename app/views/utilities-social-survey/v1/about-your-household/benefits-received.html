@@ -155,6 +155,15 @@
     }
   }
 </script>
+<script>
+  $(document).ready(unCheck());
+
+  function unCheck() {
+    $('input.ons-js-exclusive-checkbox').on('change', function() {
+      $('input.ons-js-exclusive-checkbox').not(this).prop('checked', false);
+    });
+  }
+</script>
 {% endblock %}
 
 
