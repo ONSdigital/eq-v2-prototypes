@@ -1,4 +1,5 @@
-{% extends "../includes/layout.html" %}
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
 
 {% block preMain %}
 {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
@@ -18,80 +19,10 @@ onsBreadcrumbs({
 
 {% block main %}
 
-<h1>Select the code that best describes the sector
-    for which R&D was purchased, outside of this business during the 12 month period.</h1>
-<p></p>
-
-<div class="ons-field">
-    <label class="ons-label" for="select">R&D code</label>
-    <select id="select" name="select" class="ons-input ons-input--select">
-        <option value="" selected disabled>Select an option</option>
-<option>Agriculture, hunting and forestry; fishing                                                                </option>
-<option>Mining and quarrying (including solids, liquids and gases)                                                </option>
-<option>Food products and beverages                                                                               </option>
-<option>Tobacco                                                                                                   </option>
-<option>Textiles                                                                                                  </option>
-<option>Wearing apparel (including fur and leather)                                                               </option>
-<option>Leather and related products                                                                              </option>
-<option>Wood, cork and straw products (excluding furniture)                                                       </option>
-<option>Paper and paper products                                                                                  </option>
-<option>Printing and reproduction of recorded media                                                               </option>
-<option>Coke and refined petroleum products (including mineral oil)                                               </option>
-<option>Chemicals and chemical products (excluding pharmaceuticals)                                               </option>
-<option>Pharmaceutical products and preparations                                                                  </option>
-<option>Communication equipment                                                                                   </option>
-<option>Rubber and plastic products                                                                               </option>
-<option>Other non-metallic mineral products                                                                       </option>
-<option>Basic metals, iron and steel                                                                              </option>
-<option>Basic metals, non-ferrous and processing of nuclear fuel                                                  </option>
-<option>Fabricated metal products (excluding machinery and equipment)                                             </option>
-<option>Weapons and ammunition                                                                                    </option>
-<option>Electronic components and boards                                                                          </option>
-<option>Computers and peripheral equipment                                                                        </option>
-<option>Consumer electronics                                                                                      </option>
-<option>Instruments and appliances for measuring, testing and navigation; watches and clocks                      </option>
-<option>Irradiation, electromedical and electrotherapeutic equipment                                              </option>
-<option>Optical instruments and photographic equipment; magnetic and optical media                                </option>
-<option>Electrical equipment (including motors, domestic appliances and other electrical equipment)               </option>
-<option>Other general purpose machinery and equipment                                                             </option>
-<option>Motor vehicles, trailers, semi-trailers and caravans (excluding repairs)                                  </option>
-<option>Ships and boats (excluding repairs)                                                                       </option>
-<option>Railway locomotives and rolling stock                                                                     </option>
-<option>Air and spacecraft and related machinery                                                                  </option>
-<option>Other transport equipment (including motorcycles and invalid carriages)                                   </option>
-<option>Furniture                                                                                                 </option>
-<option>Other manufacturing (including jewellery, coins, sports goods, games and toys)                            </option>
-<option>Repair and installation of machinery and equipment                                                        </option>
-<option>Electricity, gas, steam, air conditioning                                                                 </option>
-<option>Sewerage, waste management and remediation activities; water collection, supply and treatment             </option>
-<option>Construction                                                                                              </option>
-<option>Wholesale and retail trade; Repair of motor vehicles and motorcycles                                      </option>
-<option>Transport and storage (including land, air, water transport; warehousing and postal/courier activities)   </option>
-<option>Accommodation and food service activities (including hotels, restaurants, camping, take away)             </option>
-<option>Publishing activities (including books and software publishing). Do not include software development      </option>
-<option>Motion picture, video, TV programme, sound, music publishing; broadcasting activities                     </option>
-<option>Telecommunications                                                                                        </option>
-<option>Information service activities (including data processing, hosting and web portals)                       </option>
-<option>Financial and insurance activities (including activities of holding companies)                            </option>
-<option>Real estate, (including renting and leasing of own real estate)                                           </option>
-<option>Professional, scientific & technical activities (including legal, accounting & management consulting)     </option>
-<option>Research and development services (excluding software development)                                        </option>
-<option>Admin and support activities (including employment, travel agency, security and business support)         </option>
-<option>Public administration and defence (including compulsory social security, and education)                   </option>
-<option>Human health and social work activities (including residential care)                                      </option>
-<option>Arts, entertainment and recreation (including libraries, gambling, sports activities)                     </option>
-<option>Other service activities (including repairs to household goods and computers)                             </option>
-<option>Computer programming, consultancy and related activities, (excluding software development)                </option>
-<option>Software development                                                                                      </option>
-    </select>
-</div>
-
-{% from "components/button/_macro.njk" import onsButton %}
-{{
-onsButton({
-"classes": "ons-u-mt-l",
-"text": "Save and continue"
-})
-}}
+<h3>Long list to select from</h3>
+<ul>
+    <li><a href="long-select">Long list in select</a><p>Displaying a long list of codes to select from using the 'select' pattern</p></li>
+    <li><a href="autoselect">Auto-suggest to suggest options for sectors</a><p>User starts typing and suggested options are displayed</p></li>
+</ul>
 
 {% endblock %}

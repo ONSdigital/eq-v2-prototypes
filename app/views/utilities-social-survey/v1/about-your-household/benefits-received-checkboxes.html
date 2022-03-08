@@ -80,32 +80,39 @@
               </span>
             </span>
                         </div>
-                        <br>
-                        <div class="ons-input-items">
-                            <span class="ons-label ons-u-fs-r--b" aria-hidden="true">Or</span>
-                            <div class="ons-radios__items">
-          <span class="ons-radios__item">
-            <span class="ons-radio">
-              <input onclick="uncheckOtherCheckboxes();" type="radio" id="none" class="ons-radio__input ons-js-radio" value="I do not receive any benefits" name="mutually-exclusive">
-              <label class=" ons-radio__label " for="none" id="none-label">I do not receive any benefits</label>
+                        <span class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+                            <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+                            <span class="ons-checkbox ">
+              <input onclick="uncheckOtherCheckboxes();" name="benefits-received-5" type="checkbox" id="none"
+                     class="ons-checkbox__input ons-js-checkbox ons-js-exclusive-checkbox" value="I do not receive any benefits"
+                     data-attribute="Example attribute" data-deselect-message="Selecting this will uncheck all other checkboxes"
+                     {% if data['benefits-received-5'] %}checked="checked"{% endif %}
+              >
+              <label class=" ons-checkbox__label " for="none" id="none-label"><span class="ons-u-vh">Or, </span> I do not receive any benefits</label>
             </span>
-          </span>
-                                <br>
-                                <span class="ons-radios__item">
-            <span class="ons-radio">
-              <input onclick="uncheckOtherCheckboxes();" type="radio" id="not-sure" class="ons-radio__input ons-js-radio" value="Not sure" name="mutually-exclusive">
-              <label class=" ons-radio__label " for="not-sure" id="not-sure-label">Not sure</label>
+                        </span>
+                        <span class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+                            <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+                            <span class="ons-checkbox ">
+              <input onclick="uncheckOtherCheckboxes();" name="benefits-received-6" type="checkbox" id="not-sure"
+                     class="ons-checkbox__input ons-js-checkbox ons-js-exclusive-checkbox" value="Not sure"
+                     data-attribute="Example attribute" data-deselect-message="Selecting this will uncheck all other checkboxes"
+                     {% if data['benefits-received-6'] %}checked="checked"{% endif %}
+              >
+              <label class=" ons-checkbox__label " for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> Not sure</label>
             </span>
-          </span>
-                                <br>
-                                <span class="ons-radios__item">
-            <span class="ons-radio">
-              <input onclick="uncheckOtherCheckboxes();" type="radio" id="prefer-not-to-say" class="ons-radio__input ons-js-radio" value="Prefer not to say" name="mutually-exclusive">
-              <label class=" ons-radio__label " for="prefer-not-to-say" id="prefer-not-to-say-label">Prefer not to say</label>
+                        </span>
+                        <span class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+                            <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+                            <span class="ons-checkbox ">
+              <input onclick="uncheckOtherCheckboxes();" name="benefits-received-7" type="checkbox" id="prefer-not-to-say"
+                     class="ons-checkbox__input ons-js-checkbox ons-js-exclusive-checkbox" value="Prefer not to say"
+                     data-attribute="Example attribute" data-deselect-message="Selecting this will uncheck all other checkboxes"
+                     {% if data['benefits-received-7'] %}checked="checked"{% endif %}
+              >
+              <label class=" ons-checkbox__label " for="prefer-not-to-say" id="prefer-not-to-say-label"><span class="ons-u-vh">Or, </span> Prefer not to say</label>
             </span>
-          </span>
-                            </div>
-                        </div>
+                        </span>
                         <span class="ons-js-exclusive-alert ons-u-vh" role="alert" aria-live="polite" data-group-adjective="deselected" data-checkbox-adjective="deselected"></span>
                     </div>
                 </div>
@@ -127,10 +134,10 @@
 <script>
   function uncheckElements()
   {
-    var uncheck=document.getElementsByClassName('ons-js-radio');
+    var uncheck=document.getElementsByClassName('ons-js-exclusive-checkbox');
     for(var i=0;i<uncheck.length;i++)
     {
-      if(uncheck[i].type=='radio')
+      if(uncheck[i].type=='checkbox')
       {
         uncheck[i].checked=false;
       }

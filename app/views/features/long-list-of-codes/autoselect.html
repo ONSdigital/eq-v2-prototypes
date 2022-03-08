@@ -1,0 +1,58 @@
+{% extends "../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h1>Select the sector for which in-house R&D has been carried out</h1>
+<p></p>
+
+{% from "components/autosuggest/_macro.njk" import onsAutosuggest %}
+
+<div class="ons-grid ons-grid--gutterless">
+    <div class="ons-grid__col ons-col-8@m">
+
+        {{ onsAutosuggest({
+        "id": "sector",
+        "label": {
+        "text": "Sector",
+        "description": "Select sector from suggestions",
+        "id": "sector-label"
+        },
+        "autocomplete": "off",
+        "instructions": "Use up and down keys to navigate suggestions once you\'ve typed more than two characters. Use the enter key to select a suggestion. Touch device users, explore by touch or with swipe gestures.",
+        "ariaYouHaveSelected": "You have selected",
+        "ariaMinChars": "Enter 3 or more characters for suggestions.",
+        "ariaResultsLabel": "Country suggestions",
+        "ariaOneResult": "There is one suggestion available.",
+        "ariaNResults": "There are {n} suggestions available.",
+        "ariaLimitedResults": "Results have been limited to 10 suggestions. Type more characters to improve your search",
+        "moreResults": "Continue entering to improve suggestions",
+        "resultsTitle": "Suggestions",
+        "resultsTitleId": "sector-suggestions",
+        "autosuggestData": "https://api.npoint.io/20ffc805e13c37980073",
+        "noResults": "No suggestions found.",
+        "typeMore": "Continue entering to get suggestions"
+        }) }}
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

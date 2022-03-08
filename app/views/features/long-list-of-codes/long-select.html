@@ -1,0 +1,168 @@
+{% extends "../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h1>Select the sector for which in-house R&D has been carried out</h1>
+<p></p>
+
+<div class="ons-field"><label class="ons-label" for="select">Sector</label>
+    <select id="select" name="select" class="ons-input ons-input--select">
+    <option value="" selected disabled>Select an option</option>
+    <option value="Agriculture, hunting and forestry; fishing">Agriculture, hunting and forestry; fishing</option>
+    <option value="Mining and quarrying (including solids, liquids and gases)">Mining and quarrying (including solids,
+        liquids and gases)
+    </option>
+    <option value="Food products and beverages">Food products and beverages</option>
+    <option value="Tobacco">Tobacco</option>
+    <option value="Textiles">Textiles</option>
+    <option value="Wearing apparel (including fur and leather)">Wearing apparel (including fur and leather)</option>
+    <option value="Leather and related products">Leather and related products</option>
+    <option value="Wood, cork and straw products (excluding furniture)">Wood, cork and straw products (excluding
+        furniture)
+    </option>
+    <option value="Paper and paper products">Paper and paper products</option>
+    <option value="Printing and reproduction of recorded media">Printing and reproduction of recorded media</option>
+    <option value="Coke and refined petroleum products (including mineral oil)">Coke and refined petroleum products
+        (including mineral oil)
+    </option>
+    <option value="Chemicals and chemical products (excluding pharmaceuticals)">Chemicals and chemical products
+        (excluding pharmaceuticals)
+    </option>
+    <option value="Pharmaceutical products and preparations">Pharmaceutical products and preparations</option>
+    <option value="Communication equipment">Communication equipment</option>
+    <option value="Rubber and plastic products">Rubber and plastic products</option>
+    <option value="Other non-metallic mineral products">Other non-metallic mineral products</option>
+    <option value="Basic metals, iron and steel">Basic metals, iron and steel</option>
+    <option value="Basic metals, non-ferrous and processing of nuclear fuel">Basic metals, non-ferrous and processing
+        of nuclear fuel
+    </option>
+    <option value="Fabricated metal products (excluding machinery and equipment)">Fabricated metal products (excluding
+        machinery and equipment)
+    </option>
+    <option value="Weapons and ammunition">Weapons and ammunition</option>
+    <option value="Electronic components and boards">Electronic components and boards</option>
+    <option value="Computers and peripheral equipment">Computers and peripheral equipment</option>
+    <option value="Consumer electronics">Consumer electronics</option>
+    <option value="Instruments and appliances for measuring, testing and navigation; watches and clocks">Instruments
+        and appliances for measuring, testing and navigation; watches and clocks
+    </option>
+    <option value="Irradiation, electromedical and electrotherapeutic equipment">Irradiation, electromedical and
+        electrotherapeutic equipment
+    </option>
+    <option value="Optical instruments and photographic equipment; magnetic and optical media">Optical instruments and
+        photographic equipment; magnetic and optical media
+    </option>
+    <option value="Electrical equipment (including motors, domestic appliances and other electrical equipment)">
+        Electrical equipment (including motors, domestic appliances and other electrical equipment)
+    </option>
+    <option value="Other general purpose machinery and equipment">Other general purpose machinery and equipment
+    </option>
+    <option value="Motor vehicles, trailers, semi-trailers and caravans (excluding repairs)">Motor vehicles, trailers,
+        semi-trailers and caravans (excluding repairs)
+    </option>
+    <option value="Ships and boats (excluding repairs)">Ships and boats (excluding repairs)</option>
+    <option value="Railway locomotives and rolling stock">Railway locomotives and rolling stock</option>
+    <option value="Air and spacecraft and related machinery">Air and spacecraft and related machinery</option>
+    <option value="Other transport equipment (including motorcycles and invalid carriages)">Other transport equipment
+        (including motorcycles and invalid carriages)
+    </option>
+    <option value="Furniture">Furniture</option>
+    <option value="Other manufacturing (including jewellery, coins, sports goods, games and toys)">Other manufacturing
+        (including jewellery, coins, sports goods, games and toys)
+    </option>
+    <option value="Repair and installation of machinery and equipment">Repair and installation of machinery and
+        equipment
+    </option>
+    <option value="Electricity, gas, steam, air conditioning">Electricity, gas, steam, air conditioning</option>
+    <option value="Sewerage, waste management and remediation activities; water collection, supply and treatment">
+        Sewerage, waste management and remediation activities; water collection, supply and treatment
+    </option>
+    <option value="Construction">Construction</option>
+    <option value="Wholesale and retail trade; Repair of motor vehicles and motorcycles">Wholesale and retail trade;
+        Repair of motor vehicles and motorcycles
+    </option>
+    <option value="Transport and storage (including land, air, water transport; warehousing and postal/courier activities)">
+        Transport and storage (including land, air, water transport; warehousing and postal/courier activities)
+    </option>
+    <option value="Accommodation and food service activities (including hotels, restaurants, camping, take away)">
+        Accommodation and food service activities (including hotels, restaurants, camping, take away)
+    </option>
+    <option value="Publishing activities (including books and software publishing). Do not include software development">
+        Publishing activities (including books and software publishing). Do not include software development
+    </option>
+    <option value="Motion picture, video, TV programme, sound, music publishing; broadcasting activities">Motion
+        picture, video, TV programme, sound, music publishing; broadcasting activities
+    </option>
+    <option value="Telecommunications">Telecommunications</option>
+    <option value="Information service activities (including data processing, hosting and web portals)">Information
+        service activities (including data processing, hosting and web portals)
+    </option>
+    <option value="Financial and insurance activities (including activities of holding companies)">Financial and
+        insurance activities (including activities of holding companies)
+    </option>
+    <option value="Real estate, (including renting and leasing of own real estate)">Real estate, (including renting and
+        leasing of own real estate)
+    </option>
+    <option value="Professional, scientific & technical activities (including legal, accounting & management consulting)">
+        Professional, scientific & technical activities (including legal, accounting & management consulting)
+    </option>
+    <option value="Research and development services (excluding software development)">Research and development
+        services (excluding software development)
+    </option>
+    <option value="Admin and support activities (including employment, travel agency, security and business support)">
+        Admin and support activities (including employment, travel agency, security and business support)
+    </option>
+    <option value="Public administration and defence (including compulsory social security, and education)">Public
+        administration and defence (including compulsory social security, and education)
+    </option>
+    <option value="Human health and social work activities (including residential care)">Human health and social work
+        activities (including residential care)
+    </option>
+    <option value="Arts, entertainment and recreation (including libraries, gambling, sports activities)">Arts,
+        entertainment and recreation (including libraries, gambling, sports activities)
+    </option>
+    <option value="Other service activities (including repairs to household goods and computers)">Other service
+        activities (including repairs to household goods and computers)
+    </option>
+    <option value="Computer programming, consultancy and related activities, (excluding software development)">Computer
+        programming, consultancy and related activities, (excluding software development)
+    </option>
+    <option value="Software development">Software development</option>
+    </select>
+</div>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+<!--<script>-->
+<!--  $(document).ready(orderAlphabetically('#select'));-->
+<!--  function orderAlphabetically(selectElement) {-->
+<!--    var options = $(selectElement + " option").toArray();-->
+<!--    options.sort(function (a, b) {-->
+<!--      let aa = a.textContent;-->
+<!--      let bb = b.textContent;-->
+<!--      if (aa.toUpperCase() > bb.toUpperCase()) return 1;-->
+<!--      else if (aa.toUpperCase() < bb.toUpperCase()) return -1;-->
+<!--      else return 0;-->
+<!--    });-->
+<!--    $(selectElement).empty().append(options);-->
+<!--  }-->
+<!--</script>-->
+{% endblock %}
