@@ -1,0 +1,255 @@
+{% extends "../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h1>Select the sector for which in-house R&D has been carried out</h1>
+<p></p>
+
+{% from "components/autosuggest/_macro.njk" import onsAutosuggest %}
+
+<div class="ons-grid ons-grid--gutterless">
+    <div class="ons-grid__col ons-col-8@m">
+        <fieldset class="ons-fieldset">
+            <div class="ons-input-items">
+                <div class="ons-radios__items">
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="agriculture" class="ons-radio__input ons-js-radio" value="Agriculture, hunting and forestry; fishing" name="sector">
+              <label class="ons-radio__label " for="agriculture" id="agriculture-label">Agriculture, hunting and forestry; fishing</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="mining" class="ons-radio__input ons-js-radio" value="Mining and quarrying (including solids, liquids and gases)" name="sector">
+              <label class="ons-radio__label " for="mining" id="mining-label">Mining and quarrying (including solids, liquids and gases)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="manufacturing-radio" class="ons-radio__input ons-js-radio ons-js-other" value="Manufacturing" name="sector" aria-controls="manufacturing-radio-other-wrap" aria-haspopup="true">
+              <label class=" ons-radio__label " for="manufacturing-radio" id="manufacturing-radio-label">Manufacturing</label>
+              <span class="ons-radio__other" id="manufacturing-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="manufacturing-select" id="manufacturing-select-label">Select a type of manufacturing</label>
+                      <select id="manufacturing-select" name="sector-detailed" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Food products and beverages">Food products and beverages</option>
+                        <option value="Tobacco">Tobacco</option>
+                        <option value="Textiles">Textiles</option>
+                        <option value="Wearing apparel (including fur and leather)">Wearing apparel (including fur and leather)</option>
+                        <option value="Leather and related products">Leather and related products</option>
+                        <option value="Wood, cork and straw products (excluding furniture)">Wood, cork and straw products (excluding
+                            furniture)
+                        </option>
+                        <option value="Paper and paper products">Paper and paper products</option>
+                        <option value="Printing and reproduction of recorded media">Printing and reproduction of recorded media</option>
+                        <option value="Coke and refined petroleum products (including mineral oil)">Coke and refined petroleum products
+                            (including mineral oil)
+                        </option>
+                        <option value="Chemicals and chemical products (excluding pharmaceuticals)">Chemicals and chemical products
+                            (excluding pharmaceuticals)
+                        </option>
+                        <option value="Pharmaceutical products and preparations">Pharmaceutical products and preparations</option>
+                        <option value="Communication equipment">Communication equipment</option>
+                        <option value="Rubber and plastic products">Rubber and plastic products</option>
+                        <option value="Other non-metallic mineral products">Other non-metallic mineral products</option>
+                        <option value="Basic metals, iron and steel">Basic metals, iron and steel</option>
+                        <option value="Basic metals, non-ferrous and processing of nuclear fuel">Basic metals, non-ferrous and processing
+                            of nuclear fuel
+                        </option>
+                        <option value="Fabricated metal products (excluding machinery and equipment)">Fabricated metal products (excluding
+                            machinery and equipment)
+                        </option>
+                        <option value="Weapons and ammunition">Weapons and ammunition</option>
+                        <option value="Electronic components and boards">Electronic components and boards</option>
+                        <option value="Computers and peripheral equipment">Computers and peripheral equipment</option>
+                        <option value="Consumer electronics">Consumer electronics</option>
+                        <option value="Instruments and appliances for measuring, testing and navigation; watches and clocks">Instruments
+                            and appliances for measuring, testing and navigation; watches and clocks
+                        </option>
+                        <option value="Irradiation, electromedical and electrotherapeutic equipment">Irradiation, electromedical and
+                            electrotherapeutic equipment
+                        </option>
+                        <option value="Optical instruments and photographic equipment; magnetic and optical media">Optical instruments and
+                            photographic equipment; magnetic and optical media
+                        </option>
+                        <option value="Electrical equipment (including motors, domestic appliances and other electrical equipment)">
+                            Electrical equipment (including motors, domestic appliances and other electrical equipment)
+                        </option>
+                        <option value="Other general purpose machinery and equipment">Other general purpose machinery and equipment
+                        </option>
+                        <option value="Motor vehicles, trailers, semi-trailers and caravans (excluding repairs)">Motor vehicles, trailers,
+                            semi-trailers and caravans (excluding repairs)
+                        </option>
+                        <option value="Ships and boats (excluding repairs)">Ships and boats (excluding repairs)</option>
+                        <option value="Railway locomotives and rolling stock">Railway locomotives and rolling stock</option>
+                        <option value="Air and spacecraft and related machinery">Air and spacecraft and related machinery</option>
+                        <option value="Other transport equipment (including motorcycles and invalid carriages)">Other transport equipment
+                            (including motorcycles and invalid carriages)
+                        </option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Other manufacturing (including jewellery, coins, sports goods, games and toys)">Other manufacturing
+                            (including jewellery, coins, sports goods, games and toys)
+                        </option>
+                        <option value="Repair and installation of machinery and equipment">Repair and installation of machinery and
+                            equipment
+                        </option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="electricity" class="ons-radio__input ons-js-radio" value="Electricity, gas, steam, air conditioning" name="sector">
+              <label class="ons-radio__label " for="electricity" id="electricity-label">Electricity, gas, steam, air conditioning</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="sewerage" class="ons-radio__input ons-js-radio" value="Sewerage, waste management and remediation activities; water collection, supply and treatment" name="sector">
+              <label class="ons-radio__label " for="sewerage" id="sewerage-label">Sewerage, waste management and remediation activities; water collection, supply and treatment</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="construction" class="ons-radio__input ons-js-radio" value="Construction" name="sector">
+              <label class="ons-radio__label " for="construction" id="construction-label">Construction</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="wholesale" class="ons-radio__input ons-js-radio" value="Wholesale and retail trade;" name="sector">
+              <label class="ons-radio__label " for="wholesale" id="wholesale-label">Wholesale and retail trade</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="repair-motor" class="ons-radio__input ons-js-radio" value="Repair of motor vehicles and motorcycles" name="sector">
+              <label class="ons-radio__label " for="repair-motor" id="repair-motor-label">Repair of motor vehicles and motorcycles</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="transport" class="ons-radio__input ons-js-radio" value="Transport and storage (including land, air, water transport; warehousing and postal/courier activities)" name="sector">
+              <label class="ons-radio__label " for="transport" id="transport-label">Transport and storage (including land, air, water transport; warehousing and postal/courier activities)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="accomodation" class="ons-radio__input ons-js-radio" value="Accommodation and food service activities (including hotels, restaurants, camping, take away)" name="sector">
+              <label class="ons-radio__label " for="accomodation" id="accomodation-label">Accommodation and food service activities (including hotels, restaurants, camping, take away)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="information-radio" class="ons-radio__input ons-js-radio ons-js-other" value="Information and communication" name="sector" aria-controls="information-radio-other-wrap" aria-haspopup="true">
+              <label class=" ons-radio__label " for="information-radio" id="information-radio-label">Information and communication</label>
+              <span class="ons-radio__other" id="information-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="information-select" id="information-select-label">Select a type of information and communication</label>
+                      <select id="information-select" name="sector-detailed" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Publishing activities (including books and software publishing). Do not include software development">
+                            Publishing activities (including books and software publishing). Do not include software development
+                        </option>
+                        <option value="Motion picture, video, TV programme, sound, music publishing; broadcasting activities">Motion
+                            picture, video, TV programme, sound, music publishing; broadcasting activities
+                        </option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Information service activities (including data processing, hosting and web portals)">Information
+                            service activities (including data processing, hosting and web portals)
+                        </option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="financial" class="ons-radio__input ons-js-radio" value="Financial and insurance activities (including activities of holding companies)" name="sector">
+              <label class="ons-radio__label " for="financial" id="financial-label">Financial and insurance activities (including activities of holding companies)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="real-estate" class="ons-radio__input ons-js-radio" value="Real estate, (including renting and leasing of own real estate)" name="sector">
+              <label class="ons-radio__label " for="real-estate" id="real-estate-label">Real estate, (including renting and leasing of own real estate)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="professional" class="ons-radio__input ons-js-radio" value="Professional, scientific & technical activities (including legal, accounting & management consulting)" name="sector">
+              <label class="ons-radio__label " for="professional" id="professional-label">Professional, scientific & technical activities (including legal, accounting & management consulting)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="research" class="ons-radio__input ons-js-radio" value="Research and development services (excluding software development)" name="sector">
+              <label class="ons-radio__label " for="research" id="research-label">Research and development services (excluding software development)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="admin" class="ons-radio__input ons-js-radio" value="Admin and support activities (including employment, travel agency, security and business support)" name="sector">
+              <label class="ons-radio__label " for="admin" id="admin-label">Admin and support activities (including employment, travel agency, security and business support)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="public-admin" class="ons-radio__input ons-js-radio" value="Public administration and defence (including compulsory social security, and education)" name="sector">
+              <label class="ons-radio__label " for="public-admin" id="public-admin-label">Public administration and defence (including compulsory social security, and education)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="human-health" class="ons-radio__input ons-js-radio" value="Human health and social work activities (including residential care)" name="sector">
+              <label class="ons-radio__label " for="human-health" id="human-health-label">Human health and social work activities (including residential care)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="arts" class="ons-radio__input ons-js-radio" value="Arts entertainment and recreation (including libraries, gambling, sports activities)" name="sector">
+              <label class="ons-radio__label " for="arts" id="arts-label">Arts entertainment and recreation (including libraries, gambling, sports activities)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="other" class="ons-radio__input ons-js-radio" value="Other service activities (including repairs to household goods and computers)" name="sector">
+              <label class="ons-radio__label " for="other" id="other-label">Other service activities (including repairs to household goods and computers)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="computer" class="ons-radio__input ons-js-radio" value="Computer programming, consultancy and related activities, (excluding software development)" name="sector">
+              <label class="ons-radio__label " for="computer" id="computer-label">Computer programming, consultancy and related activities, (excluding software development)</label>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="software" class="ons-radio__input ons-js-radio" value="Software development" name="sector">
+              <label class="ons-radio__label " for="software" id="software-label">Software development</label>
+            </span>
+          </span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
