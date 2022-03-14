@@ -1,0 +1,76 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h1>What was the value of repair and maintenance carried out on existing non-housing structures for public sector projects?</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-field">
+
+        <br>
+        <div class="ons-panel ons-panel--info ons-panel--no-title">
+            <span class="ons-u-vh">Important information: </span>
+            <div class="ons-panel__body">
+                <p>Include:</p>
+                <ul>
+                    <li>repairing something which is damaged</li>
+                    <li>maintaining an existing standard</li>
+                </ul>
+                <p>Exclude:</p>
+                <ul>
+                    <li>work on any residential buildings such as housing, flats or maisonettes</li>
+                    <li>work on infrastructure</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+
+
+        <label class="ons-label ons-label--with-description" for="totalNonhousingExisting">Value of repair and maintenance on existing non-housing structures for public sector projects</label>
+        <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
+
+        <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+
+        <input type="text" id="totalNonhousingExisting"
+               class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
+               title="British pounds (GBP)" name="totalNonhousingExisting" pattern="[0-9]*" inputmode="numeric"
+               autocomplete="off" aria-describedby="description-hint" required="required"
+               {% if data['totalNonhousingExisting'] %}value="{{data['totalNonhousingExisting']}}"{% endif %}
+        >
+
+                    <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"
+                          title="British pounds (GBP)">£</abbr>
+                </span>
+            </span>
+
+
+    </div>
+
+    {% from "components/button/_macro.njk" import onsButton %}
+    {{
+    onsButton({
+    "classes": "ons-u-mt-l",
+    "text": "Save and continue"
+    })
+    }}
+</form>
+{% endblock %}

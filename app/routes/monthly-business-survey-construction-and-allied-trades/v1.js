@@ -3,7 +3,10 @@ var v = 'v1/'
 
 var guidance = 'guidance/'
 var reportingPeriod = 'reporting-period/'
-var valueOfWork = 'value-of-work/'
+var housing = 'housing/'
+var infrastructure = 'infrastructure/'
+var nonhousing = 'nonhousing/'
+var totalAmount = 'total-amount/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -29,8 +32,6 @@ module.exports = function (router) {
   router.post(path + v + 'start', function (req, res) {
     // Clears session data
     req.session.data = {}
-    // Set section as how to complete and reporting period
-    req.session.data.activeSection = 'reportingPeriod'
     // CTA redirects to 'how to complete' page
     res.redirect(path + v + guidance + 'how-to-complete')
   })
@@ -39,14 +40,23 @@ module.exports = function (router) {
   // ******* HUB PAGE *******
   // **********************************************************************
   router.post(path + v + 'hub', function (req, res) {
-    if (req.session.data.activeSection === 'reportingPeriod') {
+    if (req.session.data.reportingPeriodComplete !== true) {
       res.redirect(path + v + guidance + 'how-to-complete')
     }
-    if (req.session.data.activeSection === 'valueOfWork') {
-      res.redirect(path + v + valueOfWork + 'value-of-work')
+    if (req.session.data.housingComplete !== true) {
+      res.redirect(path + v + housing + 'value-public')
+    }
+    if (req.session.data.infrastructureComplete !== true) {
+      res.redirect(path + v + infrastructure + 'value-new')
+    }
+    if (req.session.data.nonhousingComplete !== true) {
+      res.redirect(path + v + nonhousing + 'value-new')
+    }
+    if (req.session.data.totalAmountComplete !== true) {
+      res.redirect(path + v + totalAmount + 'complete')
     }
     else {
-      res.redirect(path + v + guidance + 'how-to-complete')
+      res.redirect(path + v + 'complete')
     }
   })
 
@@ -108,37 +118,238 @@ module.exports = function (router) {
   router.post(path + v + reportingPeriod + 'check-your-answers', function (req, res) {
     // Mark section as complete
     req.session.data.reportingPeriodComplete = true
-    // Complete section and set active section as value of work
-    req.session.data.activeSection = 'valueOfWork'
     // CTA redirects to 'hub' page
     res.redirect(path + v + 'hub')
   })
 
   // **********************************************************************
-  // ******* VALUE OF WORK SECTION *******
+  // ******* HOUSING SECTION *******
   // **********************************************************************
 
-  // Value of work guidance page
-  router.post(path + v + valueOfWork + 'value-of-work', function (req, res) {
-    // CTA redirects to 'total value of all construction work' question page
-    res.redirect(path + v + valueOfWork + 'total-value-of-all-construction-work')
+  // Total value of housing public
+  router.post(path + v + housing + 'value-public', function (req, res) {
+    req.session.data.totalHousingPublicFormatted = numberWithCommas(req.session.data.totalHousingPublic)
+    if (req.session.data.housingPublicChangeMode === true) {
+      req.session.data.housingPublicChangeMode = false
+      res.redirect(path + v + housing + 'complete')
+    } else {
+      // CTA redirects to water spend page
+      res.redirect(path + v + housing + 'value-private')
+    }
   })
 
-  // Total value of work question page
-  router.post(path + v + valueOfWork + 'total-value-of-all-construction-work', function (req, res) {
-    // Reformat money
-    req.session.data.totalValueOfAllWorkFormatted = numberWithCommas(req.session.data.totalValueOfAllWork)
-    // CTA redirects to 'check your answers' page
-    res.redirect(path + v + valueOfWork + 'check-your-answers')
+  // Change total spent on housing public
+
+  router.get(path + v + housing + 'change-value-public', function (req, res) {
+    req.session.data.housingPublicChangeMode = true
+    res.redirect(path + v + housing + 'value-public')
   })
 
-  // Value of work check your answers page
-  router.post(path + v + valueOfWork + 'check-your-answers', function (req, res) {
+  // Total value of housing private
+  router.post(path + v + housing + 'value-private', function (req, res) {
+    req.session.data.totalHousingPrivateFormatted = numberWithCommas(req.session.data.totalHousingPrivate)
+    if (req.session.data.housingPrivateChangeMode === true) {
+      req.session.data.housingPrivateChangeMode = false
+      res.redirect(path + v + housing + 'complete')
+    } else {
+      // CTA redirects to check your answers page
+      res.redirect(path + v + housing + 'complete')
+    }
+  })
+
+  // Change total spent on housing private
+
+  router.get(path + v + housing + 'change-value-private', function (req, res) {
+    req.session.data.housingPrivateChangeMode = true
+    res.redirect(path + v + housing + 'value-private')
+  })
+
+  router.get(path + v + housing + 'complete', function (req, res) {
+    // Calculate total of section
+    req.session.data.totalHousingAmount = parseInt(req.session.data.totalHousingPublic) + parseInt(req.session.data.totalHousingPrivate)
+    req.session.data.totalHousingAmountFormatted = numberWithCommas(req.session.data.totalHousingAmount)
+    res.redirect(path + v + housing + 'check-your-answers')
+  })
+
+  // Housing check your answers from change page
+  router.get(path + v + housing + 'change', function (req, res) {
+    req.session.data.housingChangeMode = true
+    res.redirect(path + v + housing + 'check-your-answers')
+  })
+
+  // Housing check your answers page
+  router.post(path + v + housing + 'check-your-answers', function (req, res) {
     // Mark section as complete
-    req.session.data.valueOfWorkComplete = true
-    // Complete section and set active section as housing work
-    req.session.data.activeSection = 'housingWork'
+    req.session.data.housingComplete = true
+    if (req.session.data.housingChangeMode === true) {
+      req.session.data.housingChangeMode = false
+      res.redirect(path + v + totalAmount + 'complete')
+    } else {
+      // CTA redirects to 'hub' page
+      res.redirect(path + v + 'hub')
+    }
+  })
+
+  // **********************************************************************
+  // ******* INFRASTRUCTURE SECTION *******
+  // **********************************************************************
+
+  // Total value of infrastructure new
+  router.post(path + v + infrastructure + 'value-new', function (req, res) {
+    req.session.data.totalInfrastructureNewFormatted = numberWithCommas(req.session.data.totalInfrastructureNew)
+    if (req.session.data.infrastructureNewChangeMode === true) {
+      req.session.data.infrastructureNewChangeMode = false
+      res.redirect(path + v + infrastructure + 'complete')
+    } else {
+      // CTA redirects to existing value page
+      res.redirect(path + v + infrastructure + 'value-existing')
+    }
+  })
+
+  // Change total spent on infrastructure new
+
+  router.get(path + v + infrastructure + 'change-value-new', function (req, res) {
+    req.session.data.infrastructureNewChangeMode = true
+    res.redirect(path + v + infrastructure + 'value-new')
+  })
+
+  // Total value of infrastructure existing
+  router.post(path + v + infrastructure + 'value-existing', function (req, res) {
+    req.session.data.totalInfrastructureExistingFormatted = numberWithCommas(req.session.data.totalInfrastructureExisting)
+    if (req.session.data.infrastructureExistingChangeMode === true) {
+      req.session.data.infrastructureExistingChangeMode = false
+      res.redirect(path + v + infrastructure + 'complete')
+    } else {
+      // CTA redirects to check your answers page
+      res.redirect(path + v + infrastructure + 'complete')
+    }
+  })
+
+  // Change total spent on infrastructure existing
+
+  router.get(path + v + infrastructure + 'change-value-existing', function (req, res) {
+    req.session.data.infrastructureExistingChangeMode = true
+    res.redirect(path + v + infrastructure + 'value-existing')
+  })
+
+  router.get(path + v + infrastructure + 'complete', function (req, res) {
+    // Calculate total of section
+    req.session.data.totalInfrastructureAmount = parseInt(req.session.data.totalInfrastructureNew) + parseInt(req.session.data.totalInfrastructureExisting)
+    req.session.data.totalInfrastructureAmountFormatted = numberWithCommas(req.session.data.totalInfrastructureAmount)
+    res.redirect(path + v + infrastructure + 'check-your-answers')
+  })
+
+  // Infrastructure check your answers from change page
+  router.get(path + v + infrastructure + 'change', function (req, res) {
+    req.session.data.infrastructureChangeMode = true
+    res.redirect(path + v + infrastructure + 'check-your-answers')
+  })
+
+  // Infrastructure check your answers page
+  router.post(path + v + infrastructure + 'check-your-answers', function (req, res) {
+    // Mark section as complete
+    req.session.data.infrastructureComplete = true
+    if (req.session.data.infrastructureChangeMode === true) {
+      req.session.data.infrastructureChangeMode = false
+      res.redirect(path + v + totalAmount + 'complete')
+    } else {
+      // CTA redirects to 'hub' page
+      res.redirect(path + v + 'hub')
+    }
+  })
+
+  // **********************************************************************
+  // ******* NON-HOUSING SECTION *******
+  // **********************************************************************
+
+  // Total value of nonhousing new
+  router.post(path + v + nonhousing + 'value-new', function (req, res) {
+    req.session.data.totalNonhousingNewFormatted = numberWithCommas(req.session.data.totalNonhousingNew)
+    if (req.session.data.nonhousingNewChangeMode === true) {
+      req.session.data.nonhousingNewChangeMode = false
+      res.redirect(path + v + nonhousing + 'complete')
+    } else {
+      // CTA redirects to existing value page
+      res.redirect(path + v + nonhousing + 'value-existing')
+    }
+  })
+
+  // Change total spent on nonhousing new
+
+  router.get(path + v + nonhousing + 'change-value-new', function (req, res) {
+    req.session.data.nonhousingNewChangeMode = true
+    res.redirect(path + v + nonhousing + 'value-new')
+  })
+
+  // Total value of nonhousing existing
+  router.post(path + v + nonhousing + 'value-existing', function (req, res) {
+    req.session.data.totalNonhousingExistingFormatted = numberWithCommas(req.session.data.totalNonhousingExisting)
+    if (req.session.data.nonhousingExistingChangeMode === true) {
+      req.session.data.nonhousingExistingChangeMode = false
+      res.redirect(path + v + nonhousing + 'complete')
+    } else {
+      // CTA redirects to check your answers page
+      res.redirect(path + v + nonhousing + 'complete')
+    }
+  })
+
+  // Change total spent on nonhousing existing
+
+  router.get(path + v + nonhousing + 'change-value-existing', function (req, res) {
+    req.session.data.nonhousingExistingChangeMode = true
+    res.redirect(path + v + nonhousing + 'value-existing')
+  })
+
+  router.get(path + v + nonhousing + 'complete', function (req, res) {
+    // Calculate total of section
+    req.session.data.totalNonhousingAmount = parseInt(req.session.data.totalNonhousingNew) + parseInt(req.session.data.totalNonhousingExisting)
+    req.session.data.totalNonhousingAmountFormatted = numberWithCommas(req.session.data.totalNonhousingAmount)
+    res.redirect(path + v + nonhousing + 'check-your-answers')
+  })
+
+  // Nonhousing check your answers from change page
+  router.get(path + v + nonhousing + 'change', function (req, res) {
+    req.session.data.nonhousingChangeMode = true
+    res.redirect(path + v + nonhousing + 'check-your-answers')
+  })
+
+  // Nonhousing check your answers page
+  router.post(path + v + nonhousing + 'check-your-answers', function (req, res) {
+    // Mark section as complete
+    req.session.data.nonhousingComplete = true
+    if (req.session.data.nonhousingChangeMode === true) {
+      req.session.data.nonhousingChangeMode = false
+      res.redirect(path + v + totalAmount + 'complete')
+    } else {
+      // CTA redirects to 'hub' page
+      res.redirect(path + v + 'hub')
+    }
+  })
+
+  // **********************************************************************
+  // ******* REVIEW TOTAL *******
+  // **********************************************************************
+
+  // GET formatted version of total
+  router.get(path + v + totalAmount + 'complete', function (req, res) {
+    req.session.data.totalAmount = req.session.data.totalHousingAmount + req.session.data.totalInfrastructureAmount + req.session.data.totalNonhousingAmount
+    req.session.data.totalAmountFormatted = numberWithCommas(req.session.data.totalAmount)
+    res.redirect(path + v + totalAmount + 'check-your-answers')
+  })
+
+  // Summary of all summaries page
+  router.post(path + v + totalAmount + 'check-your-answers', function (req, res) {
+    // Mark section as complete
+    req.session.data.totalAmountComplete = true
     // CTA redirects to 'hub' page
     res.redirect(path + v + 'hub')
+  })
+
+  // **********************************************************************
+  // ******* COMPLETE JOURNEY *******
+  // **********************************************************************
+
+  router.get(path + v + 'complete', function (req, res) {
+    res.redirect(path + v + 'confirmation')
   })
 }

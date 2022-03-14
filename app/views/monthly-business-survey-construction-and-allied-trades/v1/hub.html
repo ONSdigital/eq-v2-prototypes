@@ -80,52 +80,190 @@ onsBreadcrumbs({
                         </tr>
                         </tbody>
 
-
+                        {% if data['reportingPeriodComplete'] === true %}
                         <tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
-                                {% if data['valueOfWorkComplete'] === true %}
+                                {% if data['housingComplete'] === true %}
                                         <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
                                         <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
                                             <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['valueOfWorkComplete'] === true %}ons-summary__item-title--text{% endif %}">Value of work</div>
-                                        {% if data['valueOfWorkComplete'] === true %}
+                                        <div class="ons-summary__item--text {% if data['housingComplete'] === true %}ons-summary__item-title--text{% endif %}">Housing</div>
+                                        {% if data['housingComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
-                                        {% if data['valueOfWorkComplete'] !== true %}
+                                        {% if data['housingComplete'] !== true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
                                         {% endif %}
                                 </td>
                                 <td class="ons-summary__values">
-                                        {% if data['valueOfWorkComplete'] === true %}
+                                        {% if data['housingComplete'] === true %}
                                         Completed
                                         {% endif %}
-                                        {% if data['valueOfWorkComplete'] !== true %}
+                                        {% if data['housingComplete'] !== true %}
                                         Not started
                                         {% endif %}
                                 </td>
-                                {% if data['valueOfWorkComplete'] === true %}
+                                {% if data['housingComplete'] === true %}
                                 <td class="ons-summary__actions">
-                                        <a href="value-of-work/check-your-answers"
+                                        <a href="housing/check-your-answers"
                                            class="ons-summary__button"
-                                           aria-label="View answers for value of work">
+                                           aria-label="View answers for housing">
                                                 View answers</a>
                                 </td>
                                 {% endif %}
-                                {% if data['valueOfWorkComplete'] !== true %}
+                                {% if data['housingComplete'] !== true %}
                                 <td class="ons-summary__actions">
-                                        <a href="value-of-work/value-of-work"
+                                        <a href="housing/value-public"
                                            class="ons-summary__button"
-                                           aria-label="Start √alue of work section">
+                                           aria-label="Start housing section">
                                                 Start section</a>
                                 </td>
                                 {% endif %}
                         </tr>
                         </tbody>
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                {% if data['infrastructureComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                {% endif %}
+                                        <div class="ons-summary__item--text {% if data['infrastructureComplete'] === true %}ons-summary__item-title--text{% endif %}">Infrastructure</div>
+                                        {% if data['infrastructureComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['infrastructureComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['infrastructureComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['infrastructureComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['infrastructureComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="infrastructure/check-your-answers"
+                                           class="ons-summary__button"
+                                           aria-label="View answers for infrastructure">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['infrastructureComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="infrastructure/value-existing"
+                                           class="ons-summary__button"
+                                           aria-label="Start infrastructure section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                {% if data['nonhousingComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                {% endif %}
+                                        <div class="ons-summary__item--text {% if data['nonhousingComplete'] === true %}ons-summary__item-title--text{% endif %}">Non-housing</div>
+                                        {% if data['nonhousingComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['nonhousingComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['nonhousingComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['nonhousingComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['nonhousingComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="nonhousing/check-your-answers"
+                                           class="ons-summary__button"
+                                           aria-label="View answers for nonhousing">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['nonhousingComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="nonhousing/value-new"
+                                           class="ons-summary__button"
+                                           aria-label="Start nonhousing section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                        {% endif %}
+                        {% if data['reportingPeriodComplete'] === true and data['housingComplete'] === true and data['infrastructureComplete'] === true and data['nonhousingComplete'] === true %}
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        {% if data['totalAmountComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                        {% endif %}
+                                        <div class="ons-summary__item--text {% if data['totalAmountComplete'] === true %}ons-summary__item-title--text{% endif %}">Total value of work</div>
+                                        {% if data['totalAmountComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['totalAmountComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['totalAmountComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['totalAmountComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['totalAmountComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="total-amount/check-your-answers"
+                                           class="ons-summary__button"
+                                           aria-label="View answers for total">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['totalAmountComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="total-amount/complete"
+                                           class="ons-summary__button"
+                                           aria-label="Start total section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                        {% endif %}
                 </table>
 
         </div>
@@ -133,11 +271,20 @@ onsBreadcrumbs({
 
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
+        {% if data['reportingPeriodComplete'] === true and data['housingComplete'] === true and data['infrastructureComplete'] === true and data['nonhousingComplete'] and data['totalAmountComplete'] === true %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Submit survey"
+        })
+        }}
+        {% else %}
         {{
         onsButton({
         "classes": "ons-u-mt-l",
         "text": "Continue"
         })
         }}
+        {% endif %}
 </form>
 {% endblock %}
