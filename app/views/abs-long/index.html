@@ -1,0 +1,20 @@
+{% set serviceName = "Annual Business Survey" %}
+{% extends "base.html" %}
+
+{% block main %}
+<h3>March 2022 - annual business survey - guidance only, previewing questions</h3>
+<div class="ons-text-indent">Design in progress</div>
+
+<ul>
+        <li>Option to preview questions from guidance page</li>
+        <li>No functionality to start and progress survey in this prototype</li>
+</ul>
+
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "text": 'Start prototype',
+        "url": 'v1/start'
+        })
+        }}
+{% endblock %}
