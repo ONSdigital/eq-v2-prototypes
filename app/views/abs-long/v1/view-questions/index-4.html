@@ -1,0 +1,196 @@
+{% extends "survey-account-home.html" %}
+
+{% block main %}
+<h2>Questions you will be asked</h2>
+<br>
+<button type="button" class="ons-btn ons-btn--small ons-btn--secondary ons-btn--print ons-js-print-btn"
+        data-qa="btn-print">
+        <span class="ons-btn__inner">
+        <svg class="ons-svg-icon ons-u-mr-xs" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg" focusable="false"
+             fill="currentColor">
+            <path d="M17 4H3C1.3 4 0 5.2 0 6.8v5.5h4V16h12v-3.7h4V6.8C20 5.2 18.7 4 17 4zm-3 10H6V9h8v5zm3-6a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-1-8H4v3h12V0z"></path>
+        </svg>
+        Print questions
+        </span>
+</button>
+
+<div class="ons-u-mt-l ons-u-mb-l">
+    <div class="ons-summary">
+    <div id="accordion" class="ons-accordion">
+        <button type="button" class="ons-btn ons-js-collapsible-all ons-u-mb-s ons-u-d-no ons-btn--secondary ons-btn--small" data-close-all="Hide all" data-group="accordion">
+            <span class="ons-btn__inner ons-js-collapsible-all-inner">Show all</span>
+        </button>
+        <div id="accordion-1" class="ons-collapsible ons-js-collapsible ons-collapsible--accordion" data-btn-close="Hide" data-group="accordion">
+            <div class="ons-collapsible__heading ons-js-collapsible-heading">
+                <div class="ons-collapsible__controls">
+                    <h2 class="ons-collapsible__title">How to complete and reporting period</h2>
+                    <span class="ons-collapsible__icon">
+          <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+            <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />
+          </svg>
+        </span>
+                    <button type="button" class="ons-btn ons-collapsible__btn ons-js-collapsible-button ons-u-d-no ons-u-d-no@xxs@s ons-btn--secondary ons-btn--small">
+                        <span class="ons-btn__inner ons-js-collapsible-button-inner">Show</span>
+                    </button>
+                </div>
+            </div>
+            <div id="accordion-1-content" class="ons-collapsible__content ons-js-collapsible-content">
+                <div class="ons-summary__group">
+                    <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                            <th>Question</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="ons-summary__item">
+
+                        <tr
+                                class="ons-summary__row ons-summary__row--has-values">
+                            <td class="ons-summary__item-title">
+
+                                <div class="ons-summary__item--text ons-u-fs-r--b@m">Are you able to report figures for the period 1 May 2016 to
+                                    31 May 2016?
+                                </div>
+                                <br>
+                                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                                    <div class="ons-panel__body">
+                                    <p><strong>Traded for part of the year?</strong></p>
+
+                                    <p>Please select 'No, I need to report for a different period'</p>
+
+                                    <p><strong>Cannot report for this calendar year?</strong></p>
+
+                                    <p>Please select 'No, I need to report for a different period'</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item">
+
+                        <tr
+                                class="ons-summary__row ons-summary__row--has-values">
+                            <td class="ons-summary__item-title">
+
+                                <div class="ons-summary__item--text ons-u-fs-r--b@m">What dates will you be reporting for?</div>
+                                <br>
+                                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                                    <div class="ons-panel__body">
+                                    <p><strong>Only traded for a part of the year?</strong></p>
+
+                                    <p>Please provide figures for the period in which you were trading.</p>
+
+                                    <p><strong>Only commenced trading during 2021?</strong></p>
+
+                                    <p>Your return should cover the period from the commencement of your business until 31 December 2021 or, alternatively, any date up to 5 April 2022.</p>
+                                    <p><strong>Ceased trading during 2021?</strong></p>
+                                    <p>Your return should cover the period 1 January 2021 to the date you ceased to trade or, alternatively, from the beginning of your last business year up to the cessation date.</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div id="accordion-2" class="ons-collapsible ons-js-collapsible ons-collapsible--accordion" data-btn-close="Hide" data-group="accordion">
+            <div class="ons-collapsible__heading ons-js-collapsible-heading">
+                <div class="ons-collapsible__controls">
+                    <h2 class="ons-collapsible__title">Income</h2>
+                    <span class="ons-collapsible__icon">
+          <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+            <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />
+          </svg>
+        </span>
+                    <button type="button" class="ons-btn ons-collapsible__btn ons-js-collapsible-button ons-u-d-no ons-u-d-no@xxs@s ons-btn--secondary ons-btn--small">
+                        <span class="ons-btn__inner ons-js-collapsible-button-inner">Show</span>
+                    </button>
+                </div>
+            </div>
+            <div id="accordion-2-content" class="ons-collapsible__content ons-js-collapsible-content">
+                <div class="ons-summary__group">
+                    <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                            <th>Question</th>
+                            <th>Guidance</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="ons-summary__item">
+
+                        <tr
+                                class="ons-summary__row ons-summary__row--has-values">
+                            <td class="ons-summary__item-title">
+
+                                <div class="ons-summary__item--text ons-u-fs-r--b@m">For the period 1 May 2016 to 31 May 2016, what was ESSENTIAL ENTERPRISE LTD.'s total turnover?</div>
+                                <br>
+                                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                                    <div class="ons-panel__body">
+                                <p><strong>Include:</strong></p>
+
+                                <ul class="u-fs-r"><li>progress payments on work in progress on long-term contracts</li>
+                                    <li>commission paid</li>
+
+                                </ul>
+
+                                <p><strong>Exclude:</strong></p>
+
+                                <ul class="u-fs-r"><li>full value of sales if only part payment in commission has been received</li>
+                                    <li>VAT</li>
+
+                                </ul>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item">
+
+                        <tr
+                                class="ons-summary__row ons-summary__row--has-values">
+                            <td class="ons-summary__item-title">
+
+                                <div class="ons-summary__item--text ons-u-fs-r--b@m">Does your business produce goods or services that protect the environment?</div>
+                                <br>
+                                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                                    <div class="ons-panel__body">
+                                <p><strong>Include:</strong></p>
+
+                                <p>Goods and/or services that protect the environment that are <strong>produced</strong> by your business. For example:</p>
+
+                                <ul class="u-fs-r"><li>production or installation of solar panels</li>
+                                    <li>waste collection, treatment and disposal services</li>
+                                    <li>environmental consultancy and training services</li>
+
+                                </ul>
+
+                                <p><strong>Exclude:</strong></p>
+
+                                <p>Goods and/or services that protect the environment that are <strong>used</strong> by your business. For example:</p>
+
+                                <ul class="u-fs-r"><li>the use of energy saving light bulbs</li>
+                                    <li>the consumption of recycled materials</li>
+
+                                </ul>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
