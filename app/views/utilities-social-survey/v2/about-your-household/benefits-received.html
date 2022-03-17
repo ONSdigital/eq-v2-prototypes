@@ -1,0 +1,164 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+<h1>Do you receive any benefits to help pay your utility bills?</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-question ons-u-mb-l">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <div class="ons-input-items">
+                    <div class="ons-js-mutually-exclusive ons-mutually-exclusive">
+                        <p class="ons-checkboxes__label">Select all that apply</p>
+                        <div class="ons-checkboxes__items">
+            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input onclick="uncheckElements();" name="benefits-received-0" type="checkbox" id="employment-and-support-allowance"
+                       class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="Employment and Support Allowance"
+                       {% if data['benefits-received-0'] %}checked="checked"{% endif %}
+                  >
+                <label class=" ons-checkbox__label " for="employment-and-support-allowance" id="employment-and-support-allowance-label">Employment and Support Allowance</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input onclick="uncheckElements();" name="benefits-received-1" type="checkbox" id="jobseekers-allowance"
+                       class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="Jobseeker's Allowance"
+                       {% if data['benefits-received-1'] %}checked="checked"{% endif %}
+                >
+                <label class=" ons-checkbox__label " for="jobseekers-allowance" id="jobseekers-allowance-label">Jobseeker's Allowance</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input onclick="uncheckElements();" name="benefits-received-2" type="checkbox" id="income-support"
+                       class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="Income Support"
+                       {% if data['benefits-received-2'] %}checked="checked"{% endif %}
+                >
+                <label class=" ons-checkbox__label " for="income-support" id="income-support-label">Income Support</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input onclick="uncheckElements();" name="benefits-received-3" type="checkbox" id="pension-credit"
+                       class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="Pension Credit"
+                       {% if data['benefits-received-3'] %}checked="checked"{% endif %}
+                >
+                <label class=" ons-checkbox__label " for="pension-credit" id="pension-credit-label">Pension Credit</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input onclick="uncheckElements();" name="benefits-received-4" type="checkbox" id="universal-credit"
+                       class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="Universal Credit"
+                       {% if data['benefits-received-4'] %}checked="checked"{% endif %}
+                >
+                <label class=" ons-checkbox__label " for="universal-credit" id="universal-credit-label">Universal Credit</label>
+              </span>
+            </span>
+                        </div>
+                        <br>
+                        <div class="ons-input-items">
+                            <span class="ons-label ons-u-fs-r--b" aria-hidden="true">Or</span>
+                            <div class="ons-radios__items">
+          <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input onclick="uncheckOtherCheckboxes();" type="radio" id="none" class="ons-radio__input ons-js-radio" value="I do not receive any benefits" name="mutually-exclusive">
+              <label class=" ons-radio__label " for="none" id="none-label">I do not receive any benefits</label>
+            </span>
+          </span>
+                                <br>
+                                <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input onclick="uncheckOtherCheckboxes();" type="radio" id="not-sure" class="ons-radio__input ons-js-radio" value="Not sure" name="mutually-exclusive">
+              <label class=" ons-radio__label " for="not-sure" id="not-sure-label">Not sure</label>
+            </span>
+          </span>
+                                <br>
+                                <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input onclick="uncheckOtherCheckboxes();" type="radio" id="prefer-not-to-say" class="ons-radio__input ons-js-radio" value="Prefer not to say" name="mutually-exclusive">
+              <label class=" ons-radio__label " for="prefer-not-to-say" id="prefer-not-to-say-label">Prefer not to say</label>
+            </span>
+          </span>
+                            </div>
+                        </div>
+                        <span class="ons-js-exclusive-alert ons-u-vh" role="alert" aria-live="polite" data-group-adjective="deselected" data-checkbox-adjective="deselected"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function uncheckElements()
+  {
+    var uncheck=document.getElementsByClassName('ons-js-radio');
+    for(var i=0;i<uncheck.length;i++)
+    {
+      if(uncheck[i].type=='radio')
+      {
+        uncheck[i].checked=false;
+      }
+    }
+  }
+</script>
+<script>
+  function uncheckOtherCheckboxes()
+  {
+    var uncheck=document.getElementsByClassName('ons-js-exclusive-group-item');
+    for(var i=0;i<uncheck.length;i++)
+    {
+      if(uncheck[i].type=='checkbox')
+      {
+        uncheck[i].checked=false;
+      }
+    }
+  }
+</script>
+<script>
+  $(document).ready(unCheck());
+
+  function unCheck() {
+    $('input.ons-js-exclusive-checkbox').on('change', function() {
+      $('input.ons-js-exclusive-checkbox').not(this).prop('checked', false);
+    });
+  }
+</script>
+{% endblock %}
+
+

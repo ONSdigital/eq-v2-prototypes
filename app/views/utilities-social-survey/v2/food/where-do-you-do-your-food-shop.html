@@ -1,0 +1,101 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+<h1>Where do you do your food shop?</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-question ons-u-mb-l">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <div class="ons-input-items">
+                    <div class="ons-js-mutually-exclusive ons-mutually-exclusive">
+                        <p class="ons-checkboxes__label">Select all that apply</p>
+                        <div class="ons-checkboxes__items">
+            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="aldi" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="aldi">
+                <label class=" ons-checkbox__label " for="aldi" id="aldi-label">Aldi</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="asda" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="asda">
+                <label class=" ons-checkbox__label " for="asda" id="asda-label">Asda</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="morrisons" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="morrisons">
+                <label class=" ons-checkbox__label " for="morrisons" id="morrisons-label">Morrisons</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="sainsburys" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="sainsburys">
+                <label class=" ons-checkbox__label " for="sainsburys" id="sainsburys-label">Sainsburys</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="tesco" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item" value="tesco">
+                <label class=" ons-checkbox__label " for="tesco" id="tesco-label">Tesco</label>
+              </span>
+            </span>
+                            <br>
+                            <span class="ons-checkboxes__item">
+              <span class="ons-checkbox ">
+                <input type="checkbox" id="other-supermarket" class="ons-checkbox__input ons-js-checkbox  ons-js-exclusive-group-item ons-js-other" value="other" aria-controls="other-supermarket-other-wrap" aria-haspopup="true">
+                <label class=" ons-checkbox__label " for="other-supermarket" id="other-supermarket-label">Other</label>
+                <span class="ons-checkbox__other" id="other-supermarket-other-wrap">
+                  <label class="ons-label ons-u-fw-n" for="other-supermarket-textbox" id="other-supermarket-textbox-label">Please specify</label>
+                  <input type="text" id="other-supermarket-textbox" class="ons-input ons-input--text ons-input-type__input  ons-js-exclusive-group-item ons-input--w-auto" name="other-supermarket-answer" />
+                </span>
+              </span>
+            </span>
+                        </div>
+                        <p class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+                            <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+                            <span class="ons-checkbox ">
+              <input type="checkbox" id="no-central-heating" class="ons-checkbox__input ons-js-checkbox ons-js-exclusive-checkbox" value="no-central-heating" data-attribute="Example attribute" data-deselect-message="Selecting this will uncheck all other checkboxes">
+              <label class=" ons-checkbox__label " for="no-central-heating" id="no-central-heating-label"><span class="ons-u-vh">Or, </span> No central heating</label>
+            </span>
+                        </p>
+                        <span class="ons-js-exclusive-alert ons-u-vh" role="alert" aria-live="polite" data-group-adjective="deselected" data-checkbox-adjective="deselected"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}

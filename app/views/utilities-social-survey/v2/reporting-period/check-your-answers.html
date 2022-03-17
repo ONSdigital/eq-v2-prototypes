@@ -1,0 +1,79 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>How to complete and reporting period</h1>
+<p></p>
+
+<div class="ons-summary">
+        <div id="how-to-complete-and-reporting-period" class="ons-summary__group">
+                <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                                <th>Question</th>
+                                <th>Answer given</th>
+                                <th>Change answer</th>
+                        </tr>
+                        </thead>
+                        <tbody id="check-your-answers-row" class="ons-summary__item">
+                        <tr id="check-your-answers" class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">Are you able to report for the calendar year 1 January 2021 to 31 December 2021?</div>
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data ['ableToReport'] === 'yes' %}
+                                        Yes, I can report for these dates
+                                        {% endif %}
+                                        {% if data ['ableToReport'] === 'no' %}
+                                        No, I need to report for a different period
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                                </td>
+                        </tr>
+                        </tbody>
+                        {% if data ['customDates'] === true %}
+                        <tbody id="what-dates-reporting-for-row" class="ons-summary__item">
+                        <tr id="what-dates-reporting-for" class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">What dates will you be reporting for?</div>
+                                </td>
+                                <td class="ons-summary__values">
+                                        {{data['whatDateFromDay']}} {{data['whatDateFromMonthText']}} {{data['whatDateFromYear']}} to {{data['whatDateToDay']}} {{data['whatDateToMonthText']}} {{data['whatDateToYear']}}
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                                </td>
+                        </tr>
+                        </tbody>
+                        {% endif %}
+                </table>
+        </div>
+</div>
+
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Continue"
+        })
+        }}
+</form>
+{% endblock %}

@@ -1,0 +1,132 @@
+\{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>We calculate the total amount spent on utility bills to be £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00. Is this correct?</h1>
+<p></p>
+
+<div class="ons-panel ons-panel--success ons-panel--no-title print__hidden ons-u-mb-l">
+        <span class="ons-u-vh">Completed: </span>
+        <div class="ons-panel__body">
+                <p>Please review your answers and confirm these are correct.</p>
+        </div>
+</div>
+
+<div class="ons-summary">
+<div class="ons-summary__group">
+<table class="ons-summary__items">
+        <thead class="ons-u-vh">
+        <tr>
+                <th>Question</th>
+                <th>Answer given</th>
+                <th>Change answer</th>
+        </tr>
+        </thead>
+        <tbody class="ons-summary__item" id="first-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                Do you receive any benefits to help pay your utility bills?
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        <ul>
+                                {% if data['benefits-received-0'] %} <li>{{data['benefits-received-0']}}</li> {% endif %}
+                                {% if data['benefits-received-1'] %} <li>{{data['benefits-received-1']}}</li> {% endif %}
+                                {% if data['benefits-received-2'] %} <li>{{data['benefits-received-2']}}</li> {% endif %}
+                                {% if data['benefits-received-3'] %} <li>{{data['benefits-received-3']}}</li> {% endif %}
+                                {% if data['benefits-received-4'] %} <li>{{data['benefits-received-4']}}</li> {% endif %}
+                                {% if data['benefits-received-5'] %} <li>{{data['benefits-received-5']}}</li> {% endif %}
+                                {% if data['benefits-received-6'] %} <li>{{data['benefits-received-6']}}</li> {% endif %}
+                                {% if data['benefits-received-7'] %} <li>{{data['benefits-received-7']}}</li> {% endif %}
+                                {% if data['benefits-received-8'] %} <li>{{data['benefits-received-8']}}</li> {% endif %}
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="change-benefits">Change</a>
+                </td>
+        </tr>
+        </tbody>
+        <tbody class="ons-summary__item" id="second-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="second-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                How much do you spend on gas each month?
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalGasSpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="change-gas">Change</a>
+                </td>
+        </tr>
+        </tbody>
+        <tbody class="ons-summary__item" id="third-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                How much do you spend on water each month?
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalWaterSpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="change-water">Change</a>
+                </td>
+        </tr>
+        </tbody>
+        <tbody class="ons-summary__item" id="fourth-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="fourth-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                How much do you spend on electricity each month?
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ data['totalElectricitySpendFormatted'] }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="change-electricity">Change</a>
+                </td>
+        </tr>
+        </tbody>
+
+        <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
+        <tr class="ons-summary__row ons-summary__row--has-values">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Total spent on utility bills</div>
+                </td>
+                <td class="ons-summary__values" colspan="2">
+                        £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00
+                </td>
+        </tr>
+        </tbody>
+</table>
+</div>
+</div>
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Yes, I confirm these are correct"
+        })
+        }}
+</form>
+{% endblock %}
