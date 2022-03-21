@@ -51,9 +51,10 @@ onsBreadcrumbs({
 
 <div class="ons-feedback ons-u-mt-l">
     <div class="ons-question" id="question">
+        <h1>Give feedback about this service</h1>
         <fieldset class="ons-fieldset">
             <legend class="ons-fieldset__legend">
-                <h1 class="ons-fieldset__legend-title ">How easy or difficult was it to use this service?</h1>
+                How easy or difficult was it to use this service?
             </legend>
             <div class="ons-input-items">
                 <div class="ons-radios__items">
@@ -103,34 +104,41 @@ onsBreadcrumbs({
                   </label>
                   </span>
                     </p>
-                    <br>
-                    {% from "components/textarea/_macro.njk" import onsTextarea %}
-                    {{
-                    onsTextarea({
-                    "id": "textarea",
-                    "name": "feedback",
-                    "label": {
-                    "text": "Please provide some feedback",
-                    "description": "For example, describe any difficulties you experienced in the use of this service"
-                    }
-                    })
-                    }}
-                    </p>
                 </div>
             </div>
         </fieldset>
-    </div>
+        <fieldset class="ons-fieldset">
+            {% from "components/textarea/_macro.njk" import onsTextarea %}
+            {{
+            onsTextarea({
+            "id": "feedback-textarea",
+            "name": "feedback-text",
+            "width": "30",
+            "label": {
+            "text": "Enter your feedback",
+            "description": "Do not include confidential information, such as your contact details"
+            },
+            "charCheckLimit": {
+            "limit": 1000,
+            "charCountSingular": "You have {x} character remaining",
+            "charCountPlural": "You have {x} characters remaining"
+            }
+            })
+            }}
+        </fieldset>
+
     <br>
+    </div>
     {% from "components/button/_macro.njk" import onsButton %}
     {{
     onsButton({
     "type": 'button',
-    "text": 'Submit feedback',
+    "text": 'Send feedback',
     "id": 'feedback-btn',
     "variants": 'small'
     })
     }}
-    <div id="thanks" style="display: none">
+    <div id="thanks" style="display: none; margin-top: 1em">
         <h1 class="fieldset__legend-title">Thanks for providing feedback.</h1>
         <p>We’re looking for volunteers to take part in our user research activities to improve our online experience. This could take the form of surveys, one-to-one interviews or usability testing.</p>
         <p>If you would like to find out about the opportunities available, please complete our brief survey.</p>
