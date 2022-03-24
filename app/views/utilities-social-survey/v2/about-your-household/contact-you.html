@@ -38,12 +38,11 @@
     <p class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
         <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
         <span class="ons-checkbox ">
-                                    <input onclick="clearform();" type="checkbox" id="not-sure"
-                                           class="ons-checkbox__input ons-js-exclusive-checkbox" value="not-sure"
-                                           data-deselect-message="Selecting this will uncheck all other checkboxes">
-                                <label class="ons-checkbox__label  " for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> I'd prefer not to be contacted
-                                    </label>
-                                    </span>
+            <input onclick="clearform();" type="checkbox" id="not-sure"
+                   class="ons-checkbox__input ons-js-exclusive-checkbox" value="not-sure"
+                   data-deselect-message="Selecting this will uncheck all other checkboxes">
+            <label class="ons-checkbox__label" for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> I'd prefer not to be contacted</label>
+        </span>
     </p><br>
     {% from "components/button/_macro.njk" import onsButton %}
         {{

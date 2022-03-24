@@ -132,7 +132,7 @@ module.exports = function (router) {
       res.redirect(path + v + aboutYou + 'complete')
     } else {
       // CTA redirects to contact you page
-      res.redirect(path + v + aboutYou + 'contact-you')
+      res.redirect(path + v + aboutYou + 'complete')
     }
   })
 
@@ -215,8 +215,8 @@ module.exports = function (router) {
       req.session.data.electricityChangeMode = false
       res.redirect(path + v + energyUtilities + 'complete')
     } else {
-      // CTA redirects to check your answers page
-      res.redirect(path + v + energyUtilities + 'complete')
+      // CTA redirects to how much spent in total page
+      res.redirect(path + v + energyUtilities + 'how-much-spent')
     }
   })
 
@@ -224,6 +224,23 @@ module.exports = function (router) {
   router.get(path + v + energyUtilities + 'change-electricity', function (req, res) {
     req.session.data.electricityChangeMode = true
     res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
+  })
+
+  // Total spent on percentage of income page
+  router.post(path + v + energyUtilities + 'how-much-spent', function (req, res) {
+    if (req.session.data.utilitySpentPercentage === true) {
+      req.session.data.utilitySpentPercentage = false
+      res.redirect(path + v + energyUtilities + 'complete')
+    } else {
+      // CTA redirects to check your answers page
+      res.redirect(path + v + energyUtilities + 'complete')
+    }
+  })
+
+  // Change total spent on electricity
+  router.get(path + v + energyUtilities + 'change-amount-spent', function (req, res) {
+    req.session.data.utilitySpentPercentage = true
+    res.redirect(path + v + energyUtilities + 'how-much-spent')
   })
 
   router.get(path + v + energyUtilities + 'complete', function (req, res) {
