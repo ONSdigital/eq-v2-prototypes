@@ -60,6 +60,37 @@ module.exports = function (router) {
     }
   })
 
+  // Completed all sections
+  router.get(path + v + 'completed-all', function (req, res) {
+    req.session.data.reportingPeriodComplete = true
+    req.session.data.housingComplete = true
+    req.session.data.infrastructureComplete = true
+    req.session.data.nonhousingComplete = true
+    req.session.data.totalAmountComplete = true
+    req.session.data.ableToReport = true
+    req.session.data.totalHousingPublic = '1'
+    req.session.data.totalHousingPublicFormatted = '1'
+    req.session.data.totalHousingPrivate = '1'
+    req.session.data.totalHousingPrivateFormatted = '1'
+    req.session.data.totalHousingAmount = '2'
+    req.session.data.totalHousingAmountFormatted = '2'
+    req.session.data.totalNonhousingNew = '1'
+    req.session.data.totalNonhousingNewFormatted = '1'
+    req.session.data.totalNonhousingExisting = '1'
+    req.session.data.totalNonhousingExistingFormatted = '1'
+    req.session.data.totalNonhousingAmount = '2'
+    req.session.data.totalNonhousingAmountFormatted = '2'
+    req.session.data.totalInfrastructureNew = '1'
+    req.session.data.totalInfrastructureNewFormatted = '1'
+    req.session.data.totalInfrastructureExisting = '1'
+    req.session.data.totalInfrastructureExistingFormatted = '1'
+    req.session.data.totalInfrastructureAmount = '2'
+    req.session.data.totalInfrastructureAmountFormatted = '2'
+    req.session.data.totalAmount = '6'
+    req.session.data.totalAmountFormatted = '6'
+    res.redirect(path + v + 'hub')
+  })
+
   // **********************************************************************
   // ******* GUIDANCE PAGE *******
   // **********************************************************************
@@ -67,7 +98,20 @@ module.exports = function (router) {
   // How to complete guidance page
   router.post(path + v + guidance + 'how-to-complete', function (req, res) {
     // CTA redirects to 'are you able to report for the dates' question page
-    res.redirect(path + v + reportingPeriod + 'are-you-able-to-report')
+    if (req.session.data.howToCompleteFromHub === true) {
+      req.session.data.howToCompleteFromHub = false
+      res.redirect(path + v + 'hub')
+    }
+    else {
+      res.redirect(path + v + reportingPeriod + 'are-you-able-to-report')
+    }
+  })
+
+  // How to complete guidance page from hub
+  router.get(path + v + guidance + 'how-to-complete-from-hub', function (req, res) {
+    req.session.data.howToCompleteFromHub = true;
+    // CTA redirects to how to complete
+    res.redirect(path + v + guidance + 'how-to-complete')
   })
 
   // **********************************************************************
