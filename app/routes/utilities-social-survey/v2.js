@@ -33,7 +33,7 @@ module.exports = function (router) {
     // Clears session data
     req.session.data = {}
     // CTA redirects to 'how to complete' page
-    res.redirect(path + v + guidance + 'how-to-complete')
+    res.redirect(path + v + 'start-page')
   })
 
   // **********************************************************************
@@ -67,6 +67,23 @@ module.exports = function (router) {
   router.post(path + v + guidance + 'how-to-complete', function (req, res) {
     // CTA redirects to 'hub' page
     res.redirect(path + v + 'hub')
+  })
+
+  router.get(path + v + 'start-page-from-section-page', function (req, res) {
+    req.session.data.startPageRedirect = true
+    res.redirect(path + v + 'start-page')
+  })
+
+  router.post(path + v + 'start-page', function (req, res) {
+    if (req.session.data.startPageRedirect === true)
+    {
+      req.session.data.startPageRedirect = false
+      res.redirect(path + v + 'hub')
+    }
+    else {
+      // CTA redirects to 'hub' page
+      res.redirect(path + v + 'hub')
+    }
   })
 
   // *************************************************** COMMENTED THIS SECTION OUT AS REDUNDANT ***************************************************

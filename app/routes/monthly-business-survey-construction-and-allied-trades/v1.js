@@ -29,11 +29,24 @@ function numberWithCommas(x) {
 module.exports = function (router) {
 
   // ******* START PAGE *******
+
+  router.get(path + v + 'start-page-from-section-page', function (req, res) {
+    req.session.data.startPageRedirect = true
+    res.redirect(path + v + 'start')
+  })
+
   router.post(path + v + 'start', function (req, res) {
-    // Clears session data
-    req.session.data = {}
-    // CTA redirects to 'how to complete' page
-    res.redirect(path + v + guidance + 'how-to-complete')
+    if (req.session.data.startPageRedirect === true)
+    {
+      req.session.data.startPageRedirect = false
+      res.redirect(path + v + 'hub')
+    }
+    else {
+      // Clears session data
+      req.session.data = {}
+      // CTA redirects to 'how to complete' page
+      res.redirect(path + v + guidance + 'how-to-complete')
+    }
   })
 
   // **********************************************************************

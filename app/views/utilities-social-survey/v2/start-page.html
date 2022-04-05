@@ -1,0 +1,20 @@
+{% extends "./includes/layout.html" %}
+
+{% block main %}
+<h2>What you need to do</h2>
+
+<p>You'll be asked to provide values for the amount you spend on:</p>
+
+<ul><li>Utility bills</li><li>Entertainment</li><li>Food</li></ul>
+
+<p>We will then summarise this information and calculate your total spend on your household and ask you to confirm it is correct.</p>
+
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "text": "Start survey"
+        })
+        }}
+</form>
+{% endblock %}
