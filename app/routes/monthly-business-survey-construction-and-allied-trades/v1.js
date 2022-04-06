@@ -76,6 +76,7 @@ module.exports = function (router) {
   // Completed all sections
   router.get(path + v + 'completed-all', function (req, res) {
     req.session.data.reportingPeriodComplete = true
+    req.session.data.ableToReport = 'yes'
     req.session.data.housingComplete = true
     req.session.data.infrastructureComplete = true
     req.session.data.nonhousingComplete = true
