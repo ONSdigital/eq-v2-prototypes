@@ -1,0 +1,28 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h3>View survey introduction page before submitting survey (hub page / check your answer page)</h3>
+<ul>
+    <li><a href="../../monthly-business-survey-construction-and-allied-trades/v1/completed-all">Hub - link to open introduction page from hub page</a><p>Link added at top which allows for the user to open the introduction page</p></li>
+    <li><a href="linear">Linear - link to open introduction page from check your answers page</a><p>Link added at top which allows for the user to open the introduction page</p></li>
+</ul>
+
+{% endblock %}

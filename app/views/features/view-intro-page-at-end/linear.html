@@ -1,0 +1,81 @@
+{% extends "../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h1>Check your answers and submit</h1>
+<p>You can <a href="" onclick="showAlert()'">view the survey introduction page</a> if you require additional information about the survey</p>
+
+<div class="ons-summary">
+    <div class="ons-summary__group">
+        <h3 class="ons-summary__group-title">What are your monthly household expenses?</h3>
+        <table class="ons-summary__items">
+            <thead class="ons-u-vh">
+            <tr>
+                <th>Question</th>
+                <th>Answer given</th>
+                <th>Change answer</th>
+            </tr>
+            </thead>
+            <tbody class="ons-summary__item">
+            <tr class="ons-summary__row ons-summary__row--has-values">
+                <td class="ons-summary__item-title">
+                    <div class="ons-summary__item--text">Food </div>
+                </td>
+                <td class="ons-summary__values">
+                    £50.00
+                </td>
+                <td class="ons-summary__actions">
+                    <a href="#0" class="ons-summary__button" aria-label="Change answer">Change</a>
+                </td>
+            </tr>
+            <tr class="ons-summary__row ons-summary__row--has-values">
+                <td class="ons-summary__item-title">
+                    <div class="ons-summary__item--text">Utilities </div>
+                </td>
+                <td class="ons-summary__values">
+                    £65.00
+                </td>
+                <td class="ons-summary__actions">
+                    <a href="#0" class="ons-summary__button" aria-label="Change answer">Change</a>
+                </td>
+            </tr>
+            <tr class="ons-summary__row ons-summary__row--has-values">
+                <td class="ons-summary__item-title">
+                    <div class="ons-summary__item--text">Transport </div>
+                </td>
+                <td class="ons-summary__values">
+                    £70.00
+                </td>
+                <td class="ons-summary__actions">
+                    <a href="#0" class="ons-summary__button" aria-label="Change answer">Change</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<button onclick="showAlert();" type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Submit survey</span>
+</button>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
