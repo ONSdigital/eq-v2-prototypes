@@ -17,8 +17,22 @@ onsBreadcrumbs({
 {% endblock %}
 
 {% block main %}
-<h1>Choose a section to complete</h1>
+{% if data['entertainmentComplete'] === true and data['foodComplete'] === true and data['totalAmountComplete'] === true %}
+<h1>Submit survey</h1>
+<div class="ons-container">
+        <div class="ons-panel ons-panel--warn ons-panel--no-title">
+                <span class="ons-panel__icon" aria-hidden="true">!</span>
+                <span class="ons-u-vh">Warning: </span>
+                <div class="ons-panel__body">
+                        <p data-qa="warning">You must submit this survey to complete it</p>
+                </div>
+        </div>
+</div>
+<br>
 <p>You can <a target="_blank" href="start-page-from-section-page">view the survey introduction page</a> if you require additional information about the survey</p>
+{% else %}
+<h1>Choose a section to complete</h1>
+{% endif %}
 
 <div class="ons-summary ons-u-mt-m ons-summary--hub">
         <div class="ons-summary__group">
