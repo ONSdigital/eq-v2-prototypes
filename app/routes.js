@@ -3,6 +3,9 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+// Features
+require('./routes/features/looping.js')(router);
+
 // Monthly business survey - construction and allied trades
 require('./routes/monthly-business-survey-construction-and-allied-trades/v1.js')(router);
 

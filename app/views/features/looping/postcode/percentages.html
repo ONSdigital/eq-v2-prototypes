@@ -1,0 +1,49 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <legend class="ons-fieldset__legend ons-u-mb-no">
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What percent of in-house R&D is carried out at each of your workplaces?</h1>
+                </legend>
+
+                {% for item in data['loopingData'] %}
+                <div class="ons-field">
+                    <label class="ons-label" for="{{ item.postcode }}-per-cent">Percentage of in-house R&D carried out at {{ item.postcode }}</label>
+                    <span class="ons-input-type">
+                    <span class="ons-input-type__inner">
+                      <input type="text" id="{{ item.postcode }}-per-cent" name="{{ item.postcode }}-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+                      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
+                    </span>
+                  </span>
+                </div>
+                {% endfor %}
+
+            </fieldset>
+        </div>
+    </div>
+
+    <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}

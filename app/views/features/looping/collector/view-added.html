@@ -1,0 +1,90 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <legend class="ons-fieldset__legend ons-u-mb-no">
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Do you need to add any other transport assets or equipment?</h1>
+                </legend>
+                <div class="ons-summary ons-u-mb-l">
+                    <div class="ons-summary__group">
+                        <table class="ons-summary__items">
+                            <thead class="ons-u-vh">
+                            <tr>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            {% for item in data['loopingData'] %}
+                            <tbody class="ons-summary__item">
+                            <tr class="ons-summary__row">
+                                <td class="ons-summary__item-title">
+                                    <div class="ons-summary__item--text">{{ item.description }}</div>
+                                </td>
+                                <td class="ons-summary__actions">
+                                    <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change details">Change</a>
+                                    <span class="ons-summary__spacer"></span>
+                                    <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove">Remove</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <div class="ons-input-items">
+                    <div class="ons-radios__items">
+          <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="yes" class="ons-radio__input ons-js-radio" value="yes" name="addMore">
+              <label class=" ons-radio__label " for="yes" id="yes-label">Yes</label>
+            </span>
+          </span>
+                        <br>
+                        <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="no" class="ons-radio__input ons-js-radio" value="no" name="addMore">
+              <label class=" ons-radio__label " for="no" id="no-label">No</label>
+            </span>
+          </span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <button onclick="notYet();" type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    function notYet() {
+      if (document.getElementById('no').checked === true) {
+        window.alert('The remainder of this journey has not been built yet.')
+      }
+    }
+</script>
+{% endblock %}
+
