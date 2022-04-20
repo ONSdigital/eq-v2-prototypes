@@ -1,4 +1,5 @@
 var path = '/features/'
+var pathGet = 'features/'
 var v = 'looping/'
 var collector = 'collector/'
 var postcode = 'postcode/'
@@ -37,10 +38,37 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + collector + 'add-one')
     } else {
-      res.redirect(path + v + 'index')
+      res.redirect(path + v + collector + 'calculate-acq')
     }
   })
 
+  router.get(path + v + collector + 'calculate-acq', function (req, res) {
+    req.session.data.totalAcq = 0
+    req.session.data.loopingData.forEach(x => {
+      req.session.data.totalAcq += parseInt(x.acquisition)
+    });
+    req.session.data.totalAcqParsed = parseInt(req.session.data.totalAcq, 10)
+    req.session.data.valueOfAcquisitions = numberWithCommas(req.session.data.totalAcqParsed)
+    res.redirect(path + v + collector + 'value-of-acquisitions')
+  })
+
+  router.post(path + v + collector + 'value-of-acquisitions', function (req, res) {
+    res.redirect(path + v + collector + 'calculate-disps')
+  })
+
+  router.get(path + v + collector + 'calculate-disps', function (req, res) {
+    req.session.data.totalDisp = 0
+    req.session.data.loopingData.forEach(x => {
+      req.session.data.totalDisp += parseInt(x.disposal)
+    });
+    req.session.data.totalDispParsed = parseInt(req.session.data.totalDisp, 10)
+    req.session.data.valueOfDisposals = numberWithCommas(req.session.data.totalDispParsed)
+    res.redirect(path + v + collector + 'value-of-disposals')
+  })
+
+  router.post(path + v + collector + 'value-of-disposals', function (req, res) {
+    res.redirect(path + v + collector + 'done')
+  })
   // Postcode
 
   router.get(path + v + postcode + 'start', function (req, res) {

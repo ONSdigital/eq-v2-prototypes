@@ -1,0 +1,91 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h1>We calculate the total value of acquisitions of other transport assets or equipment to be £{{ data['valueOfAcquisitions'] }}.00. Is this correct?</h1>
+<p></p>
+
+<div class="ons-panel ons-panel--info ons-panel--no-title print__hidden ons-u-mb-l">
+    <span class="ons-u-vh">Completed: </span>
+    <div class="ons-panel__body">
+        <p>Please review your answers and confirm these are correct.</p>
+    </div>
+</div>
+
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <div class="ons-summary">
+                    <div class="ons-summary__group">
+                        <table class="ons-summary__items">
+                            <thead class="ons-u-vh">
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer given</th>
+                                <th>Change answer</th>
+                            </tr>
+                            </thead>
+                            {% for item in data['loopingData'] %}
+                            <tbody class="ons-summary__item" id="first-number-question">
+                            <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                <td class="ons-summary__item-title">
+                                    <div class="ons-summary__item--text">
+                                        {{ item.description }}
+                                    </div>
+                                </td>
+                                <td class="ons-summary__values">
+                                    £{{ item.acquisition }}.00
+                                </td>
+                                <td class="ons-summary__actions">
+                                    <a href="#" onclick="notYet();">Change</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                            <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
+                            <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                    <div class="ons-summary__item--text">Total value of acquisitions of other transport assets or equipment</div>
+                                </td>
+                                <td class="ons-summary__values" colspan="2">
+                                    £{{ data['valueOfAcquisitions'] }}.00
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Yes, I confirm these are correct</span>
+    </button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    function notYet() {
+      if (document.getElementById('no').checked === true) {
+        window.alert('The remainder of this journey has not been built yet.')
+      }
+    }
+</script>
+{% endblock %}
+

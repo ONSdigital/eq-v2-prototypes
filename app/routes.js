@@ -12,5 +12,6 @@ require('./routes/monthly-business-survey-construction-and-allied-trades/v1.js')
 // Utilities social survey
 require('./routes/utilities-social-survey/v1.js')(router);
 require('./routes/utilities-social-survey/v2.js')(router);
+require('./routes/utilities-social-survey/v3.js')(router);
 
 module.exports = router

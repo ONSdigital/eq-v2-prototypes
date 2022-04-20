@@ -1,0 +1,84 @@
+{% extends "survey-account-home.html" %}
+{% set serviceName = "ONS surveys" %}
+
+{% block preMain %}
+{% endblock %}
+
+{% block main %}
+<section role="region" class="ons-tabs">
+    <h2 class="ons-tabs__title ons-u-vh">Tabs</h2>
+    <ul class="ons-tabs__list ons-tabs__list--row" role="tablist">
+        <li id="tabId1Item" class="ons-tab__list-item ons-tab__list-item--row" role="presentation">
+            <a href="#tabId1" class="ons-tab ons-tab--row ons-tab--selected" id="tab_tabId1" role="tab" aria-controls="tabId1" tabindex="0" aria-selected="true">To do</a>
+        </li>
+        <li id="tabId2Item" class="ons-tab__list-item tab__list-item--row" role="presentation">
+            <a onclick="showAlert();" href="#tabId2" class="ons-tab tab--row" id="tab_tabId2" role="tab" aria-controls="tabId2" tabindex="-1" aria-selected="false">History</a>
+        </li>
+        <li id="tabId3Item" class="ons-tab__list-item ons-tab__list-item--row" role="presentation">
+            <a onclick="showAlert();" href="#tabId3" class="ons-tab ons-tab--row" id="tab_tabId3" role="tab" aria-controls="tabId3" tabindex="-1" aria-selected="false">Messages</a>
+        </li>
+    </ul>
+    <section id="tabId1" class="ons-tabs__panel" tabindex="0" role="tabpanel" aria-labelledby="tab_tabId1">
+        <p class="ons-u-fs-r ons-u-mt-s ons-u-mb-l">
+            Need to add a new survey? Use your enrolment code to <a href="#" onclick="showAlert();">add a new survey to your account</a>.
+        </p>
+        <section class="ons-u-bb" id="access_survey_button_1">
+            <h1 class="ons-u-mb-xs ons-u-fs-m ons-u-mt-s">
+                <a href="../start" aria-label="Access the Household Bills Survey survey">Household Bills Survey</a>
+            </h1>
+            <br>
+            <dl class="ons-grid">
+                <div class="ons-grid__col ons-col-3@m ons-u-pt-no ons-u-pb-xs">
+                    <dt style="float: left; clear: left;" class="ons-u-vh">Status: </dt>
+                    <dd class="ons-u-fs-r ons-u-ml-no ons-u-mb-xs" style="line-height:1">
+                        <span class="ons-status ons-status--info">Not started</span>
+                    </dd>
+                    <dt style="float: left; clear: left;" class="ons-u-vh">Help: </dt>
+                    <dd class="ons-u-ml-no ons-u-mb-s">
+                        <a onclick="showAlert();" href="#" aria-label="Get help with the survey">Get help with this survey <span class="ons-u-vh"> about this survey</span></a>
+                    </dd>
+                </div>
+            </dl>
+        </section>
+        <section class="ons-u-bb" id="access_survey_button_2">
+            <h1 class="ons-u-mb-xs ons-u-fs-m ons-u-mt-s">
+                <a id="js-survey-cta" href="../../../abs-long/v1/start.html" aria-label="Access the Annual Business Survey">Annual Business Survey</a>
+            </h1>
+            <h2 class="ons-u-mb-xs ons-u-mt-no ons-u-fs-r ons-u-fw-b"> <span>Period covered:</span> April 2020</h2>
+            <dl class="ons-grid">
+                <div class="ons-grid__col ons-col-5@m ons-u-pt-no ons-u-pb-xs">
+                    <dt style="float: left; clear: left;" class="ons-u-ml-no ons-u-mb-xs ons-u-pr-xs ons-u-fs-s">Business: </dt>
+                    <dd class="ons-u-ml-no ons-u-mb-xs ons-u-fs-s">ACME Group Ltd</dd>
+                    <dt style="float: left; clear: left;" class="ons-u-ml-no ons-u-mb-xs ons-u-pr-xs ons-u-fs-s">RU ref: </dt>
+                    <dd class="ons-u-ml-no ons-u-mb-xs ons-u-fs-s">49900000001</dd>
+                </div>
+                <div class="ons-grid__col ons-col-4@m ons-u-pt-no ons-u-pb-xs">
+                    <dt class="ons-u-fs-r ons-u-ml-no ons-u-mb-xs" style="line-height:1.2">
+                        <strong>Due today</strong>
+                    </dt>
+                    <dt style="float: left; clear: left;" class="ons-u-ml-no ons-u-mb-xs ons-u-pr-xs ons-u-fs-s">Submit by: </dt>
+                    <dd class="ons-u-ml-no ons-u-mb-xs ons-u-fs-s">10th March 2022</dd>
+                </div>
+                <div class="ons-grid__col ons-col-3@m ons-u-pt-no ons-u-pb-xs">
+                    <dt style="float: left; clear: left;" class="ons-u-vh">Status: </dt>
+                    <dd class="ons-u-fs-r ons-u-ml-no ons-u-mb-xs" style="line-height:1">
+                        <span id="js-survey-status" class="ons-status ons-status--info">Not started</span>
+                    </dd>
+                    <dt style="float: left; clear: left;" class="ons-u-vh">Help: </dt>
+                    <dd class="ons-u-ml-no ons-u-mb-s">
+                        <a id="create-message-link-1" href="#" onclick="showAlert();" aria-label="Get help with the Annual Business Survey">Get help with this survey <span class="ons-u-vh"> about Annual Business</span></a>
+                    </dd>
+                </div>
+            </dl>
+        </section>
+        <br><p class="ons-u-fs-r u-mt-l">
+            <a href="#" onclick="showAlert();">Survey not listed?</a>
+        </p>
+    </section>
+    <section id="tabId2" class="ons-tabs__panel tabs__panel--hidden" tabindex="0" role="tabpanel" aria-labelledby="tab_tabId2">
+    </section>
+    <section id="tabId3" class="ons-tabs__panel tabs__panel--hidden" tabindex="0" role="tabpanel" aria-labelledby="tab_tabId3">
+    </section>
+</section>
+{% endblock %}
+
