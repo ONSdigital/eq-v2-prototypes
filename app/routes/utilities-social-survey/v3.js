@@ -149,15 +149,38 @@ module.exports = function (router) {
       res.redirect(path + v + aboutYou + 'complete')
     } else {
       // CTA redirects to contact you page
-      res.redirect(path + v + aboutYou + 'complete')
+      res.redirect(path + v + aboutYou + 'cars/anything-to-add')
     }
   })
-
   // Change benefits page
 
   router.get(path + v + aboutYou + 'change-benefits', function (req, res) {
     req.session.data.benefitChangeMode = true
     res.redirect(path + v + aboutYou + 'benefits-received')
+  })
+
+
+  router.post(path + v + aboutYou + 'cars/anything-to-add', function (req, res) {
+    if (req.session.data.anythingToAdd === 'yes') {
+      req.session.data.loopingData = []
+      res.redirect(path + v + aboutYou + 'cars/add-one')
+    }
+    else {
+      res.redirect(path + v + aboutYou + 'complete')
+    }
+  })
+
+  router.post(path + v + aboutYou + 'cars/add-one', function (req, res) {
+    req.session.data.loopingData.push({ description: req.session.data.description, amount: req.session.data.amount })
+    res.redirect(path + v + aboutYou + 'cars/view-added')
+  })
+
+  router.post(path + v + aboutYou + 'cars/view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + aboutYou + 'cars/add-one')
+    } else {
+      res.redirect(path + v + aboutYou + 'complete')
+    }
   })
 
   // Contact you page
