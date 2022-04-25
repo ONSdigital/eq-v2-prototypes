@@ -1,0 +1,69 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Give details about the company or branch that undertakes general insurance business</h1>
+            </legend>
+            <div class="ons-field">
+                <label class="ons-label" for="text">Name of UK company or branch</label>
+                <input name="description" type="text" id="text" class="ons-input ons-input--text ons-input-type__input" required="required" />
+            </div>
+            <div class="ons-field">
+                <label class="ons-label" for="registration">Registration number</label>
+                <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+                  <input name="registration" type="text" id="registration" class="ons-input ons-input--text ons-input-type__input" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+                </span>
+              </span>
+            </div>
+            <div class="ons-field">
+            <label class="ons-label" for="authorised">Is this UK company or branch an authorised insurer?</label>
+            <div class="ons-input-items">
+                <div class="ons-radios__items">
+          <span class="ons-radios__item" id="authorised">
+            <span class="ons-radio">
+              <input type="radio" id="yes" class="ons-radio__input ons-js-radio" value="yes" name="authorised">
+              <label class=" ons-radio__label " for="yes" id="yes-label">Yes</label>
+            </span>
+          </span>
+                    <br>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="no" class="ons-radio__input ons-js-radio" value="no" name="authorised">
+              <label class=" ons-radio__label " for="no" id="no-label">No</label>
+            </span>
+          </span>
+                </div>
+            </div>
+            </div>
+
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

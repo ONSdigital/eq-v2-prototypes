@@ -3,6 +3,7 @@ var pathGet = 'features/'
 var v = 'looping/'
 var collector = 'collector/'
 var postcode = 'postcode/'
+var freeText = 'free-text/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -46,7 +47,7 @@ module.exports = function (router) {
     req.session.data.totalAcq = 0
     req.session.data.loopingData.forEach(x => {
       req.session.data.totalAcq += parseInt(x.acquisition)
-    });
+    })
     req.session.data.totalAcqParsed = parseInt(req.session.data.totalAcq, 10)
     req.session.data.valueOfAcquisitions = numberWithCommas(req.session.data.totalAcqParsed)
     res.redirect(path + v + collector + 'value-of-acquisitions')
@@ -60,7 +61,7 @@ module.exports = function (router) {
     req.session.data.totalDisp = 0
     req.session.data.loopingData.forEach(x => {
       req.session.data.totalDisp += parseInt(x.disposal)
-    });
+    })
     req.session.data.totalDispParsed = parseInt(req.session.data.totalDisp, 10)
     req.session.data.valueOfDisposals = numberWithCommas(req.session.data.totalDispParsed)
     res.redirect(path + v + collector + 'value-of-disposals')
@@ -88,14 +89,40 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'no') {
       if (req.session.data.loopingData.length === 1) {
         res.redirect(path + v + postcode + 'done')
-      }
-      else {
+      } else {
         res.redirect(path + v + postcode + 'percentages')
       }
     }
   })
 
   router.post(path + v + postcode + 'percentages', function (req, res) {
-    res.redirect(path + v + postcode + 'done')
+    if (req.session.data.error === 'true') {
+      req.session.data.showValidation = true
+      res.redirect(path + v + postcode + 'percentages')
+    } else {
+      req.session.data.showValidation = null
+      req.session.data.error = null
+      res.redirect(path + v + postcode + 'done')
+    }
+  })
+
+  // Free texts
+
+  router.post(path + v + freeText + 'anything-to-add', function (req, res) {
+    req.session.data.loopingData = []
+    res.redirect(path + v + freeText + 'add-one')
+  })
+
+  router.post(path + v + freeText + 'add-one', function (req, res) {
+    req.session.data.loopingData.push({ description: req.session.data.description, registration: req.session.data.registration, authorised: req.session.data.authorised })
+    res.redirect(path + v + freeText + 'view-added')
+  })
+
+  router.post(path + v + freeText + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + freeText + 'add-one')
+    } else {
+      res.redirect(path + v + freeText + 'done')
+    }
   })
 }
