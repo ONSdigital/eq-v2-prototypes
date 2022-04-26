@@ -1,0 +1,80 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-summary">
+        <div id="turnover" class="ons-summary__group">
+            <h2 class="ons-summary__group-title">General insurance business</h2>
+            <table class="ons-summary__items">
+                <thead class="ons-u-vh">
+                <tr>
+                    <th>Question</th>
+                    <th>Answer given</th>
+                    <th>Change answer</th>
+                </tr>
+                </thead>
+                <tbody id="sales-dates-row" class="ons-summary__item">
+                <tr id="sales-dates" class="ons-summary__row ons-summary__row--has-values">
+                    <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Do any companies or branches within your United Kingdom group undertake general insurance business?</div>
+                    </td>
+                    <td class="ons-summary__values">
+                        Yes
+                    </td>
+                    <td class="ons-summary__actions">
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody id="sales-value-row" class="ons-summary__item">
+                <tr id="sales-value" class="ons-summary__row ons-summary__row--has-values">
+                    <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">UK companies or branches that undertaken general insurance business</div>
+                    </td>
+                    <td class="ons-summary__values">
+                        {% if data['loopingData'].length === 1 %}
+                        {% for item in data['loopingData'] %}
+                        {{ item.description }}
+                        {% endfor %}
+                        {% else %}
+                        <ul class="ons-u-mb-no">
+                        {% for item in data['loopingData'] %}
+                        <li>{{ item.description }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                    </td>
+                    <td class="ons-summary__actions">
+                        <a href="view-added" class="ons-summary__button" aria-label="Change answer">Change</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}

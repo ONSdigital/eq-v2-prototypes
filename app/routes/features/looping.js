@@ -122,7 +122,11 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + freeText + 'add-one')
     } else {
-      res.redirect(path + v + freeText + 'done')
+      res.redirect(path + v + freeText + 'summary')
     }
+  })
+
+  router.post(path + v + freeText + 'summary', function (req, res) {
+    res.redirect(path + v + freeText + 'done')
   })
 }
