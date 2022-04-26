@@ -39,7 +39,11 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + collector + 'add-one')
     } else {
-      res.redirect(path + v + collector + 'calculate-acq')
+      if (req.session.data.loopingData.length === 1) {
+        res.redirect(path + v + collector + 'done')
+      } else {
+        res.redirect(path + v + collector + 'calculate-acq')
+      }
     }
   })
 
