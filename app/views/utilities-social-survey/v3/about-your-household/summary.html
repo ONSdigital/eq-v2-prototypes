@@ -1,27 +1,26 @@
-{% set serviceName = "eQ prototypes" %}
-{% extends "base.html" %}
+{% extends "./../includes/layout.html" %}
 
 {% block preMain %}
 {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
-{{
-onsBreadcrumbs({
-"ariaLabel": 'Previous',
-"itemsList": [
-{
-"url": 'javascript:history.back()',
-"id": "previous",
-"text": 'Previous'
-}
-]
-})
-}}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
 {% endblock %}
 
 {% block main %}
 <form method="post">
     <div class="ons-summary">
         <div id="turnover" class="ons-summary__group">
-            <h2 class="ons-summary__group-title">General insurance business</h2>
+            <h2 class="ons-summary__group-title">About your household</h2>
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
                 <tr>
@@ -33,10 +32,20 @@ onsBreadcrumbs({
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Do any companies or branches within your United Kingdom group undertake general insurance business?</div>
+                        <div class="ons-summary__item--text">Do you receive any benefits to help pay your utility bills?</div>
                     </td>
                     <td class="ons-summary__values">
-                        Yes
+                        {% if data['mutually-exclusive'] %}
+                        {{ data['mutually-exclusive'] }}
+                        {% else %}
+                        <ul>
+                            {% if data['benefits-received-0'] %}<li>{{data['benefits-received-0']}}</li>{% endif %}
+                            {% if data['benefits-received-1'] %}<li>{{data['benefits-received-1']}}</li>{% endif %}
+                            {% if data['benefits-received-2'] %}<li>{{data['benefits-received-2']}}</li>{% endif %}
+                            {% if data['benefits-received-3'] %}<li>{{data['benefits-received-3']}}</li>{% endif %}
+                            {% if data['benefits-received-4'] %}<li>{{data['benefits-received-4']}}</li>{% endif %}
+                        </ul>
+                        {% endif %}
                     </td>
                     <td class="ons-summary__actions">
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
@@ -45,7 +54,7 @@ onsBreadcrumbs({
                 </tbody>
             </table>
             {% if data['loopingData'].length > 0 %}
-            <h2 class="ons-summary__group-title">UK companies or branches that have undertaken general insurance business</h2>
+            <h2 class="ons-summary__group-title">Personal vehicles owned or operated by your household</h2>
             {% for item in data['loopingData'] %}
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
@@ -58,7 +67,7 @@ onsBreadcrumbs({
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Name of UK company or branch</div>
+                        <div class="ons-summary__item--text">Make and model of vehicle</div>
                     </td>
                     <td class="ons-summary__values">
                         {{ item.description }}
@@ -73,28 +82,10 @@ onsBreadcrumbs({
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Registration number</div>
+                        <div class="ons-summary__item--text">Registration plate</div>
                     </td>
                     <td class="ons-summary__values">
                         {{ item.registration }}
-                    </td>
-                    <td class="ons-summary__actions">
-                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
-                    </td>
-                </tr>
-                </tbody>
-                <tbody class="ons-summary__item">
-                <tr class="ons-summary__row ons-summary__row--has-values">
-                    <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Is this UK company or branch an authorised insurer?</div>
-                    </td>
-                    <td class="ons-summary__values">
-                        {% if item.authorised === 'yes' %}
-                        Yes
-                        {% endif %}
-                        {% if item.authorised === 'no' %}
-                        No
-                        {% endif %}
                     </td>
                     <td class="ons-summary__actions">
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
@@ -107,15 +98,37 @@ onsBreadcrumbs({
             {% endif %}
         </div>
     </div>
-<button type="submit" class="ons-btn">
-    <span class="ons-btn__inner">Save and continue</span>
-</button>
+
+    <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
     {% if data['loopingData'].length > 0 %}
-    <br><br><p><a href="add-one">Add another UK company or branch</a></p>
+    <br><br><p><a href="cars/add-one">Add another personal vehicle</a></p>
     {% endif %}
 
 </form>
 {% endblock %}
 
 {% block pageScripts %}
+<script>
+  function clearform(){
+    document.getElementById('telephone').value = '';
+    document.getElementById('email').value = '';
+  }
+</script>
+
+<script>
+  $(document).ready(clearCheckbox());
+  function clearCheckbox() {
+    $('#telephone').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+    $('#email').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+  }
+
+</script>
 {% endblock %}
+
+

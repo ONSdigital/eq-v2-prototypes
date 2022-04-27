@@ -144,6 +144,9 @@ module.exports = function (router) {
 
   // Benefits received page
   router.post(path + v + aboutYou + 'benefits-received', function (req, res) {
+    if (req.session.data['benefits-received-0'] || req.session.data['benefits-received-1'] || req.session.data['benefits-received-2'] || req.session.data['benefits-received-3'] || req.session.data['benefits-received-4']) {
+      req.session.data['mutually-exclusive'] = null;
+    }
     if (req.session.data.benefitChangeMode === true) {
       req.session.data.benefitChangeMode = false
       res.redirect(path + v + aboutYou + 'complete')
@@ -166,12 +169,12 @@ module.exports = function (router) {
       res.redirect(path + v + aboutYou + 'cars/add-one')
     }
     else {
-      res.redirect(path + v + aboutYou + 'complete')
+      res.redirect(path + v + aboutYou + 'summary')
     }
   })
 
   router.post(path + v + aboutYou + 'cars/add-one', function (req, res) {
-    req.session.data.loopingData.push({ description: req.session.data.description, amount: req.session.data.amount })
+    req.session.data.loopingData.push({ description: req.session.data.description, registration: req.session.data.registration })
     res.redirect(path + v + aboutYou + 'cars/view-added')
   })
 
@@ -179,8 +182,12 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + aboutYou + 'cars/add-one')
     } else {
-      res.redirect(path + v + aboutYou + 'complete')
+      res.redirect(path + v + aboutYou + 'summary')
     }
+  })
+
+  router.post(path + v + aboutYou + 'summary', function (req, res) {
+    res.redirect(path + v + aboutYou + 'complete')
   })
 
   // Contact you page
