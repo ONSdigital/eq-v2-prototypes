@@ -1,0 +1,24 @@
+{% set serviceName = "Monthly Business Survey - Construction and Allied Trades" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% endblock %}
+
+{% block main %}
+
+<h1>Sorry, you need to sign in again</h1>
+
+<p>This is because you have either:</p>
+
+<ul>
+    <li>been inactive for 45 minutes and your session has timed out to protect your information</li>
+    <li>followed a link to a page you are not signed to</li>
+    <li>followed a link to a survey that has already been submitted</li>
+</ul>
+
+<h3>Business surveys</h3>
+<p>If you are completing a business survey, you need to sign back in to <a href="#" onclick="showAlert();">your account</a>.</p>
+<h3>All other surveys</h3>
+<p>If you started your survey using an access code, you need to <a href="#" onclick="showAlert();">re-enter your code</a>.</p>
+
+{% endblock %}
