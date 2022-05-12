@@ -1,0 +1,121 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">For the reporting period, what was your expenditure on Research and Development (R&D) in relation to the offshore wind sector?</h1>
+            </legend>
+            <div id="collapsible" class="ons-collapsible ons-js-collapsible" data-btn-close="Hide this">
+                <div class="ons-collapsible__heading ons-js-collapsible-heading">
+                    <div class="ons-collapsible__controls">
+                        <h2 class="ons-collapsible__title">Guidance to help to answer this question</h2>
+                        <span class="ons-collapsible__icon">
+        <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+          <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />
+        </svg>
+      </span>
+                    </div>
+                </div>
+                <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
+                    <div class="">
+                        <div class="">
+                            <p>Research and Development (R&D) covers basic and applied research and development.
+                            It covers creative and systematic work undertaken to increase knowledge or to devise new applications of available knowledge.
+                            R&D activity must meet all five of these criteria: novel, creative, uncertain, systematic, transferable/reproducible.</p>
+                            <h4 class="ons-u-fs-r–b">What we mean by the five criteria</h4>
+                                <li>Novel: aimed at new findings</li>
+                                <li>Creative: based on original, not obvious, concepts and hypotheses</li>
+                                <li>Uncertain: uncertain about the final outcome</li>
+                                <li>Systematic: planned and budgeted</li>
+                                <li>Transferable/reproducible: to lead to results that could possibly be reproduced</li>
+                            </h3>
+                        </div>
+                    </div>
+                    <button type="button" class="ons-btn ons-js-collapsible-button ons-u-d-no ons-btn--secondary ons-btn--small" aria-hidden="true">
+                        <span class="ons-btn__inner ons-js-collapsible-button-inner">Hide this</span>
+                        <span class="ons-btn__context ons-u-vh">Content</span>
+                    </button>
+                </div>
+            </div>
+<!--            <div id="collapsible-2" class="ons-collapsible ons-js-collapsible" data-btn-close="Hide this">-->
+<!--                <div class="ons-collapsible__heading ons-js-collapsible-heading">-->
+<!--                    <div class="ons-collapsible__controls">-->
+<!--                        <h2 class="ons-collapsible__title">What we mean by the five criteria: 'novel, creative, uncertain, systematic, transferable/reproducible'</h2>-->
+<!--                        <span class="ons-collapsible__icon">-->
+<!--        <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">-->
+<!--          <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />-->
+<!--        </svg>-->
+<!--      </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div id="collapsible-2-content" class="ons-collapsible__content ons-js-collapsible-content">-->
+<!--                    <div class="">-->
+<!--                        <div class="">-->
+<!--                            <ul>-->
+<!--                                <li>Novel: aimed at new findings</li>-->
+<!--                                <li>Creative: based on original, not obvious, concepts and hypotheses</li>-->
+<!--                                <li>Uncertain: uncertain about the final outcome</li>-->
+<!--                                <li>Systematic: planned and budgeted</li>-->
+<!--                                <li>Transferable/reproducible: to lead to results that could possibly be reproduced</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <button type="button" class="ons-btn ons-js-collapsible-button ons-u-d-no ons-btn&#45;&#45;secondary ons-btn&#45;&#45;small" aria-hidden="true">-->
+<!--                        <span class="ons-btn__inner ons-js-collapsible-button-inner">Hide this</span>-->
+<!--                        <span class="ons-btn__context ons-u-vh">Content</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+            <br>
+            <p>Enter the full value (e.g. 56,234.33) or a value to the nearest £thousand (e.g. 56,000). Do not enter ‘56’ for £56,000. Enter '0', rather than leave blank.</p>
+            <div class="ons-field">
+                <label class="ons-label" for="prefixed">In-house R&D expenditure</label>
+                <span id="prefixed-hint" class="ons-label__description  ons-input--with-description">Cost of R&D carried out by your business in the UK</span>
+                <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+                  <input type="text" id="prefixed" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-6" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+                  <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>
+                </span>
+<!--                <span>&nbsp;,000</span>-->
+              </span>
+            </div>
+            <div class="ons-field">
+                <label class="ons-label" for="prefixed-2">Purchased R&D expenditure</label>
+                <span id="prefixed-2-hint" class="ons-label__description  ons-input--with-description">Purchase of R&D conducted outside this business</span>
+                <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+                  <input type="text" id="prefixed-2" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-6" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+                  <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>
+                </span>
+              </span>
+            </div>
+
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
