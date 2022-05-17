@@ -1,0 +1,74 @@
+{% set serviceName = "Annual Business Survey" %}
+{% extends "./includes/layout.html" %}
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<h2>You are completing this for ESSENTIAL ENTERPRISE LTD. (ESSENTIAL ENTERPRISE LTD.)</h2>
+<p>If the company details or structure have changed contact us on <a href="tel:03001234931">0300 1234 931</a> or email <a href="mailto:surveys@ons.gov.uk?subject=Change%20of%20details%2012346789012A">surveys@ons.gov.uk</a></p>
+
+<div id="description" class="ons-u-mb-s">
+        <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                        <p><strong>Important notice - changes to guidance</strong></p>
+                        <p>New information has been added about which trades are included in the survey and how to
+                                calculate value of work. For further guidance, read the introductory pages and guidance
+                                that accompanies the questions.</p>
+                        <p></p>
+                        <p></p>
+                        <p><strong>Coronavirus (COVID-19) additional guidance</strong></p>
+                        <p><strong>Please still complete this survey even if your business has been closed.</strong></p>
+                        <p><strong>If you have closed for all, or some, of the period: </strong>select "yes, you can
+                                provide figures" and enter value of work, even if this is "0".</p>
+                        <p><strong>Exclude from figures: </strong>any COVID-19 government subsidies such as the
+                                Coronavirus Job Retention Scheme and sector-specific or small business grants.</p>
+                        <p><strong>Explain figures</strong> in the comments section to minimise us contacting you and to
+                                help us tell an industry story.</p>
+                </div>
+        </div>
+        <p></p>
+        <ul>
+
+                <li>Data should relate to all sites in England, Scotland and Wales but excludes Northern Ireland.</li>
+
+                <li>You can provide informed estimates if actual figures are not available.</li>
+
+                <li>We will treat your data securely and confidentially.</li>
+
+                <li>Your business has been selected from a list of businesses in the UK that are registered for VAT, PAYE or with Companies House.</li>
+
+                <li>You cannot appeal your selection. Your business was selected to give us a comprehensive view of the UK economy.</li>
+
+        </ul>
+</div>
+
+<h2 class="ons-u-mb-xs" data-qa="legal-response">Your response is legally required</h2>
+
+<p class="ons-u-mb-m" data-qa="legal-basis">Notice is given under section 1 of the Statistics of Trade Act 1947.</p>
+
+<div>
+<h3 class="ons-u-mb-xs" data-qa="legal-response">Preview the questions you may be asked in this survey</h3>
+<p>Before you start this survey, you can <a target="_blank" href="view-questions/index">preview the questions you may be asked in this survey</a> to help you prepare to complete this survey.</p>
+<br>
+</div>
+
+<form method="post">
+        <button type="submit" class="ons-btn" onclick="showAlert();">
+                <span class="ons-btn__inner">Start survey</span>
+        </button>
+</form>
+{% endblock %}

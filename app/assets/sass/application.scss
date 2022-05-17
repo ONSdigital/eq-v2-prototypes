@@ -2,7 +2,6 @@
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
 $govuk-assets-path: '/govuk/assets/';
 
-
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import url(https://cdn.ons.gov.uk/sdc/design-system/47.0.0/css/main.css);
 
