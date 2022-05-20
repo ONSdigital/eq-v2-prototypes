@@ -129,15 +129,9 @@ onsBreadcrumbs({
 
     <br>
     </div>
-    {% from "components/button/_macro.njk" import onsButton %}
-    {{
-    onsButton({
-    "type": 'button',
-    "text": 'Send feedback',
-    "id": 'feedback-btn',
-    "variants": 'small'
-    })
-    }}
+    <a href="thanks-feedback" type="button" class="ons-btn ons-btn--small" id="feedback">
+        <span class="ons-btn__inner">Send feedback</span>
+    </a>
     <div id="thanks" style="display: none; margin-top: 1em">
         <h1 class="fieldset__legend-title">Thanks for providing feedback.</h1>
         <p>We need your help to improve and to make sure the website works well for the people who need it. Once you’ve signed up, you might be asked to:</p>
