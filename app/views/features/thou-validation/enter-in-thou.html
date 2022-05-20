@@ -1,0 +1,99 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+{% if data['thouErrorFlag'] === true %}
+<div aria-labelledby="error-summary-title" role="alert" tabindex="-1" class="ons-panel ons-panel--error">
+    <div class="ons-panel__header">
+        <h2 id="error-summary-title" data-qa="error-header" class="ons-panel__title ons-u-fs-r--b">There is a problem with your answer</h2>
+    </div>
+    <div class="ons-panel__body">
+        <ol class="ons-list">
+            <li class="ons-list__item">
+                <a href="#totalHousingPublic" class="ons-list__link ons-js-inpagelink">Enter the value to the nearest £thousand</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<br>
+{% endif %}
+
+<h1>What was the value of repair and maintenance, improvements and major alterations carried out on existing housing for public sector projects?</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-field">
+
+        <br>
+        <div class="ons-panel ons-panel--info ons-panel--no-title">
+            <span class="ons-u-vh">Important information: </span>
+            <div class="ons-panel__body">
+                <p>Include:</p>
+                <ul>
+                    <li>extensions</li>
+                    <li>repairing something which is damaged</li>
+                    <li>maintaining something to an existing standard</li>
+                </ul>
+                <p>Exclude:</p>
+                <ul>
+                    <li>any work on halls of residence for educational institutions</li>
+                    <li>work on infrastructure</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+
+        {% if data['thouErrorFlag'] === true %}
+        <div class="ons-panel ons-panel--error ons-panel--no-title" id="email-error">
+            <span class="ons-u-vh">Error: </span>
+            <div class="ons-panel__body">
+                <p class="ons-panel__error">
+                    <strong>Enter the value to the nearest £thousand</strong>
+                </p>
+        {% endif %}
+        <label class="ons-label ons-label--with-description" for="totalHousingPublic">Value of repair and maintenance, improvements and major alterations on existing housing for public sector projects</label>
+        <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
+
+        <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+
+        <input type="text" id="totalHousingPublic"
+               class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
+               title="British pounds (GBP)" name="totalHousingPublic" pattern="[0-9]*" inputmode="numeric"
+               autocomplete="off" aria-describedby="description-hint" required="required"
+               {% if data['totalHousingPublic'] %}value="{{data['totalHousingPublic']}}"{% endif %}
+        >
+
+                    <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"
+                          title="British pounds (GBP)">£</abbr>
+                </span>
+            </span>
+
+                {% if data['thouErrorFlag'] === true %}
+                </div>
+                {% endif %}
+
+    </div>
+
+    <button type="submit" class="ons-btn ons-u-mt-l">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}

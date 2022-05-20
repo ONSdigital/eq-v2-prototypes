@@ -5,6 +5,7 @@ const router = express.Router()
 
 // Features
 require('./routes/features/looping.js')(router);
+require('./routes/features/thou.js')(router);
 
 // Monthly business survey - construction and allied trades
 require('./routes/monthly-business-survey-construction-and-allied-trades/v1.js')(router);

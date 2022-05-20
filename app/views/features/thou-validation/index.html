@@ -1,0 +1,27 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+
+<h3>Responding in £thou - validation</h3>
+<ul>
+    <li><a href="thou-start">Question page with currency input - validation to respond in £thou</a><p>Link added at top which allows for the user to open the introduction page</p></li>
+</ul>
+
+{% endblock %}
