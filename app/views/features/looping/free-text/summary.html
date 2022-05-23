@@ -107,12 +107,12 @@ onsBreadcrumbs({
             {% endif %}
         </div>
     </div>
+    {% if data['loopingData'].length > 0 %}
+    <p><a href="add-one">Add another UK company or branch</a></p><br>
+    {% endif %}
 <button type="submit" class="ons-btn">
     <span class="ons-btn__inner">Save and continue</span>
 </button>
-    {% if data['loopingData'].length > 0 %}
-    <br><br><p><a href="add-one">Add another UK company or branch</a></p>
-    {% endif %}
 
 </form>
 {% endblock %}

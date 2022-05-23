@@ -8,3 +8,358 @@ $govuk-assets-path: '/govuk/assets/';
 @media print {
   @import url(https://cdn.ons.gov.uk/sdc/design-system/47.0.0/css/print.css);
 }
+
+
+/* line 1, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback {
+  background: #ffffff;
+  margin-top: 30px;
+}
+
+@media print {
+  .gem-c-feedback {
+    display: none!important;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 1, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback {
+    margin-top: 60px;
+    border-bottom: 1px solid #ffffff;
+  }
+}
+
+/* line 11, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback [hidden] {
+  display: none !important;
+}
+
+/* line 17, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-questions {
+  text-align: center;
+  border-bottom: 1px solid #ffffff;
+  padding: 15px 25px 0 25px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 40.0625em) {
+  /* line 17, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-questions {
+    width: 50%;
+    display: table-cell;
+    text-align: left;
+    border-bottom: 0;
+  }
+}
+
+/* line 31, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-questions--something-is-wrong {
+  text-align: center;
+}
+
+@media (min-width: 40.0625em) {
+  /* line 31, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-questions--something-is-wrong {
+    text-align: right;
+    vertical-align: bottom;
+    float: none;
+  }
+}
+
+/* line 41, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt {
+  background-color: #1d70b8;
+  color: #ffffff;
+  outline: 0;
+}
+
+/* line 10, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/node_modules/govuk-frontend/govuk/components/error-message/../../helpers/_clearfix.scss */
+.gem-c-feedback__prompt:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media (min-width: 40.0625em) {
+  /* line 41, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    display: table;
+    width: 100%;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 41, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt {
+  }
+}
+
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  /* line 41, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 41, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+/* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-question,
+.gem-c-feedback__prompt-success {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+@media print {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+  }
+}
+
+@media print {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+  }
+}
+
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 54, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question,
+  .gem-c-feedback__prompt-success {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+/* line 63, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-question {
+  vertical-align: top;
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+/* line 68, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-question:focus {
+  outline: 0;
+}
+
+@media (min-width: 40.0625em) {
+  /* line 63, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question {
+    margin-left: 0;
+    margin-top: 0;
+    display: block;
+  }
+}
+
+@media (min-width: 59.375em) {
+  /* line 63, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-question {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
+
+/* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-link {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  background: transparent;
+  box-shadow: 0 2px 0 #ffffff;
+  border: 1px #ffffff solid;
+  min-width: 100%;
+}
+
+@media print {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+  }
+}
+
+@media print {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+/* line 92, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-link:hover {
+  background: #0b0c0c;
+  background: rgba(11, 12, 12, 0.2);
+}
+
+@media (min-width: 20em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    min-width: 100px;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+  }
+}
+
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@media print and (min-width: 40.0625em) {
+  /* line 85, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__prompt-link {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+/* line 108, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__email-link,
+.gem-c-feedback__prompt-link {
+  position: relative;
+}
+
+/* line 113, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-link:link,
+.gem-c-feedback__prompt-link:visited {
+  color: #ffffff;
+}
+
+/* line 117, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__prompt-link:link:focus,
+.gem-c-feedback__prompt-link:visited:focus {
+  color: #0b0c0c;
+}
+
+/* line 122, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+.gem-c-feedback__option-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+@media (min-width: 20em) {
+  /* line 122, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__option-list {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  /* line 122, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__option-list {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 20em) {
+  /* line 138, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__option-list-item {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 20em) {
+  /* line 144, ../../shared/bundle/ruby/2.7.0/gems/govuk_publishing_components-29.8.0/app/assets/stylesheets/govuk_publishing_components/components/_feedback.scss */
+  .gem-c-feedback__option-list-item:last-child {
+    margin-left: 20px;
+  }
+}

@@ -817,9 +817,32 @@
 </div>
 <div class="app-back-to-top">
     <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#main-content">
-        <svg role="presentation" focusable="false" style="margin-right: 10px" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+        <svg focusable="false" style="margin-right: 10px" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
             <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
         </svg> Back to top
     </a>
+</div></div>
+
+<div class="gem-c-feedback" >
+    <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
+        <div class="gem-c-feedback__prompt-questions js-prompt-questions" style="display: inline-flex">
+            <h4 style="line-height: 2.2">Is this page useful?</h4>
+            <ul class="gem-c-feedback__option-list" style="margin-left: 20px">
+                <li class="gem-c-feedback__option-list-item">
+                    <button type="button" class="ons-btn ons-btn--secondary ons-btn--small">
+                        <span class="ons-btn__inner">Yes</span>
+                    </button>
+                </li>
+                <li class="gem-c-feedback__option-list-item">
+                    <button type="button" class="ons-btn ons-btn--secondary ons-btn--small">
+                        <span class="ons-btn__inner">No</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden="">
+            Thank you for your feedback
+        </div>
+    </div>
 </div>
 {% endblock %}

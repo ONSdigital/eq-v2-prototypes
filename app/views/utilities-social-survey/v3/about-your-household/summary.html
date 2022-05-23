@@ -100,13 +100,13 @@
             {% endif %}
         </div>
     </div>
+    {% if data['loopingData'].length > 0 %}
+    <p><a href="cars/add-one">Add another personal vehicle</a></p><br>
+    {% endif %}
 
     <button type="submit" class="ons-btn">
         <span class="ons-btn__inner">Save and continue</span>
     </button>
-    {% if data['loopingData'].length > 0 %}
-    <br><br><p><a href="cars/add-one">Add another personal vehicle</a></p>
-    {% endif %}
 
 </form>
 {% endblock %}
