@@ -19,12 +19,28 @@ onsBreadcrumbs({
 
 {% block main %}
 <h3>Looping features for user research</h3>
-<p><a href="ur/8june">8 June user research looping features</a></p>
-<h3>Looping scenarios</h3>
 <ul>
-    <li><a href="free-text/anything-to-add">Collecting free text and yes / no</a><p>This design collects free text information and an answer to a yes / no question.</p></li>
-    <li><a href="postcode/start">Collecting postcodes and percentages</a><p>This design allows for looping through collecting postcodes. It also then collects percentages against each postcode collected which must add up to 100%.</p></li>
-    <li><a href="collector/anything-to-add">Collecting currency values and free text</a><p>This design allows for looping through collecting free text description and currency values. A calculated summary can be then added to this design.</p></li>
+    <li><a href="ur/8june">8 June user research looping features</a></li>
 </ul>
-
+<hr>
+<br>
+<div id="collapsible" class="ons-collapsible ons-js-collapsible" data-btn-close="Hide this">
+    <div class="ons-collapsible__heading ons-js-collapsible-heading">
+        <div class="ons-collapsible__controls">
+            <h2 class="ons-collapsible__title">Initial looping scenarios</h2>
+            <span class="ons-collapsible__icon">
+        <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+          <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />
+        </svg>
+      </span>
+        </div>
+    </div>
+    <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
+        <ul>
+            <li><a href="free-text/anything-to-add">Collecting free text and yes / no</a><p>This design collects free text information and an answer to a yes / no question.</p></li>
+            <li><a href="postcode/start">Collecting postcodes and percentages</a><p>This design allows for looping through collecting postcodes. It also then collects percentages against each postcode collected which must add up to 100%.</p></li>
+            <li><a href="collector/anything-to-add">Collecting currency values and free text</a><p>This design allows for looping through collecting free text description and currency values. A calculated summary can be then added to this design.</p></li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

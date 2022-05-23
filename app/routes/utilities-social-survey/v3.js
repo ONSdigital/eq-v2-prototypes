@@ -234,6 +234,7 @@ module.exports = function (router) {
 
   router.get(path + v + energyUtilities + 'change-gas', function (req, res) {
     req.session.data.gasChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + energyUtilities + 'total-spent-on-gas')
   })
 
@@ -252,6 +253,7 @@ module.exports = function (router) {
   // Change total spent on water
   router.get(path + v + energyUtilities + 'change-water', function (req, res) {
     req.session.data.waterChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + energyUtilities + 'total-spent-on-water')
   })
 
@@ -270,6 +272,7 @@ module.exports = function (router) {
   // Change total spent on electricity
   router.get(path + v + energyUtilities + 'change-electricity', function (req, res) {
     req.session.data.electricityChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + energyUtilities + 'total-spent-on-electricity')
   })
 
@@ -336,6 +339,7 @@ module.exports = function (router) {
 
   router.get(path + v + entertainment + 'change-tv', function (req, res) {
     req.session.data.tvChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + entertainment + 'total-spent-on-tv')
   })
 
@@ -355,6 +359,7 @@ module.exports = function (router) {
 
   router.get(path + v + entertainment + 'change-broadband', function (req, res) {
     req.session.data.broadbandChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + entertainment + 'total-spent-on-broadband')
   })
 
@@ -373,6 +378,7 @@ module.exports = function (router) {
   // Change total spent on cinema
   router.get(path + v + entertainment + 'change-cinema', function (req, res) {
     req.session.data.cinemaChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + entertainment + 'total-spent-on-cinema')
   })
 
@@ -420,6 +426,7 @@ module.exports = function (router) {
   // Change total spent on takeaways
   router.get(path + v + food + 'change-takeaways', function (req, res) {
     req.session.data.takeawayChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + food + 'total-spent-on-takeaways')
   })
 
@@ -438,6 +445,7 @@ module.exports = function (router) {
   // Change total spent on weekly shop
   router.get(path + v + food + 'change-weekly-shop', function (req, res) {
     req.session.data.weeklyShopChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + food + 'total-spent-on-weekly-shop')
   })
 
@@ -456,6 +464,7 @@ module.exports = function (router) {
   // Change total spent on eating out
   router.get(path + v + food + 'change-eating-out', function (req, res) {
     req.session.data.eatingOutChangeMode = true
+    req.session.data.totalAmountComplete = null
     res.redirect(path + v + food + 'total-spent-on-eating-out')
   })
 
