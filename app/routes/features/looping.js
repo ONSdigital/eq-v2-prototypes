@@ -4,6 +4,7 @@ var v = 'looping/'
 var collector = 'collector/'
 var postcode = 'postcode/'
 var freeText = 'free-text/'
+var supermarket = 'supermarket/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -74,6 +75,7 @@ module.exports = function (router) {
   router.post(path + v + collector + 'value-of-disposals', function (req, res) {
     res.redirect(path + v + collector + 'done')
   })
+
   // Postcode
 
   router.get(path + v + postcode + 'start', function (req, res) {
@@ -133,4 +135,43 @@ module.exports = function (router) {
   router.post(path + v + freeText + 'summary', function (req, res) {
     res.redirect(path + v + freeText + 'done')
   })
+
+  // 8 JUNE UR ITERATION
+
+  // supermarket
+
+  router.get(path + v + supermarket + 'start', function (req, res) {
+    req.session.data.loopingData = []
+    res.redirect(path + v + supermarket + 'add-supermarkets')
+  })
+
+  router.post(path + v + supermarket + 'add-supermarkets', function (req, res) {
+    req.session.data.loopingData.push({ supermarket: req.session.data.supermarket })
+    res.redirect(path + v + supermarket + 'view-supermarkets')
+  })
+
+  router.post(path + v + supermarket + 'view-supermarkets', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + supermarket + 'add-supermarkets')
+    }
+    if (req.session.data.addMore === 'no') {
+      if (req.session.data.loopingData.length === 1) {
+        res.redirect(path + v + supermarket + 'done')
+      } else {
+        res.redirect(path + v + supermarket + 'percentages')
+      }
+    }
+  })
+
+  router.post(path + v + supermarket + 'percentages', function (req, res) {
+    if (req.session.data.error === 'true') {
+      req.session.data.showValidation = true
+      res.redirect(path + v + supermarket + 'percentages')
+    } else {
+      req.session.data.showValidation = null
+      req.session.data.error = null
+      res.redirect(path + v + supermarket + 'done')
+    }
+  })
+
 }

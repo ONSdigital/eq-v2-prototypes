@@ -1,0 +1,46 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <legend class="ons-fieldset__legend ons-u-mb-no">
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What is the name of the supermarket you shop at for household goods?</h1>
+                </legend>
+                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                    <span class="ons-u-vh">Important information: </span>
+                    <div class="ons-panel__body">
+                        <p>If you need to add multiple supermarkets, you can do this on the next page.</p>
+                    </div>
+                </div>
+                <div class="ons-field">
+                    <label class="ons-label" for="text-width">Name of supermarket</label>
+                    <input name="supermarket" type="text" id="text-width" class="ons-input ons-input--text ons-input-type__input" autocomplete="off" />
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}
