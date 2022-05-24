@@ -5,6 +5,8 @@ var collector = 'collector/'
 var postcode = 'postcode/'
 var freeText = 'free-text/'
 var supermarket = 'supermarket/'
+var country = 'countries-travelled-to/'
+var calculatedSummaryEnergy = 'calculated-summary-along-others/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -174,4 +176,80 @@ module.exports = function (router) {
     }
   })
 
+  // countrys
+
+  router.get(path + v + country + 'start', function (req, res) {
+    req.session.data.loopingData = []
+    res.redirect(path + v + country + 'anything-to-add')
+  })
+
+  router.post(path + v + country + 'anything-to-add', function (req, res) {
+    req.session.data.loopingData = []
+    res.redirect(path + v + country + 'add-countrys')
+  })
+
+  router.post(path + v + country + 'add-countrys', function (req, res) {
+    req.session.data.loopingData.push({ country: req.session.data.country })
+    res.redirect(path + v + country + 'view-countrys')
+  })
+
+  router.post(path + v + country + 'view-countrys', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + country + 'add-countrys')
+    }
+    if (req.session.data.addMore === 'no') {
+      res.redirect(path + v + country + 'done')
+    }
+  })
+
+  // calculated summary energy
+
+  router.get(path + v + calculatedSummaryEnergy + 'start', function (req, res) {
+    req.session.data = {}
+    req.session.data.loopingData = []
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-on-electricity')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-on-electricity', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-on-gas-from-mains')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-on-gas-from-mains', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'anything-to-add')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'anything-to-add', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'add-one', function (req, res) {
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    res.redirect(path + v + calculatedSummaryEnergy + 'view-added')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
+    }
+    if (req.session.data.addMore === 'no') {
+      res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
+    }
+  })
+
+  router.get(path + v + calculatedSummaryEnergy + 'calculate-exp', function (req, res) {
+    req.session.data.totalExp = 0
+    req.session.data.loopingData.forEach(x => {
+      req.session.data.totalExp += parseInt(x.expenditure)
+    })
+    req.session.data.totalOtherExpParsed = parseInt(req.session.data.totalExp, 10)
+    req.session.data.gasParsed = parseInt(req.session.data.gas, 10)
+    req.session.data.electricityParsed = parseInt(req.session.data.electricity, 10)
+    req.session.data.totalExp = req.session.data.totalOtherExpParsed + req.session.data.electricityParsed + req.session.data.gasParsed
+    req.session.data.totalExpParsed = numberWithCommas(req.session.data.totalExp)
+    res.redirect(path + v + calculatedSummaryEnergy + 'value-of-expenditure')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'done')
+  })
 }

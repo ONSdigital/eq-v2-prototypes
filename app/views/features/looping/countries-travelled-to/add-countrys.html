@@ -1,0 +1,59 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <legend class="ons-fieldset__legend ons-u-mb-no">
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Add a country you have travelled to in the last five years</h1>
+                </legend>
+                <div class="ons-panel ons-panel--info ons-panel--no-title">
+                    <span class="ons-u-vh">Important information: </span>
+                    <div class="ons-panel__body">
+                        <p>If you need to add multiple countries, you can do this on the next page.</p>
+                    </div>
+                </div><br>
+                <div class="ons-grid ons-grid--gutterless">
+                    <div class="ons-grid__col ons-col-8@m">
+                        <div id="country-of-birth-container" class="ons-js-autosuggest   ons-autosuggest-input" data-instructions="Use up and down keys to navigate suggestions once you&#39;ve typed more than two characters. Use the enter key to select a suggestion. Touch device users, explore by touch or with swipe gestures." data-aria-you-have-selected="You have selected" data-min-chars="" data-aria-min-chars="Enter 3 or more characters for suggestions." data-aria-one-result="There is one suggestion available." data-aria-n-results="There are {n} suggestions available." data-aria-limited-results="Results have been limited to 10 suggestions. Type more characters to improve your search" data-more-results="Continue entering to improve suggestions" data-results-title="Suggestions" data-no-results="No suggestions found." data-type-more="Continue entering to get suggestions" data-autosuggest-data="https://gist.githubusercontent.com/rmccar/c123023fa6bd1b137d7f960c3ffa1fed/raw/4dede1d6e757cf0bb836228600676c62ceb4f86c/country-of-birth.json">
+                            <div class="ons-field">
+                                <label class="ons-label ons-label--with-description" for="country-of-birth" id="country-of-birth-label">Name of country</label>
+                                <span id="country-of-birth-label-description-hint" class="ons-label__description  ons-input--with-description">Select from suggestions</span>
+                                <input name="country" type="text" id="country-of-birth" class="ons-input ons-input--text ons-input-type__input ons-js-autosuggest-input " autocomplete="off" aria-describedby="country-of-birth-label-description-hint" />
+                            </div>
+                            <div class="ons-autosuggest-input__results ons-js-autosuggest-results">
+                                <header id="country-of-birth-suggestions" class="ons-autosuggest-input__results-title ons-u-fs-s">Suggestions</header>
+                                <ul class="ons-autosuggest-input__listbox ons-js-autosuggest-listbox" role="listbox" id="country-of-birth-listbox" aria-labelledby="country-of-birth-suggestions" tabindex="-1"></ul>
+                            </div>
+                            <div class="ons-autosuggest-input__instructions ons-u-vh ons-js-autosuggest-instructions" id="country-of-birth-instructions" tabindex="-1">Use up and down keys to navigate suggestions once you&#39;ve typed more than two characters. Use the enter key to select a suggestion. Touch device users, explore by touch or with swipe gestures.</div>
+                            <div class="ons-autosuggest-input__status ons-u-vh ons-js-autosuggest-aria-status" aria-live="assertive" role="status" tabindex="-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}
