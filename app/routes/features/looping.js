@@ -7,6 +7,7 @@ var freeText = 'free-text/'
 var supermarket = 'supermarket/'
 var country = 'countries-travelled-to/'
 var calculatedSummaryEnergy = 'calculated-summary-along-others/'
+var calculatedSummaryLongList = 'long-list-calculated/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -251,5 +252,56 @@ module.exports = function (router) {
 
   router.post(path + v + calculatedSummaryEnergy + 'value-of-expenditure', function (req, res) {
     res.redirect(path + v + calculatedSummaryEnergy + 'done')
+  })
+
+  // calculated summary with a long list
+
+  router.get(path + v + calculatedSummaryLongList + 'start', function (req, res) {
+    req.session.data = {}
+    req.session.data.loopingData = []
+    res.redirect(path + v + calculatedSummaryLongList + 'expenditure-on-rental-and-leasing-services')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'expenditure-on-rental-and-leasing-services', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongList + 'expenditure-on-construction-of-buildings')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'expenditure-on-construction-of-buildings', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongList + 'anything-to-add')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'anything-to-add', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongList + 'add-one')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'add-one', function (req, res) {
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    res.redirect(path + v + calculatedSummaryLongList + 'view-added')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + calculatedSummaryLongList + 'add-one')
+    }
+    if (req.session.data.addMore === 'no') {
+      res.redirect(path + v + calculatedSummaryLongList + 'calculate-exp')
+    }
+  })
+
+  router.get(path + v + calculatedSummaryLongList + 'calculate-exp', function (req, res) {
+    req.session.data.totalExp = 0
+    req.session.data.loopingData.forEach(x => {
+      req.session.data.totalExp += parseInt(x.expenditure)
+    })
+    req.session.data.totalOtherExpParsed = parseInt(req.session.data.totalExp, 10)
+    req.session.data.rentParsed = parseInt(req.session.data.rent, 10)
+    req.session.data.constructionParsed = parseInt(req.session.data.construction, 10)
+    req.session.data.totalExp = req.session.data.totalOtherExpParsed + req.session.data.rentParsed + req.session.data.constructionParsed
+    req.session.data.totalExpParsed = numberWithCommas(req.session.data.totalExp)
+    res.redirect(path + v + calculatedSummaryLongList + 'value-of-expenditure')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongList + 'done')
   })
 }

@@ -1,0 +1,214 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    What was the other service, and what was the expenditure you had on it?
+                </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>If you need to add multiple services, you can do this on the next page.</p>
+                </div>
+            </div>
+            <div class="ons-input-items">
+                <div class="ons-radios__items">
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Administrative and support service activities" class="ons-radio__input ons-js-radio" value="Administrative and support service activities" name="sector" aria-controls="Administrative and support service activities-radio-other-wrap">
+              <label class="ons-radio__label " for="Administrative and support service activities" id="Administrative and support service activities-label">Administrative and support service activities</label>
+              <span class="ons-radio__other" id="Administrative and support service activities-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Administrative and support service activities-select" id="Administrative and support service activities-select-label">Select a type of administrative and support</label>
+                      <select id="Administrative and support service activities-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Office administration, office support and other business support services">Office administration, office support and other business support services</option>
+                        <option value="Public administration and compulsory social security services">Public administration and compulsory social security services</option>
+                        <option value="Security and investigation services">Security and investigation services</option>
+                        <option value="Support services to financial and insurance activities">Support services to financial and insurance activities</option>
+                        <option value="Travel accommodation services">Travel accommodation services</option>
+                        <option value="Travel agency, tour operator and other reservation services and related services">Travel agency, tour operator and other reservation services and related services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Arts, entertainment and recreation" class="ons-radio__input ons-js-radio" value="Arts, entertainment and recreation" name="sector" aria-control="Arts, entertainment and recreation-radio-other-wrap">
+              <label class="ons-radio__label " for="Arts, entertainment and recreation" id="Arts, entertainment and recreation-label">Arts, entertainment and recreation</label>
+              <span class="ons-radio__other" id="Arts, entertainment and recreation-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Arts, entertainment and recreation-select" id="Arts, entertainment and recreation-select-label">Select a type of arts, entertainment and recreation</label>
+                      <select id="Arts, entertainment and recreation-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Creative, arts and entertainment services">Creative, arts and entertainment services</option>
+                        <option value="Gambling and betting services">Gambling and betting services</option>
+                        <option value="Library, archive, museum and other cultural services">Library, archive, museum and other cultural services</option>
+                        <option value="Sporting, amusement and recreation services">Sporting, amusement and recreation services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Construction and mining-radio" class="ons-radio__input ons-js-radio ons-js-other" value="Construction and mining" name="sector" aria-controls="Construction and mining-radio-other-wrap">
+              <label class=" ons-radio__label " for="Construction and mining-radio" id="Construction and mining-radio-label">Construction and mining</label>
+              <span class="ons-radio__other" id="Construction and mining-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Construction and mining-select" id="Construction and mining-select-label">Select a type of construction and mining</label>
+                      <select id="Construction and mining-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Buildings and landscape services">Buildings and landscape services</option>
+                        <option value="Construction and construction works for civil engineering; roads, railways, bridges and tunnels">Construction and construction works for civil engineering; roads, railways, bridges and tunnels</option>
+                        <option value="Mining support services">Mining support services</option>
+                        <option value="Specialised construction, demolition and site preparation; electrical and plumbing installation, building completion work">Specialised construction, demolition and site preparation; electrical and plumbing installation, building completion work</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Human health and social work activities" class="ons-radio__input ons-js-radio" value="Human health and social work activities" name="sector" aria-control="Human health and social work activities-radio-other-wrap">
+              <label class="ons-radio__label " for="Human health and social work activities" id="Human health and social work activities-label">Human health and social work activities</label>
+              <span class="ons-radio__other" id="Human health and social work activities-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Human health and social work activities-select" id="Human health and social work activities-select-label">Select a type of human health and social work</label>
+                      <select id="Human health and social work activities-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Human health services">Human health services</option>
+                        <option value="Residential care services">Residential care services</option>
+                        <option value="Social work services without accommodation">Social work services without accommodation</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Information and communication" class="ons-radio__input ons-js-radio" value="Information and communication" name="sector" aria-control="Information and communication-radio-other-wrap">
+              <label class="ons-radio__label " for="Information and communication" id="construction-label">Information and communication</label>
+              <span class="ons-radio__other" id="Information and communication-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Information and communication-select" id="Information and communication-select-label">Select a type of information and communication</label>
+                      <select id="Information and communication-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Information services; data processing, web hosting and IT infrastructure provisioning">Information services; data processing, web hosting and IT infrastructure provisioning</option>
+                        <option value="Motion pictures, video and television programme production services, sound recording and music publishing">Motion pictures, video and television programme production services, sound recording and music publishing</option>
+                        <option value="Printing and reproduction services of recorded media">Printing and reproduction services of recorded media</option>
+                        <option value="Programming and broadcasting services">Programming and broadcasting services</option>
+                        <option value="Publishing services of books, newspapers, journals, advertising space in books and newspapers and software publishing services">Publishing services of books, newspapers, journals, advertising space in books and newspapers and software publishing services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Other service activities" class="ons-radio__input ons-js-radio" value="Other service activities" name="sector" aria-control="Other service activities-radio-other-wrap">
+              <label class="ons-radio__label " for="Other service activities" id="Other service activities-label">Other service activities</label>
+              <span class="ons-radio__other" id="Other service activities-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Other service activities-select" id="Other service activities-select-label">Select a type of other service activities</label>
+                      <select id="Other service activities-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Membership organisation services">Membership organisation services</option>
+                        <option value="Personal services, dry cleaning and laundry, hairdressing and beauty, funeral and related services">Personal services, dry cleaning and laundry, hairdressing and beauty, funeral and related services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Professional, scientific and technical activities" class="ons-radio__input ons-js-radio" value="Professional, scientific and technical activities" name="sector" aria-control="Professional, scientific and technical activities-radio-other-wrap">
+              <label class="ons-radio__label " for="Professional, scientific and technical activities" id="Professional, scientific and technical activities-label">Professional, scientific and technical activities</label>
+              <span class="ons-radio__other" id="Professional, scientific and technical activities-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Professional, scientific and technical activities-select" id="Professional, scientific and technical activities-select-label">Select a type of professional, scientific and technical activities</label>
+                      <select id="Professional, scientific and technical activities-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Head office and management consulting services">Head office and management consulting services</option>
+                        <option value="Scientific research and development services">Scientific research and development services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Real estate activities" class="ons-radio__input ons-js-radio" value="Real estate activities" name="sector" aria-control="Real estate activities-radio-other-wrap">
+              <label class="ons-radio__label " for="Real estate activities" id="Real estate activities-label">Real estate activities</label>
+              <span class="ons-radio__other" id="Real estate activities-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Real estate activities-select" id="Real estate activities-select-label">Select a type of real estate activities</label>
+                      <select id="Real estate activities-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Head office and management consulting services">Real estate services on a fee or contract basis</option>
+                        <option value="Scientific research and development services">Renting, buying or selling of property</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Repair and maintenance" class="ons-radio__input ons-js-radio" value="Repair and maintenance" name="sector" aria-control="Repair and maintenance-radio-other-wrap">
+              <label class="ons-radio__label " for="Repair and maintenance" id="Repair and maintenance-label">Repair and maintenance</label>
+               <span class="ons-radio__other" id="Repair and maintenance-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Repair and maintenance-select" id="Repair and maintenance-select-label">Select a type of repair and maintenance</label>
+                      <select id="Repair and maintenance-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Head office and management consulting services">Repair and maintenance services of aircraft and spacecraft</option>
+                        <option value="Scientific research and development services">Repair and maintenance services of ships and boats</option>
+                        <option value="Scientific research and development services">Repair services of computers, personal and household goods</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                    <span class="ons-radios__item">
+            <span class="ons-radio">
+              <input type="radio" id="Transport and storage" class="ons-radio__input ons-js-radio ons-js-other" value="Transport and storage" name="sector" aria-controls="Transport and storage-radio-other-wrap">
+              <label class=" ons-radio__label " for="Transport and storage" id="information-radio-label">Transport and storage</label>
+               <span class="ons-radio__other" id="Transport and storage-radio-other-wrap">
+                <label class="ons-label ons-u-fw-n" for="Transport and storage-select" id="Transport and storage-select-label">Select a type of transport and storage</label>
+                      <select id="Transport and storage-select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Head office and management consulting services">Air transport services</option>
+                        <option value="Scientific research and development services">Passenger and freight rail transport services</option>
+                        <option value="Scientific research and development services">Warehousing and transportation support services</option>
+                        <option value="Scientific research and development services">Water transport services</option>
+                      </select>
+              </span>
+            </span>
+          </span>
+                </div>
+            </div>
+
+            <div class="ons-field">
+                <label class="ons-label" for="value-of-expenditure">Amount spent on this type of service</label>
+                <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
+                <span class="ons-input-type ons-input-type--prefix">
+                <span class="ons-input-type__inner">
+                  <input name="expenditure" type="text" id="value-of-expenditure" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+                  <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>
+                </span>
+              </span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
