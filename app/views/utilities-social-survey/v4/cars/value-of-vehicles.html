@@ -54,7 +54,7 @@ onsBreadcrumbs({
                                     £{{ item.commaAmount }}.00
                                 </td>
                                 <td class="ons-summary__actions">
-                                    <a href="#" onclick="notYet();">Change</a>
+                                    <a href="#" onclick="showAlert();">Change</a>
                                     <span class="ons-summary__spacer"></span>
                                     <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove">Remove</a>
                                 </td>
@@ -75,9 +75,6 @@ onsBreadcrumbs({
                     </div>
                 </div>
                 <br>
-                {% if data['carsLoop'].length > 0 %}
-                <p><a href="add-one">Add another personal vehicle</a></p><br>
-                {% endif %}
                 <button type="submit" class="ons-btn">
         <span class="ons-btn__inner">Yes, I confirm these are correct</span>
     </button>

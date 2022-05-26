@@ -96,7 +96,38 @@ module.exports = function (router) {
     }
   })
 
-  router.get(path + v + cars + 'calc-value', function (req, res) {
+  router.post(path + v + cars + 'add-one', function (req, res) {
+    req.session.data.carsLoop.push({ description: req.session.data.description })
+    req.session.data.carsLoop.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + cars + 'view-added')
+  })
+
+  router.post(path + v + cars + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + cars + 'add-one')
+    } else {
+      res.redirect(path + v + cars + 'enter-value')
+    }
+  })
+
+  router.get(path + v + cars + 'enter-value', function (req, res) {
+    req.session.data.carsLoop.forEach(x => {
+      if (!x.amount) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.description = x.description
+        res.redirect(path + v + cars + 'vehicle-value')
+      }
+    })
+    res.redirect(path + v + cars + 'calculate-value')
+  })
+
+  router.post(path + v + cars + 'vehicle-value', function (req, res) {
+    const numId = req.session.data.loopingDataId - 1
+    req.session.data.carsLoop.splice(numId, 1, { description: req.session.data.description, amount: req.session.data.amount, commaAmount: numberWithCommas(req.session.data.amount), id: req.session.data.loopingDataId })
+    res.redirect(path + v + cars + 'enter-value')
+  })
+
+  router.get(path + v + cars + 'calculate-value', function (req, res) {
     req.session.data.totalExp = 0
     req.session.data.carsLoop.forEach(x => {
       req.session.data.totalExp += parseInt(x.amount)
@@ -105,19 +136,6 @@ module.exports = function (router) {
     req.session.data.totalExp = req.session.data.totalOtherExpParsed
     req.session.data.totalExpParsed = numberWithCommas(req.session.data.totalExp)
     res.redirect(path + v + cars + 'value-of-vehicles')
-  })
-
-  router.post(path + v + cars + 'add-one', function (req, res) {
-    req.session.data.carsLoop.push({ description: req.session.data.description, amount: req.session.data.amount, commaAmount: numberWithCommas(req.session.data.amount) })
-    res.redirect(path + v + cars + 'view-added')
-  })
-
-  router.post(path + v + cars + 'view-added', function (req, res) {
-    if (req.session.data.addMore === 'yes') {
-      res.redirect(path + v + cars + 'add-one')
-    } else {
-      res.redirect(path + v + cars + 'calc-value')
-    }
   })
 
 
