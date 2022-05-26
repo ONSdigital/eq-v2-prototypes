@@ -44,8 +44,8 @@
                 </tbody>
             </table>
             <br>
-            {% if data['loopingData'].length > 0 %}
-            {% for item in data['loopingData'] %}
+            {% if data['carsLoop'].length > 0 %}
+            {% for item in data['carsLoop'] %}
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
                 <tr>
@@ -90,8 +90,8 @@
             {% endif %}
         </div>
     </div>
-    {% if data['loopingData'].length > 0 %}
-    <p><a href="cars/add-one">Add another personal vehicle</a></p><br>
+    {% if data['carsLoop'].length > 0 %}
+    <p><a href="add-one">Add another personal vehicle</a></p><br>
     {% endif %}
 
     <button type="submit" class="ons-btn">

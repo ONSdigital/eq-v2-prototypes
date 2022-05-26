@@ -1,0 +1,123 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    What was the other service you had expenditure on?
+                </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>If you need to add multiple services, you can do this on the next page.</p>
+                </div>
+            </div>
+            <div class="ons-field">
+                <label class="ons-label" for="select">Description of other service</label>
+                <select id="select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Office administration, office support and other business support services">Office administration, office support and other business support services</option>
+                        <option value="Public administration and compulsory social security services">Public administration and compulsory social security services</option>
+                        <option value="Security and investigation services">Security and investigation services</option>
+                        <option value="Support services to financial and insurance activities">Support services to financial and insurance activities</option>
+                        <option value="Travel accommodation services">Travel accommodation services</option>
+                        <option value="Travel agency, tour operator and other reservation services and related services">Travel agency, tour operator and other reservation services and related services</option>
+
+                        <option value="Creative, arts and entertainment services">Creative, arts and entertainment services</option>
+                        <option value="Gambling and betting services">Gambling and betting services</option>
+                        <option value="Library, archive, museum and other cultural services">Library, archive, museum and other cultural services</option>
+                        <option value="Sporting, amusement and recreation services">Sporting, amusement and recreation services</option>
+
+                        <option value="Buildings and landscape services">Buildings and landscape services</option>
+                        <option value="Construction and construction works for civil engineering; roads, railways, bridges and tunnels">Construction and construction works for civil engineering; roads, railways, bridges and tunnels</option>
+                        <option value="Mining support services">Mining support services</option>
+                        <option value="Specialised construction, demolition and site preparation; electrical and plumbing installation, building completion work">Specialised construction, demolition and site preparation; electrical and plumbing installation, building completion work</option>
+
+                        <option value="Human health services">Human health services</option>
+                        <option value="Residential care services">Residential care services</option>
+                        <option value="Social work services without accommodation">Social work services without accommodation</option>
+
+                        <option value="Information services; data processing, web hosting and IT infrastructure provisioning">Information services; data processing, web hosting and IT infrastructure provisioning</option>
+                        <option value="Motion pictures, video and television programme production services, sound recording and music publishing">Motion pictures, video and television programme production services, sound recording and music publishing</option>
+                        <option value="Printing and reproduction services of recorded media">Printing and reproduction services of recorded media</option>
+                        <option value="Programming and broadcasting services">Programming and broadcasting services</option>
+                        <option value="Publishing services of books, newspapers, journals, advertising space in books and newspapers and software publishing services">Publishing services of books, newspapers, journals, advertising space in books and newspapers and software publishing services</option>
+
+                        <option value="Membership organisation services">Membership organisation services</option>
+                        <option value="Personal services, dry cleaning and laundry, hairdressing and beauty, funeral and related services">Personal services, dry cleaning and laundry, hairdressing and beauty, funeral and related services</option>
+
+                        <option value="Head office and management consulting services">Head office and management consulting services</option>
+                        <option value="Scientific research and development services">Scientific research and development services</option>
+
+                        <option value="Real estate services on a fee or contract basis">Real estate services on a fee or contract basis</option>
+                        <option value="Renting, buying or selling of property">Renting, buying or selling of property</option>
+
+                        <option value="Repair and maintenance services of aircraft and spacecraft">Repair and maintenance services of aircraft and spacecraft</option>
+                        <option value="Repair and maintenance services of ships and boats">Repair and maintenance services of ships and boats</option>
+                        <option value="Repair services of computers, personal and household goods">Repair services of computers, personal and household goods</option>
+
+                        <option value="Air transport services">Air transport services</option>
+                        <option value="Passenger and freight rail transport services">Passenger and freight rail transport services</option>
+                        <option value="Warehousing and transportation support services">Warehousing and transportation support services</option>
+                        <option value="Water transport services">Water transport services</option>
+            </select>
+            </div>
+
+<!--            <div class="ons-field">-->
+<!--                <label class="ons-label" for="value-of-expenditure">Amount spent on this type of service</label>-->
+<!--                <span id="description-hint" class="ons-label__description  ons-input&#45;&#45;with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>-->
+<!--                <span class="ons-input-type ons-input-type&#45;&#45;prefix">-->
+<!--                <span class="ons-input-type__inner">-->
+<!--                  <input name="expenditure" type="text" id="value-of-expenditure" class="ons-input ons-input&#45;&#45;text ons-input-type__input ons-input-number&#45;&#45;w-15" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />-->
+<!--                  <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>-->
+<!--                </span>-->
+<!--              </span>-->
+<!--            </div>-->
+        </fieldset>
+    </div>
+</div>
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.onload = function() {
+    var my_options = $("#select option");
+    var selected = $("select").val();
+
+    my_options.sort(function(a,b) {
+      if (a.text > b.text) return 1;
+      if (a.text < b.text) return -1;
+      return 0
+    })
+
+    $("#select").empty().append( my_options );
+    $("#select").val(selected);
+  }
+</script>
+
+{% endblock %}

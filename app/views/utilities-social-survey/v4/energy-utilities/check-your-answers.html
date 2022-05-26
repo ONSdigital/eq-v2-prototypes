@@ -17,7 +17,7 @@ onsBreadcrumbs({
 {% endblock %}
 
 {% block main %}
-<h1>We calculate the total amount spent on utility bills to be £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00. Is this correct?</h1>
+<h1>We calculate the total amount spent on recurring bills to be £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00. Is this correct?</h1>
 <p></p>
 
 <div class="ons-panel ons-panel--info ons-panel--no-title print__hidden ons-u-mb-l">
@@ -40,9 +40,7 @@ onsBreadcrumbs({
         <tbody class="ons-summary__item" id="first-number-question">
         <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
                 <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">
-                                How much do you spend on gas each month?
-                        </div>
+                        <div class="ons-summary__item--text">Gas</div>
                 </td>
                 <td class="ons-summary__values">
                         £{{ data['totalGasSpendFormatted'] }}.00
@@ -55,9 +53,7 @@ onsBreadcrumbs({
         <tbody class="ons-summary__item" id="second-number-question">
         <tr class="ons-summary__row ons-summary__row--has-values" id="second-number-answer">
                 <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">
-                                How much do you spend on water each month?
-                        </div>
+                        <div class="ons-summary__item--text">Water</div>
                 </td>
                 <td class="ons-summary__values">
                         £{{ data['totalWaterSpendFormatted'] }}.00
@@ -70,9 +66,7 @@ onsBreadcrumbs({
         <tbody class="ons-summary__item" id="third-number-question">
         <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
                 <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">
-                                How much do you spend on electricity each month?
-                        </div>
+                        <div class="ons-summary__item--text">Electricity</div>
                 </td>
                 <td class="ons-summary__values">
                         £{{ data['totalElectricitySpendFormatted'] }}.00
@@ -82,11 +76,30 @@ onsBreadcrumbs({
                 </td>
         </tr>
         </tbody>
+        {% for item in data['billsLoop'] %}
+        <tbody class="ons-summary__item" id="first-number-question">
+        <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">
+                                {{ item.description }}
+                        </div>
+                </td>
+                <td class="ons-summary__values">
+                        £{{ item.commaAmount }}.00
+                </td>
+                <td class="ons-summary__actions">
+                        <a href="#" onclick="notYet();">Change</a>
+                        <span class="ons-summary__spacer"></span>
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove">Remove</a>
+                </td>
+        </tr>
+        </tbody>
+        {% endfor %}
 
         <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
         <tr class="ons-summary__row ons-summary__row--has-values">
                 <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Total spent on utility bills</div>
+                        <div class="ons-summary__item--text">Total spent on recurring bills</div>
                 </td>
                 <td class="ons-summary__values" colspan="2">
                         £{{ data['totalEnergyUtilitiesAmountFormatted'] }}.00
@@ -96,11 +109,13 @@ onsBreadcrumbs({
 </table>
 </div>
 </div>
+{% if data['billsLoop'].length > 0 %}
+<br><p><a href="add-one">Add another recurring bill</a></p><br>
+{% endif %}
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
         {{
         onsButton({
-        "classes": "ons-u-mt-l",
         "text": "Yes, I confirm these are correct"
         })
         }}

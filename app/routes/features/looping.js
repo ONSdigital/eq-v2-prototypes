@@ -8,6 +8,7 @@ var supermarket = 'supermarket/'
 var country = 'countries-travelled-to/'
 var calculatedSummaryEnergy = 'calculated-summary-along-others/'
 var calculatedSummaryLongList = 'long-list-calculated/'
+var calculatedSummaryLongListV2 = 'long-list-calculated-v2/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -225,6 +226,7 @@ module.exports = function (router) {
 
   router.post(path + v + calculatedSummaryEnergy + 'add-one', function (req, res) {
     req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
     res.redirect(path + v + calculatedSummaryEnergy + 'view-added')
   })
 
@@ -233,8 +235,26 @@ module.exports = function (router) {
       res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
     }
     if (req.session.data.addMore === 'no') {
-      res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
+      res.redirect(path + v + calculatedSummaryEnergy + 'collect')
     }
+  })
+
+  router.get(path + v + calculatedSummaryEnergy + 'collect', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (!x.expenditure) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.nameOfService = x.otherExpenditure
+        req.session.data.nameOfExp = x.otherExpenditure.toLowerCase()
+        res.redirect(path + v + calculatedSummaryEnergy + 'add-value')
+      }
+    })
+    res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'add-value', function (req, res) {
+    const numId = req.session.data.loopingDataId - 1
+    req.session.data.loopingData.splice(numId, 1, { otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
+    res.redirect(path + v + calculatedSummaryEnergy + 'collect')
   })
 
   router.get(path + v + calculatedSummaryEnergy + 'calculate-exp', function (req, res) {
@@ -304,4 +324,75 @@ module.exports = function (router) {
   router.post(path + v + calculatedSummaryLongList + 'value-of-expenditure', function (req, res) {
     res.redirect(path + v + calculatedSummaryLongList + 'done')
   })
+
+  // calculated summary with a long list v2
+
+  router.get(path + v + calculatedSummaryLongListV2 + 'start', function (req, res) {
+    req.session.data = {}
+    req.session.data.loopingData = []
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'expenditure-on-rental-and-leasing-services')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'expenditure-on-rental-and-leasing-services', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'expenditure-on-construction-of-buildings')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'expenditure-on-construction-of-buildings', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'anything-to-add')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'anything-to-add', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'add-one')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'add-one', function (req, res) {
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure })
+    req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'view-added')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + calculatedSummaryLongListV2 + 'add-one')
+    }
+    if (req.session.data.addMore === 'no') {
+      res.redirect(path + v + calculatedSummaryLongListV2 + 'collect')
+    }
+  })
+
+  router.get(path + v + calculatedSummaryLongListV2 + 'collect', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (!x.expenditure) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.nameOfService = x.otherExpenditure
+        req.session.data.nameOfExp = x.otherExpenditure.toLowerCase()
+        res.redirect(path + v + calculatedSummaryLongListV2 + 'add-value')
+      }
+    })
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'calculate-exp')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'add-value', function (req, res) {
+    const numId = req.session.data.loopingDataId - 1
+    req.session.data.loopingData.splice(numId, 1, {otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'collect')
+  })
+
+  router.get(path + v + calculatedSummaryLongListV2 + 'calculate-exp', function (req, res) {
+    req.session.data.totalExp = 0
+    req.session.data.loopingData.forEach(x => {
+      req.session.data.totalExp += parseInt(x.expenditure)
+    })
+    req.session.data.totalOtherExpParsed = parseInt(req.session.data.totalExp, 10)
+    req.session.data.rentParsed = parseInt(req.session.data.rent, 10)
+    req.session.data.constructionParsed = parseInt(req.session.data.construction, 10)
+    req.session.data.totalExp = req.session.data.totalOtherExpParsed + req.session.data.rentParsed + req.session.data.constructionParsed
+    req.session.data.totalExpParsed = numberWithCommas(req.session.data.totalExp)
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'value-of-expenditure')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'done')
+  })
+
 }

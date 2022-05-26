@@ -1,0 +1,68 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+{% if data['showValidation'] === 'true' %}
+{% endif %}
+
+<form method="post">
+    <div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+            <fieldset class="ons-fieldset">
+                <legend class="ons-fieldset__legend ons-u-mb-no">
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What percentage of your shopping for household goods is done at each supermarket?</h1>
+                </legend>
+
+                {% for item in data['shopLoop'] %}
+                <div class="ons-field">
+                    <label class="ons-label" for="{{ item.id }}">Percentage of shopping done at {{ item.supermarket }}</label>
+                    <input type="hidden" name="supermarket" value="{{ item.supermarket }}">
+                    <span class="ons-input-type">
+                    <span class="ons-input-type__inner">
+                      <input type="text" id="{{ item.id }}" name="{{ item.id }}" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3 totalprice" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+                      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
+                    </span>
+                  </span>
+                </div>
+                {% endfor %}
+                <input type="hidden" id="error" name="error" value="false">
+
+            </fieldset>
+        </div>
+    </div>
+
+    <button onclick="validatePercent();" type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    function validatePercent() {
+      var sum = 0;
+      $('.totalprice').each(function(){
+        sum += parseFloat(this.value);
+      });
+      if (sum < 100 || sum > 100) {
+        document.getElementById("error").value = "true";
+      }
+    }
+</script>
+{% endblock %}

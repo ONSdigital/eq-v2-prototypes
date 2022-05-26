@@ -23,7 +23,7 @@ onsBreadcrumbs({
         <div class="ons-question__answer ons-u-mb-m">
             <fieldset class="ons-fieldset">
                 <legend class="ons-fieldset__legend ons-u-mb-no">
-                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Do you need to add any other personal vehicles owned or operated by you or your household?</h1>
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Do you need to add any other service you have had expenditure on?</h1>
                 </legend>
                 <div class="ons-summary ons-u-mb-l">
                     <div class="ons-summary__group">
@@ -37,15 +37,15 @@ onsBreadcrumbs({
                             <tbody class="ons-summary__item">
                             <tr class="ons-summary__row">
                                 <td class="ons-summary__item-title">
-                                    <div class="ons-summary__item--text" style="font-weight: bold">Make and model of vehicle</div>
+                                    <div class="ons-summary__item--text" style="font-weight: bold">Description of other service</div>
                                 </td>
                             </tr>
                             </tbody>
-                            {% for item in data['carsLoop'] %}
+                            {% for item in data['loopingData'] %}
                             <tbody class="ons-summary__item">
                             <tr class="ons-summary__row">
                                 <td class="ons-summary__item-title">
-                                    <div class="ons-summary__item--text">{{ item.description }}</div>
+                                    <div class="ons-summary__item--text">{{ item.otherExpenditure }}</div>
                                 </td>
                                 <td class="ons-summary__actions">
                                     <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change details">Change</a>
