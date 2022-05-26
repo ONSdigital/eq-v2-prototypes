@@ -30,13 +30,19 @@ function numberWithCommas (x) {
 module.exports = function (router) {
   // Collector for adding values
 
-  router.post(path + v + collector + 'anything-to-add', function (req, res) {
+  router.get(path + v + collector + 'start', function (req, res) {
     req.session.data.loopingData = []
+    res.redirect(path + v + collector + 'anything-to-add')
+  })
+
+  router.post(path + v + collector + 'anything-to-add', function (req, res) {
     res.redirect(path + v + collector + 'add-one')
   })
 
   router.post(path + v + collector + 'add-one', function (req, res) {
-    req.session.data.loopingData.push({ description: req.session.data.description, acquisition: req.session.data.acquisition, disposal: req.session.data.disposal })
+    req.session.data.loopingData.push({ description: req.session.data.description
+      // acquisition: req.session.data.acquisition, disposal: req.session.data.disposal
+    })
     res.redirect(path + v + collector + 'view-added')
   })
 
@@ -44,12 +50,46 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + collector + 'add-one')
     } else {
-      if (req.session.data.loopingData.length === 1) {
-        res.redirect(path + v + collector + 'done')
-      } else {
-        res.redirect(path + v + collector + 'calculate-acq')
-      }
+      req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+      res.redirect(path + v + collector + 'collect')
     }
+  })
+
+  router.get(path + v + collector + 'collect', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (!x.acquisition) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.descriptionName = x.description
+        req.session.data.descriptionNameLower = x.description.toLowerCase()
+        res.redirect(path + v + collector + 'acq-val')
+      }
+    })
+    res.redirect(path + v + collector + 'collect-2')
+  })
+
+  router.post(path + v + collector + 'acq-val', function (req, res) {
+    const numId = req.session.data.loopingDataId - 1
+    req.session.data.loopingData.splice(numId, 1, { description: req.session.data.descriptionName, acquisition: req.session.data.acquisition, id: req.session.data.loopingDataId })
+    res.redirect(path + v + collector + 'collect-2')
+  })
+
+  router.get(path + v + collector + 'collect-2', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (!x.disposal) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.descriptionName = x.description
+        req.session.data.descriptionNameLower = x.description.toLowerCase()
+        req.session.data.acquistion = x.acquistion
+        res.redirect(path + v + collector + 'dis-val')
+      }
+    })
+    res.redirect(path + v + collector + 'calculate-acq')
+  })
+
+  router.post(path + v + collector + 'dis-val', function (req, res) {
+    const numId2 = req.session.data.loopingDataId - 1
+    req.session.data.loopingData.splice(numId2, 1, { description: req.session.data.descriptionName, acquisition: req.session.data.acquisition, disposal: req.session.data.disposal, id: req.session.data.loopingDataId })
+    res.redirect(path + v + collector + 'collect')
   })
 
   router.get(path + v + collector + 'calculate-acq', function (req, res) {
