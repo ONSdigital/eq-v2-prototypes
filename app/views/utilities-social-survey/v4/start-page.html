@@ -1,0 +1,18 @@
+{% extends "./includes/layout.html" %}
+
+{% block main %}
+<h1>What you need to do</h1>
+
+<p>You'll be asked to provide details for:</p>
+
+<ul><li>Personal vehicles owned or operated by your household</li><li>Household shopping</li><li>Travel</li></ul>
+<br>
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "text": "Start survey"
+        })
+        }}
+</form>
+{% endblock %}

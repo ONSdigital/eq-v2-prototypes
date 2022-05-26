@@ -1,0 +1,49 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Tell us about the vehicle you or your household own or operate</h1>
+            </legend>
+            <div class="ons-field">
+                <label class="ons-label" for="text">Make and model of vehicle</label>
+                <input name="description" type="text" id="text" class="ons-input ons-input--text ons-input-type__input" required="required" autocomplete="off" />
+            </div>
+            <div class="ons-field">
+                <label class="ons-label" for="prefixed">Approximate value of vehicle</label>
+                <span class="ons-input-type ons-input-type--prefix">
+    <span class="ons-input-type__inner">
+      <input name="amount" type="text" id="prefixed" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>
+    </span>
+  </span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

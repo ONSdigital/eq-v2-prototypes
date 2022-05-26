@@ -1,0 +1,94 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+
+<h1>What percent of your total household income do you spend on gas, electric and water?</h1>
+
+<p></p>
+<form method="post">
+
+    <div class="ons-field">
+        <label class="ons-label" for="gas-per-cent">Percentage of total household income spent on gas</label>
+        <span class="ons-input-type">
+    <span class="ons-input-type__inner">
+      <input type="text" id="gas-per-cent" name="gas-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
+    </span>
+  </span>
+    </div>
+
+    <div class="ons-field">
+        <label class="ons-label" for="electricity-per-cent">Percentage of total household income spent on electricity</label>
+        <span class="ons-input-type">
+    <span class="ons-input-type__inner">
+      <input type="text" id="electricity-per-cent" name="electricity-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
+    </span>
+  </span>
+    </div>
+
+    <div class="ons-field">
+        <label class="ons-label" for="water-per-cent">Percentage of total household income spent on water</label>
+        <span class="ons-input-type">
+    <span class="ons-input-type__inner">
+      <input type="text" id="water-per-cent" name="water-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+      <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
+    </span>
+  </span>
+    </div>
+
+    <p class="ons-checkboxes--mutually-exclusive__item ons-u-mt-s">
+        <span class="ons-checkboxes__label ons-u-fs-r--b" aria-hidden="true">Or</span>
+        <span class="ons-checkbox ">
+            <input onclick="clearform();" type="checkbox" id="not-sure"
+                   class="ons-checkbox__input ons-js-exclusive-checkbox" value="not-sure"
+                   data-deselect-message="Selecting this will uncheck all other checkboxes">
+            <label class="ons-checkbox__label" for="not-sure" id="not-sure-label"><span class="ons-u-vh">Or, </span> Not sure</label>
+        </span>
+    </p><br>
+
+    {% from "components/button/_macro.njk" import onsButton %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Save and continue"
+        })
+        }}
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function clearform(){
+    document.getElementById('gas-per-cent').value = '';
+    document.getElementById('electricity-per-cent').value = '';
+    document.getElementById('water-per-cent').value = '';
+  }
+</script>
+
+<script>
+  $(document).ready(clearCheckbox());
+  function clearCheckbox() {
+    $('.ons-input').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+  }
+
+</script>
+{% endblock %}

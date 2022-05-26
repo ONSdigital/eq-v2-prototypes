@@ -1,0 +1,201 @@
+{% extends "./includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'account/sign-in-timeout',
+"id": "back-to-surveys",
+"text": 'Back to surveys'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<div class="ons-panel ons-panel--success ons-panel--no-title ons-u-mb-m">
+
+        <span class="ons-u-vh">Completed: </span>
+        <span class="ons-panel__icon ons-u-fs-xl">
+        <svg class="ons-svg-icon ons-svg-icon--xl" fill="currentColor" focusable="false"
+             viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+                  transform="translate(-1.51 -3.04)"></path>
+        </svg>
+        </span>
+
+        <div class="ons-panel__body ons-svg-icon-margin--xl">
+                <h1 data-qa="title">Thank you for completing the Household Survey</h1>
+                <p data-qa="guidance">
+                        Your answers have been submitted.
+                </p>
+                <dl class="ons-metadata ons-metadata__list ons-grid ons-grid--gutterless ons-u-cf">
+                        <dt class="ons-metadata__term ons-grid__col ons-col-5@m">Submitted on:</dt>
+                        <dd class="ons-metadata__value ons-grid__col ons-col-7@m">22 February 2022 at 20:24</dd>
+                        <dt class="ons-metadata__term ons-grid__col ons-col-5@m">Submission reference:</dt>
+                        <dd class="ons-metadata__value ons-grid__col ons-col-7@m">B17A - 5653 - A468 - 4098</dd>
+                </dl>
+        </div>
+
+
+</div>
+
+<p class="ons-u-mb-s">Your answers will be processed in the next few weeks. We may contact you to query your answers via phone or secure message.</p>
+<p class="ons-u-mb-s">For more information on how we use this data.<br>
+
+<a href="https://www.ons.gov.uk/surveys">https://www.ons.gov.uk/surveys</a></p>
+
+<div class="ons-feedback ons-u-mt-l">
+    <div class="ons-question" id="question">
+        <h1>Give feedback about this service</h1>
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend">
+                How easy or difficult was it to use this service?
+            </legend>
+            <div class="ons-input-items">
+                <div class="ons-radios__items">
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="very-satisfied" class="ons-radio__input js-radio"
+                         value="very-satisfied" name="satisfaction">
+                  <label class="ons-radio__label" for="very-satisfied" id="very-satisfied-label">Very easy
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="somewhat-satisfied"
+                         class="ons-radio__input js-radio" value="somewhat-satisfied"
+                         name="satisfaction">
+                  <label class="ons-radio__label" for="somewhat-satisfied" id="somewhat-satisfied-label">Easy
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="neither" class="ons-radio__input js-radio"
+                         value="neither" name="satisfaction">
+                  <label class="ons-radio__label" for="neither" id="neither-label">Neutral
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="somewhat-dissatisfied"
+                         class="ons-radio__input js-radio" value="somewhat-dissatisfied"
+                         name="satisfaction">
+                  <label class="ons-radio__label" for="somewhat-dissatisfied" id="somewhat-dissatisfied-label">Difficult
+                  </label>
+                  </span>
+                    </p>
+                    <br>
+                    <p class="ons-radios__item">
+                  <span class="ons-radio">
+                  <input type="radio" id="very-dissatisfied" class="ons-radio__input js-radio"
+                         value="very-dissatisfied" name="satisfaction">
+                  <label class="ons-radio__label  " for="very-dissatisfied" id="very-dissatisfied-label">Very difficult
+                  </label>
+                  </span>
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="ons-fieldset">
+            {% from "components/textarea/_macro.njk" import onsTextarea %}
+            {{
+            onsTextarea({
+            "id": "feedback-textarea",
+            "name": "feedback-text",
+            "width": "30",
+            "label": {
+            "text": "Enter your feedback",
+            "description": "Do not include confidential information, such as your contact details"
+            },
+            "charCheckLimit": {
+            "limit": 1000,
+            "charCountSingular": "You have {x} character remaining",
+            "charCountPlural": "You have {x} characters remaining"
+            }
+            })
+            }}
+        </fieldset>
+
+    <br>
+    </div>
+    <a href="thanks-feedback" type="button" class="ons-btn ons-btn--small" id="feedback">
+        <span class="ons-btn__inner">Send feedback</span>
+    </a>
+    <div id="thanks" style="display: none; margin-top: 1em">
+        <h1 class="fieldset__legend-title">Thanks for providing feedback.</h1>
+        <p>We need your help to improve and to make sure the website works well for the people who need it. Once you’ve signed up, you might be asked to:</p>
+        <ul>
+            <li>try out new online features</li>
+            <li>answer questions by email</li>
+            <li>talk to our researchers about how you’ve interacted with us</li>
+        </ul>
+        <p>You can reject an invitation to take part, and can unsubscribe at any time.</p>
+
+        <div class="ons-field">
+            <label class="ons-label" for="text">Full name</label>
+            <input type="text" id="text" class="ons-input ons-input--text ons-input-type__input" />
+        </div>
+
+        <div class="ons-field">
+            <label class="ons-label" for="email">Email address</label>
+
+            <input type="email" id="email" class="ons-input ons-input--text ons-input-type__input" autocomplete="email" />
+        </div>
+        <br>
+
+        <a onclick="showAlert();" href="#" type="button" class="ons-btn ons-btn--small">
+            <span class="ons-btn__inner">Take part in our user research</span>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  $( document ).ready(function() {
+    if ($('#feedback-btn').length > 0) {
+      //it doesn't exist
+      var button = document.getElementById('feedback-btn'); // Assumes element with id='button'
+      button.onclick = function () {
+        var div = document.getElementById('question');
+        var thanks = document.getElementById('thanks');
+        if (div.style.display !== 'none') {
+          div.style.display = 'none';
+          button.style.display = 'none';
+          thanks.style.display = 'block';
+        }
+      };
+    }
+  })
+</script>
+
+<script>
+  var initialTimer = "45:01";
+  var interval = setInterval(function() {
+    var timer = initialTimer.split(':');
+    var minutes = parseInt(timer[0], 10);
+    var seconds = parseInt(timer[1], 10);
+    --seconds;
+    minutes = (seconds < 0) ? --minutes : minutes;
+    if (minutes < 0) clearInterval(interval);
+    seconds = (seconds < 0) ? 59 : seconds;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+    $('.countdown-minutes').html(minutes);
+    $('.countdown-seconds').html(seconds);
+    initialTimer = minutes + ':' + seconds;
+  }, 1000);
+</script>
+{% endblock %}
+
