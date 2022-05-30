@@ -32,7 +32,7 @@ onsBreadcrumbs({
                 {% for item in data['shopLoop'] %}
                 <div class="ons-field">
                     <label class="ons-label" for="{{ item.id }}">Percentage of shopping done at {{ item.supermarket }}</label>
-                    <input type="hidden" name="supermarket" value="{{ item.supermarket }}">
+                    <input type="hidden" name="{{ item.supermarket }}" value="{{ item.supermarket }}">
                     <span class="ons-input-type">
                     <span class="ons-input-type__inner">
                       <input type="text" id="{{ item.id }}" name="{{ item.id }}" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3 totalprice" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
@@ -41,7 +41,6 @@ onsBreadcrumbs({
                   </span>
                 </div>
                 {% endfor %}
-                <input type="hidden" id="error" name="error" value="false">
 
             </fieldset>
         </div>

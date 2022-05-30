@@ -38,30 +38,14 @@ onsBreadcrumbs({
                                                 <ul>
                                                         {% for item in data['shopLoop'] %}
                                                         <li>{{ item.supermarket }}</li>
-                                                        <li>{{ item.id }}</li>
                                                         {% endfor %}
                                                 </ul>
-
                                         </td>
                                         <td class="ons-summary__actions">
                                                 <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
                                         </td>
                                 </tr>
                                 </tbody>
-                                <p>{{data['shopLoop.item']}}</p>
-                                {% for item in data['shopLoop'] %}
-                                <tbody class="ons-summary__item">
-                                <tr class="ons-summary__row ons-summary__row--has-values">
-                                        <td class="ons-summary__item-title">
-                                                <div class="ons-summary__item--text">Percentage of shopping done at {{ item.supermarket }}</div>
-                                        </td>
-                                        <td class="ons-summary__values">{{ item.percentage }}</td>
-                                        <td class="ons-summary__actions">
-                                                <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
-                                        </td>
-                                </tr>
-                                </tbody>
-                                {% endfor %}
 
                         </table>
                         <br>

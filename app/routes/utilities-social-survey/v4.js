@@ -244,7 +244,8 @@ module.exports = function (router) {
   })
 
   router.post(path + v + energyUtilities + 'add-one', function (req, res) {
-    req.session.data.billsLoop.push({ description: req.session.data.description, amount: req.session.data.amount, commaAmount: numberWithCommas(req.session.data.amount) })
+    req.session.data.billsLoop.push({ description: req.session.data.description })
+    req.session.data.billsLoop.forEach((o, i) => o.id = i + 1);
     res.redirect(path + v + energyUtilities + 'view-added')
   })
 
@@ -252,8 +253,25 @@ module.exports = function (router) {
     if (req.session.data.addMore === 'yes') {
       res.redirect(path + v + energyUtilities + 'add-one')
     } else {
-      res.redirect(path + v + energyUtilities + 'calc-value')
+      res.redirect(path + v + energyUtilities + 'enter-value')
     }
+  })
+
+  router.get(path + v + energyUtilities + 'enter-value', function (req, res) {
+    req.session.data.billsLoop.forEach(x => {
+      if (!x.amount) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.description = x.description
+        res.redirect(path + v + energyUtilities + 'bill-value')
+      }
+    })
+    res.redirect(path + v + energyUtilities + 'calc-value')
+  })
+
+  router.post(path + v + energyUtilities + 'bill-value', function (req, res) {
+    const numId = req.session.data.loopingDataId - 1
+    req.session.data.billsLoop.splice(numId, 1, { description: req.session.data.description, amount: req.session.data.amount, commaAmount: numberWithCommas(req.session.data.amount), id: req.session.data.loopingDataId })
+    res.redirect(path + v + energyUtilities + 'enter-value')
   })
 
   router.get(path + v + energyUtilities + 'complete', function (req, res) {
@@ -397,7 +415,7 @@ module.exports = function (router) {
       if (req.session.data.shopLoop.length === 1) {
         res.redirect(path + v + food + 'complete')
       } else {
-        res.redirect(path + v + food + 'percentages')
+        res.redirect(path + v + food + 'complete')
       }
     }
   })
@@ -411,7 +429,13 @@ module.exports = function (router) {
       req.session.data.error = null
       req.session.data.shopLoop.forEach((o, i) => o.percentage = req.session.data + o.id);
 
-      res.redirect(path + v + food + 'complete')
+      req.session.data.shopLoop.forEach(x => {
+        req.session.data.loopingDataId = x.id
+        req.session.data.supermarket = x.supermarket
+        const numId = req.session.data.loopingDataId - 1
+        req.session.data.shopLoop.splice(numId, 1, { supermarket: req.session.data.supermarket, percentage: req.session.data`.${x.id}`, id: req.session.data.loopingDataId })
+        res.redirect(path + v + food + 'complete')
+      })
     }
   })
 
