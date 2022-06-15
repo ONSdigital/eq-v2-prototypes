@@ -40,10 +40,7 @@ module.exports = function (router) {
   })
 
   router.post(path + v + collector + 'add-one', function (req, res) {
-    req.session.data.loopingData.push({ description: req.session.data.description
-      // acquisition: req.session.data.acquisition, disposal: req.session.data.disposal
-    })
-    res.redirect(path + v + collector + 'view-added')
+    res.redirect(path + v + collector + 'acq-val')
   })
 
   router.post(path + v + collector + 'view-added', function (req, res) {
@@ -68,9 +65,7 @@ module.exports = function (router) {
   })
 
   router.post(path + v + collector + 'acq-val', function (req, res) {
-    const numId = req.session.data.loopingDataId - 1
-    req.session.data.loopingData.splice(numId, 1, { description: req.session.data.descriptionName, acquisition: req.session.data.acquisition, id: req.session.data.loopingDataId })
-    res.redirect(path + v + collector + 'collect-2')
+    res.redirect(path + v + collector + 'dis-val')
   })
 
   router.get(path + v + collector + 'collect-2', function (req, res) {
@@ -87,9 +82,8 @@ module.exports = function (router) {
   })
 
   router.post(path + v + collector + 'dis-val', function (req, res) {
-    const numId2 = req.session.data.loopingDataId - 1
-    req.session.data.loopingData.splice(numId2, 1, { description: req.session.data.descriptionName, acquisition: req.session.data.acquisition, disposal: req.session.data.disposal, id: req.session.data.loopingDataId })
-    res.redirect(path + v + collector + 'collect')
+    req.session.data.loopingData.push({ description: req.session.data.description, acquisition: req.session.data.acquisition, disposal: req.session.data.disposal })
+    res.redirect(path + v + collector + 'view-added')
   })
 
   router.get(path + v + collector + 'calculate-acq', function (req, res) {
@@ -265,9 +259,9 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryEnergy + 'add-one', function (req, res) {
-    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
-    req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
-    res.redirect(path + v + calculatedSummaryEnergy + 'view-added')
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryEnergy + 'add-value')
   })
 
   router.post(path + v + calculatedSummaryEnergy + 'view-added', function (req, res) {
@@ -275,7 +269,7 @@ module.exports = function (router) {
       res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
     }
     if (req.session.data.addMore === 'no') {
-      res.redirect(path + v + calculatedSummaryEnergy + 'collect')
+      res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
     }
   })
 
@@ -292,9 +286,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryEnergy + 'add-value', function (req, res) {
-    const numId = req.session.data.loopingDataId - 1
-    req.session.data.loopingData.splice(numId, 1, { otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
-    res.redirect(path + v + calculatedSummaryEnergy + 'collect')
+    // const numId = req.session.data.loopingDataId - 1
+    // req.session.data.loopingData.splice(numId, 1, { otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    res.redirect(path + v + calculatedSummaryEnergy + 'view-added')
   })
 
   router.get(path + v + calculatedSummaryEnergy + 'calculate-exp', function (req, res) {
@@ -386,9 +381,9 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryLongListV2 + 'add-one', function (req, res) {
-    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure })
-    req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
-    res.redirect(path + v + calculatedSummaryLongListV2 + 'view-added')
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'add-value')
   })
 
   router.post(path + v + calculatedSummaryLongListV2 + 'view-added', function (req, res) {
@@ -396,7 +391,7 @@ module.exports = function (router) {
       res.redirect(path + v + calculatedSummaryLongListV2 + 'add-one')
     }
     if (req.session.data.addMore === 'no') {
-      res.redirect(path + v + calculatedSummaryLongListV2 + 'collect')
+      res.redirect(path + v + calculatedSummaryLongListV2 + 'calculate-exp')
     }
   })
 
@@ -413,9 +408,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryLongListV2 + 'add-value', function (req, res) {
-    const numId = req.session.data.loopingDataId - 1
-    req.session.data.loopingData.splice(numId, 1, {otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
-    res.redirect(path + v + calculatedSummaryLongListV2 + 'collect')
+    // const numId = req.session.data.loopingDataId - 1
+    // req.session.data.loopingData.splice(numId, 1, {otherExpenditure: req.session.data.nameOfService, expenditure: req.session.data.expenditure, id: req.session.data.loopingDataId })
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'view-added')
   })
 
   router.get(path + v + calculatedSummaryLongListV2 + 'calculate-exp', function (req, res) {
