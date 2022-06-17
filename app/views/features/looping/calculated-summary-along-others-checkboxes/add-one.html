@@ -1,0 +1,76 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    What was the other energy, water and waste you had expenditure on?
+                    </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>If you need to add multiple types of energy, water and waste, you can do this on the next page.</p>
+                </div>
+            </div>
+            <div class="ons-input-items">
+                <p class="ons-checkboxes__label">Select all that apply</p>
+                <div class="ons-checkboxes__items">
+    <span class="ons-checkboxes__item">
+      <span class="ons-checkbox ">
+        <input name="otherExpenditure-0" type="checkbox" id="coal-lignite" class="ons-checkbox__input ons-js-checkbox " value="Coal and lignite">
+        <label class=" ons-checkbox__label " for="coal-lignite" id="coal-lignite-label">Coal and lignite</label>
+      </span>
+    </span>
+                    <br>
+                    <span class="ons-checkboxes__item">
+      <span class="ons-checkbox ">
+        <input name="otherExpenditure-1" type="checkbox" id="crude-petroleum-and-tar-sands" class="ons-checkbox__input ons-js-checkbox " value="Crude petroleum and tar sands">
+        <label class=" ons-checkbox__label " for="crude-petroleum-and-tar-sands" id="crude-petroleum-and-tar-sands-label">Crude petroleum and tar sands</label>
+      </span>
+    </span>
+                    <br>
+                    <span class="ons-checkboxes__item">
+      <span class="ons-checkbox ">
+        <input name="otherExpenditure-2" type="checkbox" id="natural-gas-liquefied-or-in-gaseous-state" class="ons-checkbox__input ons-js-checkbox " value="Natural gas, liquefied or in gaseous state">
+        <label class=" ons-checkbox__label " for="natural-gas-liquefied-or-in-gaseous-state" id="natural-gas-liquefied-or-in-gaseous-state-label">Natural gas, liquefied or in gaseous state</label>
+      </span>
+    </span>
+                    <br>
+                    <span class="ons-checkboxes__item">
+      <span class="ons-checkbox ">
+        <input name="otherExpenditure-3" type="checkbox" id="remediation-services-and-waste-management-services" class="ons-checkbox__input ons-js-checkbox " value="Remediation services and waste management services">
+        <label class=" ons-checkbox__label " for="remediation-services-and-waste-management-services" id="remediation-services-and-waste-management-services-label">Remediation services and waste management services</label>
+      </span>
+    </span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
