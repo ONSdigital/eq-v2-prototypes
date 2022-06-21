@@ -49,7 +49,7 @@ module.exports = function (router) {
       res.redirect(path + v + collector + 'add-one')
     } else {
       req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
-      res.redirect(path + v + collector + 'collect')
+      res.redirect(path + v + collector + 'calculate-acq')
     }
   })
 
@@ -66,7 +66,8 @@ module.exports = function (router) {
   })
 
   router.post(path + v + collector + 'acq-val', function (req, res) {
-    res.redirect(path + v + collector + 'dis-val')
+    req.session.data.loopingData.push({ description: req.session.data.description, acquisition: req.session.data.acquisition, disposal: req.session.data.disposal })
+    res.redirect(path + v + collector + 'collect-2')
   })
 
   router.get(path + v + collector + 'collect-2', function (req, res) {
@@ -76,10 +77,10 @@ module.exports = function (router) {
         req.session.data.descriptionName = x.description
         req.session.data.descriptionNameLower = x.description.toLowerCase()
         req.session.data.acquistion = x.acquistion
-        res.redirect(path + v + collector + 'dis-val')
+        res.redirect(path + v + collector + 'acq-val')
       }
     })
-    res.redirect(path + v + collector + 'calculate-acq')
+    res.redirect(path + v + collector + 'view-added')
   })
 
   router.post(path + v + collector + 'dis-val', function (req, res) {
@@ -112,6 +113,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + collector + 'value-of-disposals', function (req, res) {
+    res.redirect(path + v + collector + 'summary')
+  })
+
+  router.post(path + v + collector + 'summary', function (req, res) {
     res.redirect(path + v + collector + 'done')
   })
 
@@ -147,8 +152,12 @@ module.exports = function (router) {
     } else {
       req.session.data.showValidation = null
       req.session.data.error = null
-      res.redirect(path + v + postcode + 'done')
+      res.redirect(path + v + postcode + 'summary')
     }
+  })
+
+  router.post(path + v + postcode + 'summary', function (req, res) {
+    res.redirect(path + v + postcode + 'done')
   })
 
   // Free texts
@@ -307,6 +316,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryEnergy + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'summary')
+  })
+
+  router.post(path + v + calculatedSummaryEnergy + 'summary', function (req, res) {
     res.redirect(path + v + calculatedSummaryEnergy + 'done')
   })
 
@@ -388,6 +401,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryEnergyCheckboxes + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergyCheckboxes + 'summary')
+  })
+
+  router.post(path + v + calculatedSummaryEnergyCheckboxes + 'summary', function (req, res) {
     res.redirect(path + v + calculatedSummaryEnergyCheckboxes + 'done')
   })
 
@@ -446,6 +463,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryLongList + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongList + 'summary')
+  })
+
+  router.post(path + v + calculatedSummaryLongList + 'summary', function (req, res) {
     res.redirect(path + v + calculatedSummaryLongList + 'done')
   })
 
@@ -517,6 +538,10 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryLongListV2 + 'value-of-expenditure', function (req, res) {
+    res.redirect(path + v + calculatedSummaryLongListV2 + 'summary')
+  })
+
+  router.post(path + v + calculatedSummaryLongListV2 + 'summary', function (req, res) {
     res.redirect(path + v + calculatedSummaryLongListV2 + 'done')
   })
 
