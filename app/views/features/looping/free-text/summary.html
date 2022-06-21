@@ -21,7 +21,7 @@ onsBreadcrumbs({
 <form method="post">
     <div class="ons-summary">
         <div id="turnover" class="ons-summary__group">
-            <h2 class="ons-summary__group-title">General insurance business</h2>
+            <h1>General insurance business</h2>
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
                 <tr>
@@ -43,18 +43,8 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
             {% if data['loopingData'].length > 0 %}
-            <h2 class="ons-summary__group-title">UK companies or branches that have undertaken general insurance business</h2>
             {% for item in data['loopingData'] %}
-            <table class="ons-summary__items">
-                <thead class="ons-u-vh">
-                <tr>
-                    <th>Question</th>
-                    <th>Answer given</th>
-                    <th>Change answer</th>
-                </tr>
-                </thead>
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
@@ -69,8 +59,6 @@ onsBreadcrumbs({
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove answer">Remove</a>
                     </td>
                 </tr>
-                </tbody>
-                <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
                         <div class="ons-summary__item--text">Registration number</div>
@@ -82,8 +70,6 @@ onsBreadcrumbs({
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
                     </td>
                 </tr>
-                </tbody>
-                <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
                         <div class="ons-summary__item--text">Is this UK company or branch an authorised insurer?</div>
@@ -101,10 +87,10 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
-            <br>
             {% endfor %}
             {% endif %}
+            </table>
+            <br>
         </div>
     </div>
     {% if data['loopingData'].length > 0 %}

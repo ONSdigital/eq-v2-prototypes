@@ -21,7 +21,7 @@ onsBreadcrumbs({
 <form method="post">
     <div class="ons-summary">
         <div id="turnover" class="ons-summary__group">
-            <h2 class="ons-summary__group-title">In-house R&D</h2>
+            <h1>In-house R&D</h1>
             {% if data['loopingData'].length > 0 %}
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
@@ -32,11 +32,13 @@ onsBreadcrumbs({
                 </tr>
                 </thead>
                 <tbody class="ons-summary__item">
-                <tr class="ons-summary__row">
-                    <th colspan="3" class="ons-summary__row-title ons-u-fs-r">Postcode of the workplaces where in-house R&D is carried out</th>
-                </tr>
+                </tbody>
                 {% for item in data['loopingData'] %}
+                <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
+                    <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">What is the postcode of the workplace where in-house R&D is carried out?</div>
+                    </td>
                     <td class="ons-summary__values">
                         {{ item.postcode }}
                     </td>
@@ -63,7 +65,7 @@ onsBreadcrumbs({
                     <th>Change answer</th>
                 </tr>
                 </thead>
-                <tbody class="ons-summary__item">
+                <tbody class="ons-summary__item" style="border-bottom: 0">
                 <tr class="ons-summary__row">
                     <th colspan="3" class="ons-summary__row-title ons-u-fs-r">What percent of in-house R&D is carried out at each of your workplaces?</th>
                 </tr>

@@ -21,7 +21,7 @@ onsBreadcrumbs({
 <form method="post">
     <div class="ons-summary">
         <div id="turnover" class="ons-summary__group">
-            <h2 class="ons-summary__group-title">Expenditure</h2>
+            <h1>Expenditure</h1>
             <table class="ons-summary__items">
                 <thead class="ons-u-vh">
                 <tr>
@@ -42,6 +42,8 @@ onsBreadcrumbs({
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
                     </td>
                 </tr>
+                </tbody>
+                <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
                         <div class="ons-summary__item--text">What was your expenditure on construction of buildings?</div>
@@ -53,6 +55,8 @@ onsBreadcrumbs({
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
                     </td>
                 </tr>
+                </tbody>
+                <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
                         <div class="ons-summary__item--text">Was there any expenditure on any other services?</div>
@@ -65,18 +69,8 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
             {% if data['loopingData'].length > 0 %}
-            <h2 class="ons-summary__group-title">Expenditure on other services</h2>
             {% for item in data['loopingData'] %}
-            <table class="ons-summary__items">
-                <thead class="ons-u-vh">
-                <tr>
-                    <th>Question</th>
-                    <th>Answer given</th>
-                    <th>Change answer</th>
-                </tr>
-                </thead>
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
@@ -93,13 +87,9 @@ onsBreadcrumbs({
                 </tr>
                 </tbody>
                 <tbody class="ons-summary__item">
-                <tr class="ons-summary__row">
-                    <th colspan="3" class="ons-summary__row-title ons-u-fs-r">What was your expenditure on {{ item.otherExpenditure | lower }}?</th>
-                </tr>
-
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Amount spent on {{ item.otherExpenditure | lower}}</div>
+                        <div class="ons-summary__item--text">What was your expenditure on {{ item.otherExpenditure | lower }}?</div>
                     </td>
                     <td class="ons-summary__values">
                         £{{ item.expenditure }}
@@ -109,10 +99,10 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
-            <br>
             {% endfor %}
             {% endif %}
+            </table>
+            <br>
         </div>
     </div>
     {% if data['loopingData'].length > 0 %}

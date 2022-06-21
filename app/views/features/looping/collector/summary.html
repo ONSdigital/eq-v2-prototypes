@@ -43,18 +43,8 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
             {% if data['loopingData'].length > 0 %}
-            <h2 class="ons-summary__group-title">Other transport assets or equipment</h2>
             {% for item in data['loopingData'] %}
-            <table class="ons-summary__items">
-                <thead class="ons-u-vh">
-                <tr>
-                    <th>Question</th>
-                    <th>Answer given</th>
-                    <th>Change answer</th>
-                </tr>
-                </thead>
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
@@ -98,10 +88,10 @@ onsBreadcrumbs({
                     </td>
                 </tr>
                 </tbody>
-            </table>
-            <br>
             {% endfor %}
             {% endif %}
+            </table>
+            <br>
         </div>
     </div>
     {% if data['loopingData'].length > 0 %}
