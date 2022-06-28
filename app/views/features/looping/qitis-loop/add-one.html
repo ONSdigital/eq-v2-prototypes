@@ -1,0 +1,132 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    What international service has your business conducted?
+                </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>If you need to add multiple services, you can do this on the next page.</p>
+                </div>
+            </div>
+            <div class="ons-field">
+                <label class="ons-label" for="select">Description of service</label>
+                <select id="select" name="otherExpenditure" class="ons-input ons-input--select">
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Agricultural, forestry and fishing services">Agricultural, forestry and fishing services</option>
+                        <option value="Mining and oil and gas extraction services">Mining and oil and gas extraction services</option>
+                        <option value="Waste treatment and depollution services">Waste treatment and depollution services</option>
+                        <option value="Manufacturing services on goods owned by others">Manufacturing services on goods owned by others</option>
+                        <option value="Maintenance and repair services">Maintenance and repair services</option>
+                        <option value="Accountancy, auditing, bookkeeping and tax consulting services">Accountancy, auditing, bookkeeping and tax consulting services</option>
+                        <option value="Advertising, market research and public opinion polling services">Advertising, market research and public opinion polling services</option>
+                        <option value="Business management and management consulting services">Business management and management consulting services</option>
+                        <option value="Public relations services">Public relations services</option>
+                        <option value="Recruitment services">Recruitment services</option>
+                        <option value="Legal services">Legal services</option>
+                        <option value="Operating leasing services">Operating leasing services</option>
+                        <option value="Procurement services">Procurement services</option>
+                        <option value="Property management services">Property management services</option>
+                        <option value="Other businesses and professional services">Other businesses and professional services</option>
+                        <option value="Provision of R&D services">Provision of R&D services</option>
+                        <option value="Provision of product development and testing activities">Provision of product development and testing activities</option>
+                        <option value="Trade marks, franchises, brands or design rights">Trade marks, franchises, brands or design rights</option>
+                        <option value="Copyrighted literary works, sound recordings, films, television programmes and databases">Copyrighted literary works, sound recordings, films, television programmes and databases</option>
+                        <option value="Patents and other intellectual property that are the end result of research and development">Patents and other intellectual property that are the end result of research and development</option>
+                        <option value="Postal and courier services">Postal and courier services</option>
+                        <option value="Telecommunication services">Telecommunication services</option>
+                        <option value="Computer services">Computer services</option>
+                        <option value="Publishing services">Publishing services</option>
+                        <option value="News agency services">News agency services</option>
+                        <option value="Information services">Information services</option>
+                        <option value="Construction in the UK">Construction in the UK</option>
+                        <option value="Construction outside the UK">Construction outside the UK</option>
+                        <option value="Financial services">Financial services</option>
+                        <option value="Life insurance claims">Life insurance claims</option>
+                        <option value="Life insurance premiums">Life insurance premiums</option>
+                        <option value="Freight insurance claims">Freight insurance claims</option>
+                        <option value="Freight insurance premiums">Freight insurance premiums</option>
+                        <option value="Other direct insurance claims">Other direct insurance claims</option>
+                        <option value="Other direct insurance premiums">Other direct insurance premiums</option>
+
+                        <option value="Auxiliary services">Auxiliary services</option>
+                        <option value="Pension service receipts">Pension service receipts</option>
+                        <option value="Pension service charges">Pension service charges</option>
+                        <option value="Standardised guarantee service claims">Standardised guarantee service claims</option>
+                        <option value="Standardised guarantee service premiums">Standardised guarantee service premiums</option>
+                        <option value="Merchanting">Merchanting</option>
+                        <option value="Other trade-related services">Other trade-related services</option>
+                        <option value="Audio-visual and related services">Audio-visual and related services</option>
+                        <option value="Medical services">Medical services</option>
+                        <option value="Training and educational services">Training and educational services</option>
+                        <option value="Heritage and recreational services">Heritage and recreational services</option>
+                        <option value="Social, domestic and other personal services">Social, domestic and other personal services</option>
+                        <option value="Architectural services">Architectural services</option>
+                        <option value="Engineering services">Engineering services</option>
+                        <option value="Scientific and other technical services (including surveying)">Scientific and other technical services (including surveying)</option>
+                        <option value="Transactions between related businesses not included elsewhere">Transactions between related businesses not included elsewhere</option>
+                        <option value="Other trade in services">Other trade in services</option>
+            </select>
+            </div>
+
+<!--            <div class="ons-field">-->
+<!--                <label class="ons-label" for="value-of-expenditure">Amount spent on this type of service</label>-->
+<!--                <span id="description-hint" class="ons-label__description  ons-input&#45;&#45;with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>-->
+<!--                <span class="ons-input-type ons-input-type&#45;&#45;prefix">-->
+<!--                <span class="ons-input-type__inner">-->
+<!--                  <input name="expenditure" type="text" id="value-of-expenditure" class="ons-input ons-input&#45;&#45;text ons-input-type__input ons-input-number&#45;&#45;w-15" title="British pounds (GBP)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />-->
+<!--                  <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="British pounds (GBP)">£</abbr>-->
+<!--                </span>-->
+<!--              </span>-->
+<!--            </div>-->
+        </fieldset>
+    </div>
+</div>
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.onload = function() {
+    var my_options = $("#select option");
+    var selected = $("select").val();
+
+    my_options.sort(function(a,b) {
+      if (a.text > b.text) return 1;
+      if (a.text < b.text) return -1;
+      return 0
+    })
+
+    $("#select").empty().append( my_options );
+    $("#select").val(selected);
+  }
+</script>
+
+{% endblock %}

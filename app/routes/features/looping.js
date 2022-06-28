@@ -10,6 +10,7 @@ var calculatedSummaryEnergy = 'calculated-summary-along-others/'
 var calculatedSummaryEnergyCheckboxes = 'calculated-summary-along-others-checkboxes/'
 var calculatedSummaryLongList = 'long-list-calculated/'
 var calculatedSummaryLongListV2 = 'long-list-calculated-v2/'
+var qitis = 'qitis-loop/'
 
 var months = [
   'January', 'February', 'March', 'April', 'May',
@@ -543,6 +544,69 @@ module.exports = function (router) {
 
   router.post(path + v + calculatedSummaryLongListV2 + 'summary', function (req, res) {
     res.redirect(path + v + calculatedSummaryLongListV2 + 'done')
+  })
+
+  // qitis looping
+
+  router.get(path + v + qitis + 'start', function (req, res) {
+    req.session.data = {}
+    req.session.data.loopingData = []
+    req.session.data.countryData = []
+    res.redirect(path + v + qitis + 'add-one')
+  })
+
+  router.post(path + v + qitis + 'add-one', function (req, res) {
+    req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure })
+    res.redirect(path + v + qitis + 'view-added')
+  })
+
+  router.post(path + v + qitis + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + qitis + 'add-one')
+    }
+    if (req.session.data.addMore === 'no') {
+      req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+      res.redirect(path + v + qitis + 'route-countries')
+    }
+  })
+
+  router.get(path + v + qitis + 'route-countries', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (x.countryComplete !== true) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.nameOfService = x.otherExpenditure
+        req.session.data.countryData = []
+        res.redirect(path + v + qitis + 'add-country')
+      }
+    })
+    res.redirect(path + v + qitis + 'done')
+  })
+
+  router.post(path + v + qitis + 'add-country', function (req, res) {
+    req.session.data.countryData.push({ country: req.session.data.country, income: req.session.data.income, expenditure: req.session.data.expenditure })
+    res.redirect(path + v + qitis + 'view-countries')
+  })
+
+  router.post(path + v + qitis + 'view-countries', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + qitis + 'add-country')
+    }
+    if (req.session.data.addMore === 'no') {
+      const numId = req.session.data.loopingDataId - 1
+      req.session.data.loopingData.splice(numId, 1, { otherExpenditure: req.session.data.nameOfService, id: req.session.data.loopingDataId, countryComplete: true })
+      res.redirect(path + v + qitis + 'route-countries')
+    }
+  })
+
+  router.get(path + v + qitis + 'country-spend', function (req, res) {
+    req.session.data.loopingData.forEach(x => {
+      if (!x.expenditure) {
+        req.session.data.loopingDataId = x.id
+        req.session.data.nameOfService = x.otherExpenditure
+        res.redirect(path + v + qitis + 'add-country')
+      }
+    })
+    res.redirect(path + v + qitis + 'country-spend')
   })
 
 }
