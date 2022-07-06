@@ -1,0 +1,47 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    How much overtime pay, before deductions, did Barry Scott receive?
+                </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>Exclude:</p>
+                    <ul>
+                        <li>basic pay</li>
+                        <li>shift premium pay</li>
+                        <li>bonus pay</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="ons-field">
+                <label class="ons-label" for="prefixed">Overtime pay</label>
+                <span class="ons-input-type ons-input-type--prefix">
+    <span class="ons-input-type__inner">
+      <input name="overtimePay" type="text" id="prefixed" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-10" aria-labelledby="" pattern="[0-9]*" inputmode="numeric" autocomplete="off" required="required" />
+      <abbr class="ons-input-type__type ons-js-input-abbr" title="British pounds (GBP)">£</abbr>
+    </span>
+  </span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

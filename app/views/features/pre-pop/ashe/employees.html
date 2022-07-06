@@ -1,0 +1,81 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    You have 2 employees that fit the criteria for this survey
+                </h1>
+            </legend>
+
+            <div class="ons-summary ons-u-mb-l">
+                <div class="ons-summary__group">
+                    <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody class="ons-summary__item">
+                        <tr class="ons-summary__row">
+                            <td class="ons-summary__item-title" style="width: 50%">
+            <span class="ons-summary__item-title-icon ">
+              <svg class="ons-svg-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                <path d="M7,9H9a5,5,0,0,1,5,5H2A5,5,0,0,1,7,9Z" transform="translate(-2 -2)" />
+                <circle cx="6" cy="3" r="3" />
+              </svg>
+            </span>
+                                <div class="ons-summary__item--text ons-summary__item-title--text">Barry Scott</div>
+                            </td>
+                            <td class="ons-summary__item-title">
+                                <div class="ons-summary__item--text ons-summary__item-title--text">AB123414A</div>
+                            </td>
+                            <td class="ons-summary__actions">
+                                <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove Barry Scott">Remove</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item">
+                        <tr class="ons-summary__row">
+                            <td class="ons-summary__item-title" style="width: 50%">
+            <span class="ons-summary__item-title-icon ">
+              <svg class="ons-svg-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                <path d="M7,9H9a5,5,0,0,1,5,5H2A5,5,0,0,1,7,9Z" transform="translate(-2 -2)" />
+                <circle cx="6" cy="3" r="3" />
+              </svg>
+            </span>
+                                <div class="ons-summary__item--text ons-summary__item-title--text">Wilhelmina Susannah Clementine-Smith</div>
+                            </td>
+                            <td class="ons-summary__item-title">
+                                <div class="ons-summary__item--text ons-summary__item-title--text">DM123414A</div>
+                            </td>
+                            <td class="ons-summary__actions">
+                                <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove Susan Gill">Remove</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="ons-summary__link ons-u-pt-s ons-u-bt">
+                        <a data-qa="add-item-link" href="#0" onclick="showAlert();">Add an employee</a>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

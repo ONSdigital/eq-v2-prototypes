@@ -1,0 +1,64 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    On 18 April 2022, was Barry Scott a paid employee in your
+                    organisation working in the United Kingdom and receiving a salary
+                    or wage?
+                </h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>Exclude:</p>
+                    <ul>
+                        <li>a company director who does not receive a salary</li>
+                        <li>an offshore oil rig worker</li>
+                        <li>a self-employed person</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            {% from "components/radios/_macro.njk" import onsRadios %}
+            {{
+            onsRadios({
+            "dontWrap": true,
+            "name": "employeePaid",
+            "radios": [
+            {
+            "id": "yes",
+            "label": {
+            "text": "Yes"
+            },
+            "value": "yes"
+            },
+            {
+            "id": "no",
+            "label": {
+            "text": "No"
+            },
+            "value": "no"
+            }
+            ]
+            })
+            }}
+
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

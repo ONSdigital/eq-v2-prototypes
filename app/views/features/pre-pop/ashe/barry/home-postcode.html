@@ -1,0 +1,57 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    Was the home postcode for Barry E3 3CD?
+                </h1>
+            </legend>
+            {% from "components/radios/_macro.njk" import onsRadios %}
+            {{
+            onsRadios({
+            "dontWrap": true,
+            "name": "home-postcode",
+            "radios": [
+            {
+            "id": "yes",
+            "label": {
+            "text": "Yes"
+            },
+            "value": "yes"
+            },
+            {
+            "id": "no",
+            "label": {
+            "text": "No"
+            },
+            "value": "no",
+            "other": {
+            "otherType": "input",
+            "id": "no-textbox",
+            "name": "no-answer",
+            "label": {
+            "text": "Enter postcode"
+            }
+            }
+            }
+            ]
+            })
+            }}
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

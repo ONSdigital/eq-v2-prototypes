@@ -1,0 +1,32 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">
+                    What is the workplace postcode for Wilhelmina Susannah Clementine-Smith?
+                </h1>
+            </legend>
+                    <p>The postcode should be for the employee’s usual
+                        local site or office.</p>
+            <div class="ons-field">
+                <label class="ons-label" for="address-postcode">Postcode</label>
+                <input type="text" id="address-postcode" class="ons-input ons-input--text ons-input-type__input ons-js-address-postcode ons-input--w-7" name="address-postcode" />
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}

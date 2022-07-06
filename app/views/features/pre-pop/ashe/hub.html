@@ -1,0 +1,186 @@
+{% extends "./../../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+{% if data['barryComplete'] === true and data['wilhelminaComplete'] === true %}
+<h1>Submit survey</h1>
+<div class="ons-container">
+        <div class="ons-panel ons-panel--warn ons-panel--no-title">
+                <span class="ons-panel__icon" aria-hidden="true">!</span>
+                <span class="ons-u-vh">Warning: </span>
+                <div class="ons-panel__body">
+                        <p data-qa="warning">You must submit this survey to complete it</p>
+                </div>
+        </div>
+</div>
+{% else %}
+<h1>Choose a section to complete</h1>
+{% endif %}
+
+<div class="ons-summary ons-u-mt-m ons-summary--hub">
+        <div class="ons-summary__group">
+                <table class="ons-summary__items">
+                        <thead class="ons-u-vh">
+                        <tr>
+                                <th>Name of section or person</th>
+                                <th>Section progress</th>
+                                <th>Access section</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+
+                                        <div class="ons-summary__item--text ons-summary__item-title--text">Employees for this survey</div>
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                </td>
+                                <td class="ons-summary__values">
+                                        Completed
+                                </td>
+                                <td class="ons-summary__actions">
+                                        <a href="#" onclick="showAlert();"
+                                           class="ons-summary__button"
+                                           aria-label="View answers">
+                                                View answers</a>
+                                </td>
+
+                        </tr>
+                        </tbody>
+
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                {% if data['barryComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                {% endif %}
+                                        <div class="ons-summary__item--text {% if data['barryComplete'] === true %}ons-summary__item-title--text{% endif %}">Barry Scott</div>
+                                        {% if data['barryComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['barryComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['barryComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['barryComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['barryComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="#" onclick="showAlert();"
+                                           class="ons-summary__button"
+                                           aria-label="View answers">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['barryComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="barry/when"
+                                           class="ons-summary__button"
+                                           aria-label="Start section housing section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                        <tbody class="ons-summary__item">
+
+                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                <td class="ons-summary__item-title">
+                                {% if data['wilhelminaComplete'] === true %}
+                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                        </svg>
+                                        </span>
+                                {% endif %}
+                                        <div class="ons-summary__item--text {% if data['wilhelminaComplete'] === true %}ons-summary__item-title--text{% endif %}">Wilhelmina Susannah Clementine-Smith</div>
+                                        {% if data['wilhelminaComplete'] === true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                        {% endif %}
+                                        {% if data['wilhelminaComplete'] !== true %}
+                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        {% endif %}
+                                </td>
+                                <td class="ons-summary__values">
+                                        {% if data['wilhelminaComplete'] === true %}
+                                        Completed
+                                        {% endif %}
+                                        {% if data['wilhelminaComplete'] !== true %}
+                                        Not started
+                                        {% endif %}
+                                </td>
+                                {% if data['wilhelminaComplete'] === true %}
+                                <td class="ons-summary__actions">
+                                        <a href="#" onclick="showAlert();"
+                                           class="ons-summary__button"
+                                           aria-label="View answers">
+                                                View answers</a>
+                                </td>
+                                {% endif %}
+                                {% if data['wilhelminaComplete'] !== true %}
+                                <td class="ons-summary__actions">
+                                        <a href="infrastructure/value-new"
+                                           class="ons-summary__button"
+                                           aria-label="Start section infrastructure section">
+                                                Start section</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                        </tbody>
+                </table>
+
+        </div>
+</div>
+
+<form method="post">
+{% from "components/button/_macro.njk" import onsButton %}
+        {% if data['barryComplete'] === true and data['wilhelminaComplete'] === true %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Submit survey"
+        })
+        }}
+        {% else %}
+        {{
+        onsButton({
+        "classes": "ons-u-mt-l",
+        "text": "Continue"
+        })
+        }}
+        {% endif %}
+</form>
+{% endblock %}
