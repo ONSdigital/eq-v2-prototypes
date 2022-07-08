@@ -36,7 +36,7 @@ module.exports = function (router) {
       res.redirect(path + v + ashe + wilhelmina + 'when')
     }
     else {
-      res.redirect(path + v + ashe + 'index')
+      res.redirect(path + v + 'index')
     }
   })
 
