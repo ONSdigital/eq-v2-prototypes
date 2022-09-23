@@ -37,10 +37,10 @@ onsBreadcrumbs({
                 <tbody class="ons-summary__item">
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <!--<td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">What is the postcode of the workplace where in-house R&D is carried out?</div>
+                        <div class="ons-summary__item--text">What is the supermarket of the workplace where in-house R&D is carried out?</div>
                     </td>-->
                     <td class="ons-summary__values">
-                        {{ item.postcode }}
+                        {{ item.supermarket }}
                     </td>
                     <td class="ons-summary__actions">
                         <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change details">Change</a>
@@ -54,7 +54,7 @@ onsBreadcrumbs({
             <br>
 
             {% if data['loopingData'].length > 0 %}
-            <p><a href="add-postcodes">Add another supermarket</a></p>
+            <p><a href="add-supermarket">Add another supermarket</a></p>
             {% endif %}
             <hr>
             <table class="ons-summary__items">
@@ -72,7 +72,7 @@ onsBreadcrumbs({
             {% for item in data['loopingData'] %}
                 <tr class="ons-summary__row ons-summary__row--has-values">
                     <td class="ons-summary__item-title">
-                        <div class="ons-summary__item--text">Percentage of shopping carried out at {{ item.postcode }}</div>
+                        <div class="ons-summary__item--text">Percentage of shopping carried out at {{ item.supermarket }}</div>
                     </td>
                     <td class="ons-summary__values">
                         25%

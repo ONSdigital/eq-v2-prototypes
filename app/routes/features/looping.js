@@ -2,7 +2,7 @@ var path = '/features/'
 var pathGet = 'features/'
 var v = 'looping/'
 var collector = 'collector/'
-var postcode = 'postcode/'
+var supermarket = 'supermarket/'
 var countries = 'countries/'
 var percentages = 'percentages/'
 var freeText = 'free-text/'
@@ -123,44 +123,44 @@ module.exports = function (router) {
     res.redirect(path + v + collector + 'done')
   })
 
-  // Postcode
+  // supermarket
 
-  router.get(path + v + postcode + 'start', function (req, res) {
+  router.get(path + v + supermarket + 'start', function (req, res) {
     req.session.data.loopingData = []
-    res.redirect(path + v + postcode + 'add-postcodes')
+    res.redirect(path + v + supermarket + 'add-supermarket')
   })
 
-  router.post(path + v + postcode + 'add-postcodes', function (req, res) {
-    req.session.data.loopingData.push({ postcode: req.session.data.postcode })
-    res.redirect(path + v + postcode + 'view-postcodes')
+  router.post(path + v + supermarket + 'add-supermarket', function (req, res) {
+    req.session.data.loopingData.push({ supermarket: req.session.data.supermarket })
+    res.redirect(path + v + supermarket + 'view-supermarket')
   })
 
-  router.post(path + v + postcode + 'view-postcodes', function (req, res) {
+  router.post(path + v + supermarket + 'view-supermarket', function (req, res) {
     if (req.session.data.addMore === 'yes') {
-      res.redirect(path + v + postcode + 'add-postcodes')
+      res.redirect(path + v + supermarket + 'add-supermarket')
     }
     if (req.session.data.addMore === 'no') {
       if (req.session.data.loopingData.length === 1) {
-        res.redirect(path + v + postcode + 'done')
+        res.redirect(path + v + supermarket + 'done')
       } else {
-        res.redirect(path + v + postcode + 'percentages')
+        res.redirect(path + v + supermarket + 'percentages')
       }
     }
   })
 
-  router.post(path + v + postcode + 'percentages', function (req, res) {
+  router.post(path + v + supermarket + 'percentages', function (req, res) {
     if (req.session.data.error === 'true') {
       req.session.data.showValidation = true
-      res.redirect(path + v + postcode + 'percentages')
+      res.redirect(path + v + supermarket + 'percentages')
     } else {
       req.session.data.showValidation = null
       req.session.data.error = null
-      res.redirect(path + v + postcode + 'summary')
+      res.redirect(path + v + supermarket + 'summary')
     }
   })
 
-  router.post(path + v + postcode + 'summary', function (req, res) {
-    res.redirect(path + v + postcode + 'done')
+  router.post(path + v + supermarket + 'summary', function (req, res) {
+    res.redirect(path + v + supermarket + 'done')
   })
 
 
