@@ -1,0 +1,126 @@
+{% extends "./../includes/layout.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+    {{
+    onsBreadcrumbs({
+    "ariaLabel": 'Previous',
+    "itemsList": [
+    {
+    "url": 'javascript:history.back()',
+    "id": "previous",
+    "text": 'Previous'
+    }
+    ]
+    })
+    }}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="ons-summary">
+        <div id="turnover" class="ons-summary__group">
+            <h1 class="ons-summary__group-title">Countries you have visited in the last 10 years</h1>
+            <table class="ons-summary__items">
+                <thead class="ons-u-vh">
+                <tr>
+                    <!--<th>Question</th>-->
+                    <th>Answer given</th>
+                    <th>Change answer</th>
+                </tr>
+                </thead>
+                <!--<tbody class="ons-summary__item">
+                <tr class="ons-summary__row ons-summary__row--has-values">
+                    <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Countries visited</div>
+                    </td>
+                    <td class="ons-summary__values">
+                        {{data['anythingToAdd']}}
+                    </td>
+                    <td class="ons-summary__actions">
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                    </td>
+                </tr>
+                </tbody>-->
+            </table>
+            <br>
+            {% if data['countriesLoop'].length > 0 %}
+            {% for item in data['countriesLoop'] %}
+            <table class="ons-summary__items">
+                <thead class="ons-u-vh">
+                <tr>
+                    <!--<th>Question</th>-->
+                    <th>Answer given</th>
+                    <th>Change answer</th>
+                </tr>
+                </thead>
+                <tbody class="ons-summary__item">
+                <tr class="ons-summary__row ons-summary__row--has-values">
+                    <!--<td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Make and model of vehicle</div>
+                    </td>-->
+                    <td class="ons-summary__values">
+                        {{ item.description }}
+                    </td>
+                    <td class="ons-summary__actions">
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                        <span class="ons-summary__spacer"></span>
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Remove answer">Remove</a>
+                    </td>
+                </tr>
+                </tbody>
+                <!--<tbody class="ons-summary__item">
+                <tr class="ons-summary__row ons-summary__row--has-values">
+                    <td class="ons-summary__item-title">
+                        <div class="ons-summary__item--text">Approximate value of {{ item.description }}</div>
+                    </td>
+                    <td class="ons-summary__values">
+                        £{{ item.commaAmount }}.00
+                    </td>
+                    <td class="ons-summary__actions">
+                        <a href="#0" onclick="showAlert();" class="ons-summary__button" aria-label="Change answer">Change</a>
+                    </td>
+                </tr>
+                </tbody>-->
+            </table>
+            <br>
+            {% endfor %}
+            {% else %}
+            <br>
+            {% endif %}
+        </div>
+    </div>
+    {% if data['countriesLoop'].length > 0 %}
+    <p><a href="add-one">Add another country</a></p><br>
+    {% endif %}
+
+    <button type="submit" class="ons-btn">
+        <span class="ons-btn__inner">Save and continue</span>
+    </button>
+
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function clearform(){
+    document.getElementById('telephone').value = '';
+    document.getElementById('email').value = '';
+  }
+</script>
+
+<script>
+  $(document).ready(clearCheckbox());
+  function clearCheckbox() {
+    $('#telephone').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+    $('#email').on('input', function() {
+      $("#not-sure").prop("checked", false);
+    });
+  }
+
+</script>
+{% endblock %}
+
+

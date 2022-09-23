@@ -1,0 +1,124 @@
+{% set serviceName = "eQ prototypes" %}
+{% extends "base.html" %}
+
+{% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/autosuggest/_macro.njk" import onsAutosuggest %}
+{{
+onsBreadcrumbs({
+"ariaLabel": 'Previous',
+"itemsList": [
+{
+"url": 'javascript:history.back()',
+"id": "previous",
+"text": 'Previous'
+}
+]
+})
+}}
+{% endblock %}
+
+{% block main %}
+<form method="post">
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+    <div class="ons-question__answer ons-u-mb-m">
+        <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Which overseas countries have you visited in the last 10 years?</h1>
+            </legend>
+            <div class="ons-panel ons-panel--info ons-panel--no-title">
+                <span class="ons-u-vh">Important information: </span>
+                <div class="ons-panel__body">
+                    <p>If you need to add multiple countries, you can do this on the next page.</p>
+                </div>
+            </div>
+
+            <div class="ons-grid ons-grid--gutterless ons-u-mt-s">
+                <div class="ons-grid__col ons-col-8@m">
+            
+                    {{ onsAutosuggest({
+                        "id": "country-of-birth",
+                        "label": {
+                            "text": "Current name of country",
+                            "description": "Enter your own answer or select from suggestions",
+                            "id": "country-of-birth-label"
+                        },
+                        "autocomplete": "off",
+                        "instructions": "Use up and down keys to navigate suggestions once you\'ve typed more than two characters. Use the enter key to select a suggestion. Touch device users, explore by touch or with swipe gestures.",
+                        "ariaYouHaveSelected": "You have selected",
+                        "ariaMinChars": "Enter 3 or more characters for suggestions.",
+                        "ariaOneResult": "There is one suggestion available.",
+                        "ariaNResults": "There are {n} suggestions available.",
+                        "ariaLimitedResults": "Results have been limited to 10 suggestions. Type more characters to improve your search",
+                        "moreResults": "Continue entering to improve suggestions",
+                        "resultsTitle": "Suggestions",
+                        "resultsTitleId": "country-of-birth-suggestions",
+                        "autosuggestData": "https://gist.githubusercontent.com/jrbarnes9/65d5e0143cdb84b8bcc317b2e736bea2/raw/826396b0b9b4756f68e60596dc27797356154a50/countries.json",
+                        "noResults": "No suggestions found. You can enter your own answer",
+                        "name": "description",
+                        "typeMore": "Continue entering to get suggestions"
+                    }) }}
+            
+                </div>
+            </div>
+            <!--<div class="ons-field">
+                <input name="description" type="text" id="text" class="ons-input ons-input--text ons-input-type__input" required="required" autocomplete="off" />
+                <div class="ons-field">
+                    <label class="ons-label" for="select">Select a country</label>
+                    <select id="select" name="description" class="ons-input ons-input--select">
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="Fiji">Fiji</option>
+                            <option value="France">France</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Malta">Malta</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Senegal">Senegal</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States of America">United States of America</option>
+                            
+                </select>
+                </div>
+            </div>-->
+        </fieldset> 
+    </div>
+</div>
+
+<button type="submit" class="ons-btn">
+    <span class="ons-btn__inner">Save and continue</span>
+</button>
+</form>
+{% endblock %}
+{% block pageScripts %}
+<script>
+  window.onload = function() {
+    var my_options = $("#select option");
+    var selected = $("select").val();
+
+    my_options.sort(function(a,b) {
+      if (a.text > b.text) return 1;
+      if (a.text < b.text) return -1;
+      return 0
+    })
+
+    $("#select").empty().append( my_options );
+    $("#select").val(selected);
+  }
+</script>
+
+{% endblock %}

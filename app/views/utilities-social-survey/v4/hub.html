@@ -47,50 +47,97 @@ onsBreadcrumbs({
 
                         <tbody class="ons-summary__item">
 
-                        <tr class="ons-summary__row ons-summary__row--has-values">
-                                <td class="ons-summary__item-title">
-                                {% if data['carsComplete'] === true %}
-                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
-                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
-                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
-                                        </svg>
-                                        </span>
-                                {% endif %}
-                                        <div class="ons-summary__item--text {% if data['carsComplete'] === true %}ons-summary__item-title--text{% endif %}">Personal vehicles</div>
+                                <tr class="ons-summary__row ons-summary__row--has-values">
+                                        <td class="ons-summary__item-title">
                                         {% if data['carsComplete'] === true %}
-                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                                <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                                <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                                    <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                                </svg>
+                                                </span>
+                                        {% endif %}
+                                                <div class="ons-summary__item--text {% if data['carsComplete'] === true %}ons-summary__item-title--text{% endif %}">Personal vehicles</div>
+                                                {% if data['carsComplete'] === true %}
+                                                <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                                {% endif %}
+                                                {% if data['carsComplete'] !== true %}
+                                                <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                                {% endif %}
+                                        </td>
+                                        <td class="ons-summary__values">
+                                                {% if data['carsComplete'] === true %}
+                                                Completed
+                                                {% endif %}
+                                                {% if data['carsComplete'] !== true %}
+                                                Not started
+                                                {% endif %}
+                                        </td>
+                                        {% if data['carsComplete'] === true %}
+                                        <td class="ons-summary__actions">
+                                                <a href="cars/summary"
+                                                   class="ons-summary__button"
+                                                   aria-label="View answers for energy utilities">
+                                                        View answers</a>
+                                        </td>
                                         {% endif %}
                                         {% if data['carsComplete'] !== true %}
-                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                        <td class="ons-summary__actions">
+                                                <a href="cars/start"
+                                                   class="ons-summary__button"
+                                                   aria-label="Start section about you section">
+                                                        Start section</a>
+                                        </td>
                                         {% endif %}
-                                </td>
-                                <td class="ons-summary__values">
-                                        {% if data['carsComplete'] === true %}
-                                        Completed
-                                        {% endif %}
-                                        {% if data['carsComplete'] !== true %}
-                                        Not started
-                                        {% endif %}
-                                </td>
-                                {% if data['carsComplete'] === true %}
-                                <td class="ons-summary__actions">
-                                        <a href="cars/summary"
-                                           class="ons-summary__button"
-                                           aria-label="View answers for energy utilities">
-                                                View answers</a>
-                                </td>
-                                {% endif %}
-                                {% if data['carsComplete'] !== true %}
-                                <td class="ons-summary__actions">
-                                        <a href="cars/start"
-                                           class="ons-summary__button"
-                                           aria-label="Start section about you section">
-                                                Start section</a>
-                                </td>
-                                {% endif %}
-                        </tr>
-                        </tbody>
-                        <tbody class="ons-summary__item">
+                                </tr>
+                                </tbody>
+
+                                <tbody class="ons-summary__item">
+
+                                        <tr class="ons-summary__row ons-summary__row--has-values">
+                                                <td class="ons-summary__item-title">
+                                                {% if data['countriesComplete'] === true %}
+                                                        <span class="ons-summary__item-title-icon  ons-summary__item-title-icon--check">
+                                                        <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+                                                            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)"></path>
+                                                        </svg>
+                                                        </span>
+                                                {% endif %}
+                                                        <div class="ons-summary__item--text {% if data['countriesComplete'] === true %}ons-summary__item-title--text{% endif %}">Countries visited</div>
+                                                        {% if data['countriesComplete'] === true %}
+                                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
+                                                        {% endif %}
+                                                        {% if data['countriesComplete'] !== true %}
+                                                        <span class="ons-u-d-no@s ons-u-fs-r"> — Not started</span>
+                                                        {% endif %}
+                                                </td>
+                                                <td class="ons-summary__values">
+                                                        {% if data['countriesComplete'] === true %}
+                                                        Completed
+                                                        {% endif %}
+                                                        {% if data['countriesComplete'] !== true %}
+                                                        Not started
+                                                        {% endif %}
+                                                </td>
+                                                {% if data['countriesComplete'] === true %}
+                                                <td class="ons-summary__actions">
+                                                        <a href="countries/summary"
+                                                           class="ons-summary__button"
+                                                           aria-label="View answers for countries visited">
+                                                                View answers</a>
+                                                </td>
+                                                {% endif %}
+                                                {% if data['countriesComplete'] !== true %}
+                                                <td class="ons-summary__actions">
+                                                        <a href="countries/start"
+                                                           class="ons-summary__button"
+                                                           aria-label="Start section about you section">
+                                                                Start section</a>
+                                                </td>
+                                                {% endif %}
+                                        </tr>
+                                        </tbody>
+
+                        <!--<tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
@@ -180,7 +227,7 @@ onsBreadcrumbs({
 <!--                                {% endif %}-->
 <!--                        </tr>-->
 <!--                        </tbody>-->
-                        <tbody class="ons-summary__item">
+                       <!-- <tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
@@ -224,7 +271,7 @@ onsBreadcrumbs({
                                 </td>
                                 {% endif %}
                         </tr>
-                        </tbody>
+                        </tbody>-->
 
                         {% if data['carsComplete'] === true and data['entertainmentComplete'] === true and data['foodComplete'] === true %}
                         <tr class="ons-summary__row ons-summary__row--has-values">

@@ -23,7 +23,7 @@ onsBreadcrumbs({
     <div class="ons-question__answer ons-u-mb-m">
         <fieldset class="ons-fieldset">
             <legend class="ons-fieldset__legend ons-u-mb-no">
-                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What's the make and model of your personal vehicle?</h1>
+                <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What's the make of your personal vehicle?</h1>
             </legend>
             <div class="ons-panel ons-panel--info ons-panel--no-title">
                 <span class="ons-u-vh">Important information: </span>
@@ -32,9 +32,47 @@ onsBreadcrumbs({
                 </div>
             </div>
             <div class="ons-field">
-                <label class="ons-label" for="text">Make and model of vehicle</label>
-                <input name="description" type="text" id="text" class="ons-input ons-input--text ons-input-type__input" required="required" autocomplete="off" />
-            </div></fieldset>
+                <!--<input name="description" type="text" id="text" class="ons-input ons-input--text ons-input-type__input" required="required" autocomplete="off" />-->
+                <div class="ons-field">
+                    <label class="ons-label" for="select">Make of vehicle</label>
+                    <select id="select" name="description" class="ons-input ons-input--select">
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Alfa Romeo">Alfa Romeo</option>
+                            <option value="Audi">Audi</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Citroen">Citroen</option>
+                            <option value="Cupra">Cupra</option>
+                            <option value="Dacia">Dacia</option>
+                            <option value="Fiat">Fiat</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Jaguar">Jaguar</option>
+                            <option value="Jeep">Jeep</option>
+                            <option value="Kia">Kia</option>
+                            <option value="Land Rover">Land Rover</option>
+                            <option value="Lexus">Lexus</option>
+                            <option value="Mazda">Mazda</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="MG">MG</option>
+                            <option value="MINI">MINI</option>
+                            <option value="Mitsubishi">Mitsubishi</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Peugeot">Peugeot</option>
+                            <option value="Porsche">Porsche</option>
+                            <option value="Renault">Renault</option>
+                            <option value="SEAT">SEAT</option>
+                            <option value="Skoda">Skoda</option>
+                            <option value="Subaru">Subaru</option>
+                            <option value="Suzuki">Suzuki</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Vauxhall">Vauxhall</option>
+                            <option value="Volvo">Volvo</option>
+                            <option value="Other">Other</option>
+                </select>
+                </div>
+            </div></fieldset> 
     </div>
 </div>
 
@@ -42,4 +80,22 @@ onsBreadcrumbs({
     <span class="ons-btn__inner">Save and continue</span>
 </button>
 </form>
+{% endblock %}
+{% block pageScripts %}
+<script>
+  window.onload = function() {
+    var my_options = $("#select option");
+    var selected = $("select").val();
+
+    my_options.sort(function(a,b) {
+      if (a.text > b.text) return 1;
+      if (a.text < b.text) return -1;
+      return 0
+    })
+
+    $("#select").empty().append( my_options );
+    $("#select").val(selected);
+  }
+</script>
+
 {% endblock %}
