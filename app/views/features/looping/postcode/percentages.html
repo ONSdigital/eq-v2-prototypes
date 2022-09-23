@@ -26,15 +26,16 @@ onsBreadcrumbs({
         <div class="ons-question__answer ons-u-mb-m">
             <fieldset class="ons-fieldset">
                 <legend class="ons-fieldset__legend ons-u-mb-no">
-                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What percent of in-house R&D is carried out at each of your workplaces?</h1>
-                </legend>
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">What percent of your shopping do you do at each of the following supermarket?</h1>
+
+                    </legend>
 
                 {% for item in data['loopingData'] %}
                 <div class="ons-field">
-                    <label class="ons-label" for="{{ item.postcode }}-per-cent">Percentage of in-house R&D carried out at {{ item.postcode }}</label>
+                    <label class="ons-label" for="{{ item.supermarket }}-per-cent">Percentage of shopping carried out at {{ item.supermarket }}</label>
                     <span class="ons-input-type">
                     <span class="ons-input-type__inner">
-                      <input type="text" id="{{ item.postcode }}-per-cent" name="{{ item.postcode }}-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3 totalprice" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
+                      <input type="text" id="{{ item.supermarket }}-per-cent" name="{{ item.supermarket }}-per-cent" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-3 totalprice" title="per cent" pattern="[0-9]*" inputmode="numeric" autocomplete="off" />
                       <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true" title="per cent">%</abbr>
                     </span>
                   </span>

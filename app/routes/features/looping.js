@@ -3,6 +3,8 @@ var pathGet = 'features/'
 var v = 'looping/'
 var collector = 'collector/'
 var postcode = 'postcode/'
+var countries = 'countries/'
+var percentages = 'percentages/'
 var freeText = 'free-text/'
 var supermarket = 'supermarket/'
 var country = 'countries-travelled-to/'
@@ -159,6 +161,22 @@ module.exports = function (router) {
 
   router.post(path + v + postcode + 'summary', function (req, res) {
     res.redirect(path + v + postcode + 'done')
+  })
+
+
+  router.post(path + v + percentages + 'percentages', function (req, res) {
+    if (req.session.data.error === 'true') {
+      req.session.data.showValidation = true
+      res.redirect(path + v + percentages + 'percentages')
+    } else {
+      req.session.data.showValidation = null
+      req.session.data.error = null
+      res.redirect(path + v + percentages + 'summary')
+    }
+  })
+
+  router.post(path + v + percentages + 'summary', function (req, res) {
+    res.redirect(path + v + percentages + 'done')
   })
 
   // Free texts

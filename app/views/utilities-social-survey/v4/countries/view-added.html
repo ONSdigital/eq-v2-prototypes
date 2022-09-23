@@ -23,7 +23,7 @@ onsBreadcrumbs({
         <div class="ons-question__answer ons-u-mb-m">
             <fieldset class="ons-fieldset">
                 <legend class="ons-fieldset__legend ons-u-mb-no">
-                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Do you need to add any other personal vehicles owned or operated by you or your household?</h1>
+                    <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title ons-u-mb-m">Do you need to add another country?</h1>
                 </legend>
                 <div class="ons-summary ons-u-mb-l">
                     <div class="ons-summary__group">
@@ -37,11 +37,11 @@ onsBreadcrumbs({
                             <tbody class="ons-summary__item">
                             <tr class="ons-summary__row">
                                 <td class="ons-summary__item-title">
-                                    <div class="ons-summary__item--text" style="font-weight: bold">Make of vehicle</div>
+                                    <div class="ons-summary__item--text" style="font-weight: bold">Countries visited</div>
                                 </td>
                             </tr>
                             </tbody>
-                            {% for item in data['carsLoop'] %}
+                            {% for item in data['countriesLoop'] %}
                             <tbody class="ons-summary__item">
                             <tr class="ons-summary__row">
                                 <td class="ons-summary__item-title">

@@ -4,6 +4,7 @@ var v = 'v4/'
 
 var guidance = 'guidance/'
 var cars = 'cars/'
+var countries = 'countries/'
 var reportingPeriod = 'reporting-period/'
 var energyUtilities = 'energy-utilities/'
 var entertainment = 'entertainment/'
@@ -42,6 +43,9 @@ module.exports = function (router) {
   router.post(path + v + 'hub', function (req, res) {
     if (req.session.data.carsComplete !== true) {
       res.redirect(path + v + cars + 'start')
+    }
+    if (req.session.data.countriesComplete !== true) {
+      res.redirect(path + v + countries + 'start')
     }
     if (req.session.data.energyUtilitiesComplete !== true) {
       res.redirect(path + v + energyUtilities + 'start')
@@ -153,6 +157,102 @@ module.exports = function (router) {
     req.session.data.carsComplete = true
     res.redirect(path + v + 'hub')
   })
+
+  //--//
+  router.get(path + v + countries + 'start', function (req, res) {
+    if (!req.session.data.countriesLoop) {
+      req.session.data.countriesLoop = []
+    }
+    res.redirect(path + v + countries + 'anything-to-add')
+  })
+
+  router.post(path + v + countries + 'anything-to-add', function (req, res) {
+    if (req.session.data.anythingToAdd === 'Yes') {
+      res.redirect(path + v + countries + 'add-one')
+    }
+    else {
+      res.redirect(path + v + countries + 'summary')
+    }
+  })
+
+  router.post(path + v + countries + 'add-one', function (req, res) {
+    req.session.data.countriesLoop.push({ description: req.session.data.description })
+    req.session.data.countriesLoop.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + countries + 'view-added')
+  })
+
+  router.post(path + v + countries + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + countries + 'add-one')
+    } else {
+      res.redirect(path + v + countries + 'summary')
+    }
+  })
+
+  
+
+  
+
+  router.post(path + v + countries + 'summary', function (req, res) {
+    res.redirect(path + v + countries + 'complete')
+  })
+
+  // Complete about you
+  router.get(path + v + countries + 'complete', function (req, res) {
+    // Mark section as complete
+    req.session.data.countriesComplete = true
+    res.redirect(path + v + 'hub')
+  })
+  //--//
+
+  // Countries //
+  router.get(path + v + countries + 'start', function (req, res) {
+    if (!req.session.data.countriesLoop) {
+      req.session.data.countriesLoop = []
+    }
+    res.redirect(path + v + countries + 'anything-to-add')
+  })
+
+  router.post(path + v + countries + 'anything-to-add', function (req, res) {
+    if (req.session.data.anythingToAdd === 'Yes') {
+      res.redirect(path + v + countries + 'add-one')
+    }
+    else {
+      res.redirect(path + v + countries + 'summary')
+    }
+  })
+
+  router.post(path + v + countries + 'add-one', function (req, res) {
+    req.session.data.countriesLoop.push({ description: req.session.data.description })
+    req.session.data.countriesLoop.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + countries + 'view-added')
+  })
+
+  router.post(path + v + countries + 'view-added', function (req, res) {
+    if (req.session.data.addMore === 'yes') {
+      res.redirect(path + v + countries + 'add-one')
+    } else {
+      res.redirect(path + v + countries + 'summary')
+    }
+  })
+
+  
+
+  
+
+
+
+  router.post(path + v + countries + 'summary', function (req, res) {
+    res.redirect(path + v + countries + 'complete')
+  })
+
+  // Complete about you
+  router.get(path + v + countries + 'complete', function (req, res) {
+    // Mark section as complete
+    req.session.data.countriesComplete = true
+    res.redirect(path + v + 'hub')
+  })
+  ////
 
   // **********************************************************************
   // ******* ENERGY UTILITIES *******
@@ -272,7 +372,7 @@ module.exports = function (router) {
     const numId = req.session.data.loopingDataId - 1
     req.session.data.billsLoop.splice(numId, 1, { description: req.session.data.description, amount: req.session.data.amount, commaAmount: numberWithCommas(req.session.data.amount), id: req.session.data.loopingDataId })
     res.redirect(path + v + energyUtilities + 'enter-value')
-  })
+  }) 
 
   router.get(path + v + energyUtilities + 'complete', function (req, res) {
     // Calculate total of section
