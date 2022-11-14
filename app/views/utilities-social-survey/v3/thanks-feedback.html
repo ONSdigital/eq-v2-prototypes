@@ -1,7 +1,19 @@
+
+
 {% extends "./includes/layout.html" %}
 
 {% block main %}
-<h1>Thanks for providing feedback</h1>
+<div aria-labelledby="alert" role="alert" tabindex="-1" autofocus="autofocus" class="ons-panel ons-panel--success ons-panel--no-title ons-u-mb-l" id="success-id">
+        <span id="alert" class="ons-panel__assistive-text ons-u-vh">Completed: </span>
+        <span class="ons-panel__icon ons-u-fs-r">
+          <svg class="ons-svg-icon" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+            <path d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z" transform="translate(-1.51 -3.04)" />
+          </svg>
+        </span>
+        <div class="ons-panel__body">Thanks for providing feedback
+        </div>
+      </div>
+      
 <h2>Take part in our user research</h2>
 <p>We need your help to improve and to make sure the website works well for the people who need it. Once you’ve signed up, you might be asked to:</p>
 <ul>
@@ -22,6 +34,78 @@
         <input type="email" id="email" class="ons-input ons-input--text ons-input-type__input" autocomplete="email" />
 </div>
 <br>
+
+<div class="ons-question ons-u-mb-l ons-u-mt-no">
+        <div class="ons-question__answer ons-u-mb-m">
+          <fieldset class="ons-fieldset">
+            <legend class="ons-fieldset__legend ons-u-mb-no">
+              <h1 id="fieldset-legend-title" class="ons-fieldset__legend-title">What type of central heating does your accommodation have?</h1>
+            </legend>
+            <div class="ons-input-items">
+              <p class="ons-checkboxes__label"></p>
+              <div class="ons-checkboxes__items">
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="agriculture, forestry and fishing" class="ons-checkbox__input ons-js-checkbox" value="" name="none">
+                    <label class=" ons-checkbox__label " for="none" id="none-label">Agriculture, forestry and fishing</label>
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="production" class="ons-checkbox__input ons-js-checkbox" value="" name="production">
+                    <label class=" ons-checkbox__label  ons-label--with-description" aria-describedby="production-label-description-hint" for="production" id="production-label">Production<span class="ons-label__aria-hidden-description" aria-hidden="true">
+                        <span class="ons-label__description ons-checkbox__label--with-description">Mining, quarrying and utilities</span></span></label>
+                    <span class="ons-label__visually-hidden-description ons-u-vh" id="production-label-description-hint">Mining, quarrying and utilities</span>
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="Construction" class="ons-checkbox__input ons-js-checkbox" value="" name="Construction">
+                    <label class=" ons-checkbox__label  ons-label--with-description" aria-describedby="construction-label-description-hint" for="construction" id="construction-label">Construction<span class="ons-label__aria-hidden-description" aria-hidden="true">
+                        
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="oil" class="ons-checkbox__input ons-js-checkbox" value="" name="oil">
+                    <label class=" ons-checkbox__label " for="oil" id="oil-label">Oil</label>
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="wood" class="ons-checkbox__input ons-js-checkbox" value="" name="wood">
+                    <label class=" ons-checkbox__label  ons-label--with-description" aria-describedby="wood-label-description-hint" for="wood" id="wood-label">Wood<span class="ons-label__aria-hidden-description" aria-hidden="true">
+                        <span class="ons-label__description ons-checkbox__label--with-description">For example, logs, waste wood or pellets</span></span></label>
+                    <span class="ons-label__visually-hidden-description ons-u-vh" id="wood-label-description-hint">For example, logs, waste wood or pellets</span>
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="solid-fuel" class="ons-checkbox__input ons-js-checkbox" value="" name="solid-fuel">
+                    <label class=" ons-checkbox__label  ons-label--with-description" aria-describedby="solid-fuel-label-description-hint" for="solid-fuel" id="solid-fuel-label">Solid fuel<span class="ons-label__aria-hidden-description" aria-hidden="true">
+                        <span class="ons-label__description ons-checkbox__label--with-description">For example, coal</span></span></label>
+                    <span class="ons-label__visually-hidden-description ons-u-vh" id="solid-fuel-label-description-hint">For example, coal</span>
+                  </span>
+                </span>
+                <br>
+                <span class="ons-checkboxes__item">
+                  <span class="ons-checkbox">
+                    <input type="checkbox" id="renewable" class="ons-checkbox__input ons-js-checkbox" value="" name="renewable">
+                    <label class=" ons-checkbox__label  ons-label--with-description" aria-describedby="renewable-label-description-hint" for="renewable" id="renewable-label">Renewable energy<span class="ons-label__aria-hidden-description" aria-hidden="true">
+                        <span class="ons-label__description ons-checkbox__label--with-description">For example, solar thermal or heat pumps</span></span></label>
+                    <span class="ons-label__visually-hidden-description ons-u-vh" id="renewable-label-description-hint">For example, solar thermal or heat pumps</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
 
 <a onclick="showAlert();" href="#" type="button" class="ons-btn ">
         <span class="ons-btn__inner">Take part in our user research</span>
