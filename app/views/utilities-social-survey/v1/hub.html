@@ -80,7 +80,7 @@ onsBreadcrumbs({
 <!--                        </tr>-->
 <!--                        </tbody>-->
 
-                        <tbody class="ons-summary__item">
+                        <!--<tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
@@ -125,7 +125,7 @@ onsBreadcrumbs({
                                 </td>
                                 {% endif %}
                         </tr>
-                        </tbody>
+                        </tbody>-->
                         <tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
@@ -137,7 +137,7 @@ onsBreadcrumbs({
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['energyUtilitiesComplete'] === true %}ons-summary__item-title--text{% endif %}">Utility bills</div>
+                                        <div class="ons-summary__item--text {% if data['energyUtilitiesComplete'] === true %}ons-summary__item-title--text{% endif %}">Household income</div>
                                         {% if data['energyUtilitiesComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
@@ -182,7 +182,7 @@ onsBreadcrumbs({
                                         </svg>
                                         </span>
                                 {% endif %}
-                                        <div class="ons-summary__item--text {% if data['entertainmentComplete'] === true %}ons-summary__item-title--text{% endif %}">Entertainment</div>
+                                        <div class="ons-summary__item--text {% if data['entertainmentComplete'] === true %}ons-summary__item-title--text{% endif %}">Household expenditure</div>
                                         {% if data['entertainmentComplete'] === true %}
                                         <span class="ons-u-d-no@s ons-u-fs-r"> — Completed</span>
                                         {% endif %}
@@ -216,7 +216,7 @@ onsBreadcrumbs({
                                 {% endif %}
                         </tr>
                         </tbody>
-                        <tbody class="ons-summary__item">
+                        <!--<tbody class="ons-summary__item">
 
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
@@ -260,7 +260,7 @@ onsBreadcrumbs({
                                 </td>
                                 {% endif %}
                         </tr>
-                        </tbody>
+                        </tbody>-->
 
                         {% if data['energyUtilitiesComplete'] === true and data['entertainmentComplete'] === true and data['foodComplete'] === true %}
                         <tr class="ons-summary__row ons-summary__row--has-values">
@@ -314,7 +314,7 @@ onsBreadcrumbs({
 
 <form method="post">
 {% from "components/button/_macro.njk" import onsButton %}
-        {% if data['entertainmentComplete'] === true and data['foodComplete'] === true and data['totalAmountComplete'] === true %}
+        {% if data['entertainmentComplete'] === true and data['totalAmountComplete'] === true %}
         {{
         onsButton({
         "classes": "ons-u-mt-l",

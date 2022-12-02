@@ -43,35 +43,66 @@ onsBreadcrumbs({
                             </tr>
                             </thead>
                             <tbody class="ons-summary__item" id="first-number-question">
-                            <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
-                                <td class="ons-summary__item-title">
-                                    <div class="ons-summary__item--text">
-                                        Electricity
-                                    </div>
-                                </td>
-                                <td class="ons-summary__values">
-                                    £{{ data['electricity'] }}.00
-                                </td>
-                                <td class="ons-summary__actions">
-                                    <a href="#" onclick="notYet();">Change</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                            <tbody class="ons-summary__item" id="first-number-question">
-                            <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
-                                <td class="ons-summary__item-title">
-                                    <div class="ons-summary__item--text">
-                                        Gas supply from mains
-                                    </div>
-                                </td>
-                                <td class="ons-summary__values">
-                                    £{{ data['gas'] }}.00
-                                </td>
-                                <td class="ons-summary__actions">
-                                    <a href="#" onclick="notYet();">Change</a>
-                                </td>
-                            </tr>
-                            </tbody>
+                                <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                    <td class="ons-summary__item-title">
+                                        <div class="ons-summary__item--text">
+                                            Electricity
+                                        </div>
+                                    </td>
+                                    <td class="ons-summary__values">
+                                        £{{ data['electricity'] }}.00
+                                    </td>
+                                    <td class="ons-summary__actions">
+                                        <a href="#" onclick="notYet();">Change</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody class="ons-summary__item" id="first-number-question">
+                                    <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                        <td class="ons-summary__item-title">
+                                            <div class="ons-summary__item--text">
+                                                Vehicle
+                                            </div>
+                                        </td>
+                                        <td class="ons-summary__values">
+                                            £{{ data['vehicle'] }}.00
+                                        </td>
+                                        <td class="ons-summary__actions">
+                                            <a href="#" onclick="notYet();">Change</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody class="ons-summary__item" id="first-number-question">
+                                        <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                            <td class="ons-summary__item-title">
+                                                <div class="ons-summary__item--text">
+                                                    Gas supply from mains
+                                                </div>
+                                            </td>
+                                            <td class="ons-summary__values">
+                                                £{{ data['gas'] }}.00
+                                            </td>
+                                            <td class="ons-summary__actions">
+                                                <a href="#" onclick="notYet();">Change</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody class="ons-summary__item" id="first-number-question">
+                                            <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
+                                                <td class="ons-summary__item-title">
+                                                    <div class="ons-summary__item--text">
+                                                        Food
+                                                    </div>
+                                                </td>
+                                                <td class="ons-summary__values">
+                                                    £{{ data['food'] }}.00
+                                                </td>
+                                                <td class="ons-summary__actions">
+                                                    <a href="#" onclick="notYet();">Change</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            
                             {% for item in data['loopingData'] %}
                             <tbody class="ons-summary__item" id="first-number-question">
                             <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">

@@ -36,24 +36,20 @@ module.exports = function (router) {
 
   router.get(path + v + collector + 'start', function (req, res) {
     req.session.data.loopingData = []
-    res.redirect(path + v + collector + 'anything-to-add')
-  })
-
-  router.post(path + v + collector + 'anything-to-add', function (req, res) {
-    res.redirect(path + v + collector + 'add-one')
-  })
-
-  router.post(path + v + collector + 'add-one', function (req, res) {
     res.redirect(path + v + collector + 'acq-val')
   })
 
-  router.post(path + v + collector + 'view-added', function (req, res) {
-    if (req.session.data.addMore === 'yes') {
-      res.redirect(path + v + collector + 'add-one')
-    } else {
-      req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+  //router.post(path + v + collector + 'anything-to-add', function (req, res) {
+    //res.redirect(path + v + collector + 'add-one')
+ // })//
+
+  //router.post(path + v + collector + 'add-one', function (req, res) {
+    //res.redirect(path + v + collector + 'acq-val')
+  //})
+
+  router.post(path + v + collector + 'acq-val', function (req, res) {
       res.redirect(path + v + collector + 'calculate-acq')
-    }
+    
   })
 
   router.get(path + v + collector + 'collect', function (req, res) {
@@ -280,28 +276,41 @@ module.exports = function (router) {
   })
 
   router.post(path + v + calculatedSummaryEnergy + 'expenditure-on-gas-from-mains', function (req, res) {
-    res.redirect(path + v + calculatedSummaryEnergy + 'anything-to-add')
+    res.redirect(path + v + calculatedSummaryEnergy + 'benefits')
   })
 
-  router.post(path + v + calculatedSummaryEnergy + 'anything-to-add', function (req, res) {
-    res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
+  router.post(path + v + calculatedSummaryEnergy + 'benefits', function (req, res) {
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-mortgage')
   })
 
-  router.post(path + v + calculatedSummaryEnergy + 'add-one', function (req, res) {
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-mortgage', function (req, res) {
     // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
     // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
-    res.redirect(path + v + calculatedSummaryEnergy + 'add-value')
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-food')
   })
 
-  router.post(path + v + calculatedSummaryEnergy + 'view-added', function (req, res) {
-    if (req.session.data.addMore === 'yes') {
-      res.redirect(path + v + calculatedSummaryEnergy + 'add-one')
-    }
-    if (req.session.data.addMore === 'no') {
-      res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
-    }
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-food', function (req, res) {
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-energy')
   })
-
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-energy', function (req, res) {
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-entertain')
+  })
+    
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-entertain', function (req, res) {
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryEnergy + 'expenditure-vehicle')
+  })
+  router.post(path + v + calculatedSummaryEnergy + 'expenditure-vehicle', function (req, res) {
+    // req.session.data.loopingData.push({ otherExpenditure: req.session.data.otherExpenditure, expenditure: req.session.data.expenditure })
+    // req.session.data.loopingData.forEach((o, i) => o.id = i + 1);
+    res.redirect(path + v + calculatedSummaryEnergy + 'calculate-exp')
+  })
+  
   router.get(path + v + calculatedSummaryEnergy + 'collect', function (req, res) {
     req.session.data.loopingData.forEach(x => {
       if (!x.expenditure) {
@@ -329,7 +338,8 @@ module.exports = function (router) {
     req.session.data.totalOtherExpParsed = parseInt(req.session.data.totalExp, 10)
     req.session.data.gasParsed = parseInt(req.session.data.gas, 10)
     req.session.data.electricityParsed = parseInt(req.session.data.electricity, 10)
-    req.session.data.totalExp = req.session.data.totalOtherExpParsed + req.session.data.electricityParsed + req.session.data.gasParsed
+    req.session.data.foodParsed = parseInt(req.session.data.food, 10)
+    req.session.data.totalExp = req.session.data.totalOtherExpParsed + req.session.data.electricityParsed + req.session.data.gasParsed + req.session.data.foodParsed
     req.session.data.totalExpParsed = numberWithCommas(req.session.data.totalExp)
     res.redirect(path + v + calculatedSummaryEnergy + 'value-of-expenditure')
   })

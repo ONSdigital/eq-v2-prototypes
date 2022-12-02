@@ -17,7 +17,7 @@ onsBreadcrumbs({
 {% endblock %}
 
 {% block main %}
-<h1>We calculate the total amount spent on entertainment to be £{{ data['totalEntertainmentAmountFormatted'] }}.00. Is this correct?</h1>
+<h1>We calculate the total household expenditure to be £{{ data['totalEntertainmentAmountFormatted'] }}.00. Is this correct?</h1>
 <p></p>
 
 <div class="ons-panel ons-panel--info ons-panel--no-title print__hidden ons-u-mb-l">
@@ -41,7 +41,7 @@ onsBreadcrumbs({
                         <tr class="ons-summary__row ons-summary__row--has-values" id="first-number-answer">
                                 <td class="ons-summary__item-title">
                                         <div class="ons-summary__item--text">
-                                                How much do you spend on TV each month? (For example: Sky, Netflix)
+                                                Total expenditure for mortgage payments or rent 
                                         </div>
                                 </td>
                                 <td class="ons-summary__values">
@@ -56,7 +56,7 @@ onsBreadcrumbs({
                         <tr class="ons-summary__row ons-summary__row--has-values" id="second-number-answer">
                                 <td class="ons-summary__item-title">
                                         <div class="ons-summary__item--text">
-                                                How much do you spend on broadband each month?
+                                                Total expenditure on food
                                         </div>
                                 </td>
                                 <td class="ons-summary__values">
@@ -68,25 +68,57 @@ onsBreadcrumbs({
                         </tr>
                         </tbody>
                         <tbody class="ons-summary__item" id="third-number-question">
-                        <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
-                                <td class="ons-summary__item-title">
-                                        <div class="ons-summary__item--text">
-                                                How much do you spend on cinema each month?
-                                        </div>
-                                </td>
-                                <td class="ons-summary__values">
-                                        £{{ data['totalCinemaSpendFormatted'] }}.00
-                                </td>
-                                <td class="ons-summary__actions">
-                                        <a href="change-cinema">Change</a>
-                                </td>
-                        </tr>
-                        </tbody>
+                                <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                                        <td class="ons-summary__item-title">
+                                                <div class="ons-summary__item--text">
+                                                        Total expenditure on energy costs
+                                                </div>
+                                        </td>
+                                        <td class="ons-summary__values">
+                                                £{{ data['totalCinemaSpendFormatted'] }}.00
+                                        </td>
+                                        <td class="ons-summary__actions">
+                                                <a href="change-cinema">Change</a>
+                                        </td>
+                                </tr>
+                                </tbody>
+
+                                <tbody class="ons-summary__item" id="third-number-question">
+                                        <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                                                <td class="ons-summary__item-title">
+                                                        <div class="ons-summary__item--text">
+                                                                Total expenditure on entertainment
+                                                        </div>
+                                                </td>
+                                                <td class="ons-summary__values">
+                                                        £{{ data['totalEntertainmentSpendFormatted'] }}.00
+                                                </td>
+                                                <td class="ons-summary__actions">
+                                                        <a href="change-cinema">Change</a>
+                                                </td>
+                                        </tr>
+                                        </tbody>
+
+                                        <tbody class="ons-summary__item" id="third-number-question">
+                                                <tr class="ons-summary__row ons-summary__row--has-values" id="third-number-answer">
+                                                        <td class="ons-summary__item-title">
+                                                                <div class="ons-summary__item--text">
+                                                                        Total expenditure vehicle fuel
+                                                                </div>
+                                                        </td>
+                                                        <td class="ons-summary__values">
+                                                                £{{ data['totalVehicleSpendFormatted'] }}.00
+                                                        </td>
+                                                        <td class="ons-summary__actions">
+                                                                <a href="change-cinema">Change</a>
+                                                        </td>
+                                                </tr>
+                                                </tbody>
 
                         <tbody class="ons-summary__item ons-summary__item--total" id="calculated-summary-question">
                         <tr class="ons-summary__row ons-summary__row--has-values">
                                 <td class="ons-summary__item-title">
-                                        <div class="ons-summary__item--text">Total spent on entertainment</div>
+                                        <div class="ons-summary__item--text">Total household expenditure</div>
                                 </td>
                                 <td class="ons-summary__values" colspan="2">
                                         £{{ data['totalEntertainmentAmountFormatted'] }}.00

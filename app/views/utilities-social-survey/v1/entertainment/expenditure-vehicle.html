@@ -18,7 +18,7 @@
 
 {% block main %}
 
-<h1>During the last month, what was the total income from wages you earnt?</h1>
+<h1>During the last month, what was the total expenditure on vehicle fuel?</h1>
 
 <p></p>
 <form method="post">
@@ -26,17 +26,17 @@
     <div class="ons-field">
 
 
-        <label class="ons-label ons-label--with-description" for="totalGasSpend">Total income from wages</label>
+        <label class="ons-label ons-label--with-description" for="totalVehicleSpend">Total expenditure on vehicle fuel</label>
         <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
 
         <span class="ons-input-type ons-input-type--prefix">
                 <span class="ons-input-type__inner">
 
-        <input type="text" id="totalGasSpend"
+        <input type="text" id="totalVehicleSpend"
                class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
-               title="British pounds (GBP)" name="totalGasSpend" pattern="[0-9]*" inputmode="numeric"
+               title="British pounds (GBP)" name="totalVehicleSpend" pattern="[0-9]*" inputmode="numeric"
                autocomplete="off" aria-describedby="description-hint" required="required"
-               {% if data['totalGasSpend'] %}value="{{data['totalGasSpend']}}"{% endif %}
+               {% if data['totalVehicleSpend'] %}value="{{data['totalVehicleSpend']}}"{% endif %}
         >
 
                     <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"

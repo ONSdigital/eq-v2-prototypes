@@ -18,25 +18,39 @@
 
 {% block main %}
 
-<h1>During the last month, what was the total income from wages you earnt?</h1>
+<h1>During the last month, what was the total expenditure on entertainment for the household?</h1>
 
 <p></p>
+
+<details id="collapsible" class="ons-collapsible ons-js-collapsible ons-u-mb-m">
+  <summary class="ons-collapsible__heading ons-js-collapsible-heading">
+    <h2 class="ons-collapsible__title">What we mean by entertainment?</h2>
+    <span class="ons-collapsible__icon">
+      <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor">
+        <path d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z" transform="translate(-5.02 -1.59)" />
+      </svg>
+    </span>
+  </summary>
+  <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
+    <p>Include expenditure on cinema, eating out, take-aways. Exclude tv subscriptions, mobile phone subscriptions.</p>
+  </div>
+</details>
 <form method="post">
 
     <div class="ons-field">
 
 
-        <label class="ons-label ons-label--with-description" for="totalGasSpend">Total income from wages</label>
+        <label class="ons-label ons-label--with-description" for="totalEntertainmentSpend">Total expenditure on entertainment</label>
         <span id="description-hint" class="ons-label__description  ons-input--with-description">Enter the value to the nearest £ (e.g. 1,234) or a value to the nearest £thousand (e.g. 1,000). Do not enter ‘1’ for 1,000. </span>
 
         <span class="ons-input-type ons-input-type--prefix">
                 <span class="ons-input-type__inner">
 
-        <input type="text" id="totalGasSpend"
+        <input type="text" id="totalEntertainmentSpend"
                class="ons-input ons-input--text ons-input-type__input ons-input-number--w-15"
-               title="British pounds (GBP)" name="totalGasSpend" pattern="[0-9]*" inputmode="numeric"
+               title="British pounds (GBP)" name="totalEntertainmentSpend" pattern="[0-9]*" inputmode="numeric"
                autocomplete="off" aria-describedby="description-hint" required="required"
-               {% if data['totalGasSpend'] %}value="{{data['totalGasSpend']}}"{% endif %}
+               {% if data['totalEntertainmentSpend'] %}value="{{data['totalEntertainmentSpend']}}"{% endif %}
         >
 
                     <abbr class="ons-input-type__type ons-js-input-abbr" aria-hidden="true"

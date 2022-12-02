@@ -40,17 +40,12 @@ module.exports = function (router) {
   // ******* HUB PAGE *******
   // **********************************************************************
   router.post(path + v + 'hub', function (req, res) {
-    if (req.session.data.aboutYouComplete !== true) {
-      res.redirect(path + v + aboutYou + 'benefits-received')
-    }
+    
     if (req.session.data.energyUtilitiesComplete !== true) {
       res.redirect(path + v + energyUtilities + 'total-spent-on-gas')
     }
     if (req.session.data.entertainmentComplete !== true) {
       res.redirect(path + v + entertainment + 'total-spent-on-tv')
-    }
-    if (req.session.data.foodComplete !== true) {
-      res.redirect(path + v + food + 'total-spent-on-takeaways')
     }
     if (req.session.data.totalAmountComplete !== true) {
       res.redirect(path + v + totalAmount + 'complete')
@@ -301,20 +296,63 @@ module.exports = function (router) {
       req.session.data.cinemaChangeMode = false
       res.redirect(path + v + entertainment + 'complete')
     } else {
-      // CTA redirects to 'check your answers' page
-      res.redirect(path + v + entertainment + 'complete')
+      // CTA redirects to 'NEXT PAGE' page
+      res.redirect(path + v + entertainment + 'expenditure-vehicle')
     }
   })
 
   // Change total spent on cinema
-  router.get(path + v + entertainment + 'change-cinema', function (req, res) {
+  router.get(path + v + entertainment + 'change-vehicle', function (req, res) {
     req.session.data.cinemaChangeMode = true
-    res.redirect(path + v + entertainment + 'total-spent-on-cinema')
+    res.redirect(path + v + entertainment + 'expenditure-vehicle')
   })
+
+  // OTHER SECTIONS
+
+  // Total Q7
+  router.post(path + v + entertainment + 'expenditure-vehicle', function (req, res) {
+    req.session.data.totalVehicleSpendFormatted = numberWithCommas(req.session.data.totalVehicleSpend)
+    if (req.session.data.vehicleChangeMode === true) {
+      req.session.data.vehicleChangeMode = false
+      res.redirect(path + v + entertainment + 'complete')
+    } else {
+      // CTA redirects to 'Q8' page
+      res.redirect(path + v + entertainment + 'expenditure-entertain')
+    }
+  })
+
+  // Change Q7
+
+  router.get(path + v + entertainment + 'change-vehicle', function (req, res) {
+    req.session.data.vehicleChangeMode = true
+    res.redirect(path + v + entertainment + 'expenditure-entertain')
+  })
+
+
+   // Total Q8
+   router.post(path + v + entertainment + 'expenditure-entertain', function (req, res) {
+    req.session.data.totalEntertainmentSpendFormatted = numberWithCommas(req.session.data.totalEntertainmentSpend)
+    if (req.session.data.entertainmentChangeMode === true) {
+      req.session.data.entertainmentChangeMode = false
+      res.redirect(path + v + entertainment + 'complete')
+    } else {
+      // CTA redirects to 'broadband' page
+      res.redirect(path + v + entertainment + 'complete')
+    }
+  })
+
+  // Change Q8
+
+  router.get(path + v + entertainment + 'change-entertain', function (req, res) {
+    req.session.data.tvChangeMode = true
+    res.redirect(path + v + entertainment + 'expenditure-entertain')
+  })
+  
+
 
   router.get(path + v + entertainment + 'complete', function (req, res) {
     // Calculate total of section
-    req.session.data.totalEntertainmentAmount = parseInt(req.session.data.totalTVSpend) + parseInt(req.session.data.totalBroadbandSpend) + parseInt(req.session.data.totalCinemaSpend)
+    req.session.data.totalEntertainmentAmount = parseInt(req.session.data.totalTVSpend) + parseInt(req.session.data.totalBroadbandSpend) + parseInt(req.session.data.totalCinemaSpend) + parseInt(req.session.data.totalEntertainmentSpend) + parseInt(req.session.data.totalVehicleSpend)
     req.session.data.totalEntertainmentAmountFormatted = numberWithCommas(req.session.data.totalEntertainmentAmount)
     res.redirect(path + v + entertainment + 'check-your-answers')
   })
@@ -426,7 +464,7 @@ module.exports = function (router) {
 
   // GET formatted version of total
   router.get(path + v + totalAmount + 'complete', function (req, res) {
-    req.session.data.totalAmount = req.session.data.totalEnergyUtilitiesAmount + req.session.data.totalEntertainmentAmount + req.session.data.totalFoodAmount
+    req.session.data.totalAmount = req.session.data.totalEnergyUtilitiesAmount - req.session.data.totalEntertainmentAmount
     req.session.data.totalAmountFormatted = numberWithCommas(req.session.data.totalAmount)
     res.redirect(path + v + totalAmount + 'check-your-answers')
   })
