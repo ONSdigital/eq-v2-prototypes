@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  eq-v2-prototypes:
+    image: onsdigital/eq-v2-prototypes:latest
+    build: ./
+    restart: always
+    ports:
+      - "3000:3000"
