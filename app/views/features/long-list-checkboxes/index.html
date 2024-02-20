@@ -4,7 +4,7 @@
 
 {% block preMain %}
 
-<form name="myForm" action="/prototypes/long-list-checkboxes/hub.html">
+<form name="myForm" action="/features/long-list-checkboxes/hub.html">
 
 {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 {{
@@ -412,7 +412,7 @@
         // Update local storage with merged selections
         localStorage.setItem("ddvalue", JSON.stringify(mergedSelections));
 
-        document.forms["myForm"].action = "/prototypes/long-list-checkboxes/hub.html";
+        document.forms["myForm"].action = "/features/long-list-checkboxes/hub.html";
     }
 </script>
 

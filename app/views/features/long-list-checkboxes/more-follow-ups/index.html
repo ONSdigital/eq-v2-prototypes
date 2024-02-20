@@ -3,7 +3,7 @@
 
 {% block preMain %}
 
-<form name="myForm" action="/prototypes/long-list-checkboxes/hub.html">
+<form name="myForm" action="/features/long-list-checkboxes/hub.html">
 {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
@@ -356,7 +356,7 @@
         // Update local storage with selections
         localStorage.setItem("ddvalue", JSON.stringify(Selections));
 
-        document.forms["myForm"].action = "/prototypes/long-list-checkboxes/more-follow-ups/hub.html";
+        document.forms["myForm"].action = "/features/long-list-checkboxes/more-follow-ups/hub.html";
     }
 
 </script>

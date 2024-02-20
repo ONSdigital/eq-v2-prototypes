@@ -151,7 +151,7 @@ function nextQuestion() {
     // If coming from calculated-summary.html, update localStorage and redirect
     if (previousURL.includes("calculated-summary.html")) {
         localStorage.setItem("ddvalue", JSON.stringify(parsedValue));
-        window.location.href = '/prototypes/long-list-checkboxes/calculated-summary.html';
+        window.location.href = '/features/long-list-checkboxes/calculated-summary.html';
         return;
     }
 
@@ -160,7 +160,7 @@ function nextQuestion() {
 
     // If we reached the last item, go to hub-complete.html
     if (currentIndex === numberOfItems) {
-        window.location.href = '/prototypes/long-list-checkboxes/hub-complete.html';
+        window.location.href = '/features/long-list-checkboxes/hub-complete.html';
         return;
     }
 
@@ -181,7 +181,7 @@ function previousQuestion() {
 
         // If coming from calculated-summary.html, update localStorage and redirect
         if (previousURL.includes("calculated-summary.html")) {
-            window.location.href = '/prototypes/long-list-checkboxes/calculated-summary.html';
+            window.location.href = '/features/long-list-checkboxes/calculated-summary.html';
             return;
         }
 
@@ -202,7 +202,7 @@ function previousQuestion() {
     } else {
         // Optionally handle going to the last question or display a message
         console.log('Go back to Hub');
-        window.location.href = '/prototypes/long-list-checkboxes/hub.html';
+        window.location.href = '/features/long-list-checkboxes/hub.html';
     }
 }
 
