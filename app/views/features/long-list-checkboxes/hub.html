@@ -33,7 +33,7 @@
 
 <form action="/features/long-list-checkboxes/question.html">
     <h1 class="ons-u-fs-xl">Goods and services you have purchased in the last month</h1>
-
+    {% from "components/panel/_macro.njk" import onsPanel %}
     {{
         onsPanel({
             "body": '<p>Follow-up questions will inquire about the <strong>expenditure</strong> for each good and service.</p>',
@@ -92,7 +92,7 @@ if (results) {
 }
 
 </script>
-
+{% from "components/button/_macro.njk" import onsButton %}
 
 {{
     onsButton({
