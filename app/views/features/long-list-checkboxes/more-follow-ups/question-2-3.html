@@ -1,19 +1,16 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 {% set prevPage = "hub" %}
 
 {% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({
         "ariaLabel": 'Previous',
         "itemsList": [
             {
-                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-4-2.html",
+                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-2-2.html",
                 "id": "backlink",
                 "text": 'Previous',
                 "attributes": {
@@ -34,7 +31,7 @@ layout: long-list-checkboxes/views/_main
 <span class="ons-u-db ons-u-mb-s ons-u-fs-m ons-u-fw-n"  style="color: #707071;" id="item"></span>
 
 <h1 class="ons-u-fs-xl">
-    Overall were you satisfied with the goods or services you purchased for <strong id="listItemHighlighted" class="ons-highlight"></strong>?
+    Were you satisfied with the goods or services you purchased for <strong id="listItemHighlighted" class="ons-highlight"></strong>?
 </h1>
 
 {% from "components/radios/_macro.njk" import onsRadios %}
@@ -74,7 +71,8 @@ layout: long-list-checkboxes/views/_main
     })
 }}
 
-<p id="progressIndicator">3 of 4 goods and services completed</p>
+<p id="progressIndicator">1 of 4 goods and services completed</p>
+
 
 {% endblock %}
 
@@ -90,11 +88,11 @@ results = JSON.parse(results);
 for (var i = 0; i < results.length; i++) {
     results[i] = results[i].replace(/&#44;/g, ',');
 }
-document.getElementById('listItemHighlighted').textContent = results[3];
-document.getElementById('item').textContent = results[3];
+document.getElementById('listItemHighlighted').textContent = results[1];
+document.getElementById('item').textContent = results[1];
 
-if (localStorage.getItem('q43') !== undefined && localStorage.getItem('q43') != null){
-    var q11Entered = localStorage.getItem('q43');
+if (localStorage.getItem('q23') !== undefined && localStorage.getItem('q23') != null){
+    var q11Entered = localStorage.getItem('q23');
     document.getElementById(q11Entered).checked = true;
 }
 
@@ -114,9 +112,9 @@ function nextQuestion(){
 
             // For example, you can compare it to specific values
             if (selectedValue === "yes") {
-                localStorage.setItem('q43', 'yes');
+                localStorage.setItem('q23', 'yes');
             } else if (selectedValue === "no") {
-                localStorage.setItem('q43', 'no');
+                localStorage.setItem('q23', 'no');
 
             }
 
@@ -124,11 +122,10 @@ function nextQuestion(){
             break;
         }
     }
-    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/hub-complete.html';
+    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/question-3-1.html';
 
 
 }
-
 </script>
 
 {% endblock %}

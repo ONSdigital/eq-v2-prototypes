@@ -1,8 +1,4 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 {% set prevPage = "question" %}
 {% set form = {
@@ -14,6 +10,7 @@ layout: long-list-checkboxes/views/_main
 
 
 {% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({

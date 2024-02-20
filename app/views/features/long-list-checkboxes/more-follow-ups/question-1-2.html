@@ -1,19 +1,16 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 {% set prevPage = "hub" %}
 
 {% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({
         "ariaLabel": 'Previous',
         "itemsList": [
             {
-                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-2-1.html",
+                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-1-1.html",
                 "id": "backlink",
                 "text": 'Previous',
                 "attributes": {
@@ -41,6 +38,7 @@ layout: long-list-checkboxes/views/_main
 {{
         onsRadios({
             "name": "property-type",
+            "id": "expectation",
             "dontWrap": true,
             "radios": [
                 {
@@ -73,7 +71,8 @@ layout: long-list-checkboxes/views/_main
     })
 }}
 
-<p id="progressIndicator">1 of 4 goods and services completed</p>
+<p id="progressIndicator"></p>
+
 
 {% endblock %}
 
@@ -89,12 +88,12 @@ results = JSON.parse(results);
 for (var i = 0; i < results.length; i++) {
     results[i] = results[i].replace(/&#44;/g, ',');
 }
-document.getElementById('listItemHighlighted').textContent = results[1];
-document.getElementById('item').textContent = results[1];
+document.getElementById('listItemHighlighted').textContent = results[0];
+document.getElementById('item').textContent = results[0];
 
-if (localStorage.getItem('q22') !== undefined && localStorage.getItem('q22') != null){
-    var q22Entered = localStorage.getItem('q22');
-    document.getElementById(q22Entered).checked = true;
+if (localStorage.getItem('q12') !== undefined && localStorage.getItem('q12') != null){
+    var q12Entered = localStorage.getItem('q12');
+    document.getElementById(q12Entered).checked = true;
 }
 
 function nextQuestion(){
@@ -114,10 +113,10 @@ function nextQuestion(){
             // For example, you can compare it to specific values
             if (selectedValue === "more") {
                 console.log("More than expected");
-                localStorage.setItem('q22', 'more');
+                localStorage.setItem('q12', 'more');
             } else if (selectedValue === "less") {
                 console.log("Less than expected");
-                localStorage.setItem('q22', 'less');
+                localStorage.setItem('q12', 'less');
 
             }
 
@@ -125,7 +124,7 @@ function nextQuestion(){
             break;
         }
     }
-    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/question-2-3.html';
+    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/question-1-3.html';
 
 
 }

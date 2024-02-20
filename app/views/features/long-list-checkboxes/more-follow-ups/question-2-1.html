@@ -1,12 +1,9 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 {% set prevPage = "hub" %}
 
 {% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({

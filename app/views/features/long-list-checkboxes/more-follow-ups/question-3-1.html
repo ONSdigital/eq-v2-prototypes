@@ -1,19 +1,16 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 {% set prevPage = "hub" %}
 
 {% block preMain %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({
         "ariaLabel": 'Previous',
         "itemsList": [
             {
-                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-3-3.html",
+                "url": "/prototypes/long-list-checkboxes/more-follow-ups/question-2-3.html",
                 "id": "backlink",
                 "text": 'Previous',
                 "attributes": {
@@ -66,7 +63,7 @@ layout: long-list-checkboxes/views/_main
     })
 }}
 
-<p id="progressIndicator">3 of 4 goods and services completed</p>
+<p id="progressIndicator">2 of 4 goods and services completed</p>
 
 
 {% endblock %}
@@ -83,20 +80,21 @@ results = JSON.parse(results);
 for (var i = 0; i < results.length; i++) {
     results[i] = results[i].replace(/&#44;/g, ',');
 }
-document.getElementById('listItemHighlighted').textContent = results[3];
-document.getElementById('item').textContent = results[3];
+document.getElementById('listItemHighlighted').textContent = results[2];
+document.getElementById('item').textContent = results[2];
 
-if (localStorage.getItem('q41') != undefined && localStorage.getItem('q41') != null){
-    var q41Entered = localStorage.getItem('q41')
-    document.getElementById('expenditure').value = q41Entered
+if (localStorage.getItem('q31') != undefined && localStorage.getItem('q31') != null){
+    var q31Entered = localStorage.getItem('q31')
+    document.getElementById('expenditure').value = q31Entered
 }
 
 function nextQuestion(){
-    var q41 = document.getElementById('expenditure').value;
-    localStorage.setItem('q41', q41);
-    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/question-4-2.html';
+    var q31 = document.getElementById('expenditure').value;
+    localStorage.setItem('q31', q31);
+    window.location.href = '/prototypes/long-list-checkboxes/more-follow-ups/question-3-2.html';
 
 }
+
 
 </script>
 

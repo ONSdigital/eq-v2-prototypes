@@ -1,13 +1,10 @@
----
-group: Prototypes
-title: Long List (checkboxes)
-layout: long-list-checkboxes/views/_main
----
+{% extends "../includes/layout.html" %}
 
 
 {% block preMain %}
 
 <form name="myForm" action="/prototypes/long-list-checkboxes/hub.html">
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
 
 {{
     onsBreadcrumbs({
