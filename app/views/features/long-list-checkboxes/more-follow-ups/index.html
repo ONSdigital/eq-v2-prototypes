@@ -1,0 +1,366 @@
+{% extends "../includes/layout.html" %}
+
+
+{% block preMain %}
+
+<form name="myForm" action="/features/long-list-checkboxes/hub.html">
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+
+{{
+    onsBreadcrumbs({
+        "ariaLabel": 'Previous',
+        "itemsList": [
+            {
+                "url": '/',
+                "id": "backlink",
+                "text": 'Previous',
+                "attributes": {
+                    "data-attribute": "Example attribute"
+                }
+            }
+        ]
+    })
+}}
+
+{% endblock %}
+
+{% block main %}
+
+
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/checkboxes/_macro.njk" import onsCheckboxes %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+
+{% call onsQuestion({
+    "title": "Which of the following goods or services have you purchased during the last month?",
+    "legendIsQuestionTitle": true,
+    "classes": "ons-u-mt-no"
+}) %}
+    {{
+        onsCheckboxes({
+            "checkboxesLabel": "Select all that apply",
+            "dontWrap": true,
+            "name": "services",
+            "checkboxes": [
+                {
+                    "id": "1",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Blackout roller blinds (including vertical and roman blinds)"
+                    },
+                    "value": "Blackout roller blinds (including vertical and roman blinds)"
+                },
+                {
+                    "id": "2",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Ottomans and storage trunks"
+                    },
+                    "value": "Ottomans and storage trunks"
+                },
+                {
+                    "id": "3",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Outdoor dining and picnic sets"
+                    },
+                    "value": "Outdoor dining and picnic sets"
+                },
+                {
+                    "id": "4",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Garden furniture (including parasols and bases)"
+                    },
+                    "value": "Garden furniture (including parasols and bases)"
+                },
+                {
+                    "id": "5",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Garden entertaining (including BBQ’s, pizza ovens, chimineas and firepits)"
+                    },
+                    "value": "Garden entertaining (including BBQ’s&#44; pizza ovens&#44; chimineas and firepits)"
+                },
+                {
+                    "id": "6",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Indoor and outdoor LED lights and lightbulbs"
+                    },
+                    "value": "Indoor and outdoor LED lights and lightbulbs"
+                },
+                {
+                    "id": "7",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Kitchen appliances (including kettles, cookers, fridge/freezers, microwaves)"
+                    },
+                    "value": "Kitchen appliances (including kettles&#44; cookers&#44; fridge/freezers&#44; microwaves)"
+                },
+                {
+                    "id": "8",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Home entertainment (including tv’s, radio’s, smart speakers, surround sound, cinema systems)"
+                    },
+                    "value": "Home entertainment (including tv’s&#44; radio’s&#44; smart speakers&#44; surround sound&#44; cinema systems)"
+                },
+                {
+                    "id": "9",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "TV Subscription services"
+                    },
+                    "value": "TV Subscription services"
+                },
+                {
+                    "id": "10",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Motor vehicles (including motorcycles and motorhomes)"
+                    },
+                    "value": "Motor vehicles (including motorcycles and motorhomes)"
+                },
+                {
+                    "id": "11",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Children’s clothing"
+                    },
+                    "value": "Children’s clothing"
+                },
+                {
+                    "id": "12",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Real estate (including mortgage and rental costs)"
+                    },
+                    "value": "Real estate (including mortgage and rental costs)"
+                },
+                {
+                    "id": "13",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Safety workwear (including boilersuits, footwear, safety glasses, protective gloves and harnesses)"
+                    },
+                    "value": "Safety workwear (including boilersuits&#44; footwear&#44; safety glasses&#44; protective gloves and harnesses)"
+                },
+                {
+                    "id": "14",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Dehumidifiers, extractor fans and air conditioning systems"
+                    },
+                    "value": "Dehumidifiers&#44; extractor fans and air conditioning systems"
+                },
+                {
+                    "id": "15",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Power tools (including drills, saws, angle grinders, nail guns and planers)"
+                    },
+                    "value": "Power tools (including drills&#44; saws&#44; angle grinders&#44; nail guns and planers)"
+                },
+                {
+                    "id": "16",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Showering furniture (including electric, mixer and power showers, trays and enclosures)"
+                    },
+                    "value": "Showering furniture (including electric&#44; mixer and power showers&#44; trays and enclosures)"
+                },
+                {
+                    "id": "17",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Women’s clothing"
+                    },
+                    "value": "Women’s clothing"
+                },
+                {
+                    "id": "18",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Laundry and utility (including clothes airers and lines, irons and boards, and laundry baskets)"
+                    },
+                    "value": "Laundry and utility (including clothes airers and lines&#44; irons and boards&#44; and laundry baskets)"
+                },
+                {
+                    "id": "19",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Fires, stoves and heaters (including fire surrounds, electric and oil heaters)"
+                    },
+                    "value": "Fires&#44; stoves and heaters (including fire surrounds&#44; electric and oil heaters)"
+                },
+                {
+                    "id": "20",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Garden playhouses, swings and trampolines"
+                    },
+                    "value": "Garden playhouses&#44; swings and trampolines"
+                },
+                {
+                    "id": "21",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Indoor gym equipment"
+                    },
+                    "value": "Indoor gym equipment"
+                },
+                {
+                    "id": "22",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Men’s clothing"
+                    },
+                    "value": "Men’s clothing"
+                },
+                {
+                    "id": "23",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Segways and electric scooters"
+                    },
+                    "value": "Segways and electric scooters"
+                },
+                {
+                    "id": "24",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Home security systems (including smoke and carbon monoxide alarms)"
+                    },
+                    "value": "Home security systems (including smoke and carbon monoxide alarms)"
+                },
+                {
+                    "id": "25",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Shelving systems, units and storage cubes or baskets"
+                    },
+                    "value": "Shelving systems&#44; units and storage cubes or baskets"
+                },
+                {
+                    "id": "26",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Artificial flowers and plants"
+                    },
+                    "value": "Artificial flowers and plants"
+                },
+                {
+                    "id": "27",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Fruit storage (including pitaya boxes)"
+                    },
+                    "value": "Fruit storage (including pitaya boxes)"
+                },
+                {
+                    "id": "28",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Mobile telephone contract payments"
+                    },
+                    "value": "Mobile telephone contract payments"
+                },
+                {
+                    "id": "29",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Travel suitcases, bags"
+                    },
+                    "value": "Travel suitcases&#44; bags"
+                },
+                {
+                    "id": "30",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Sofas, armchairs, chairs and stools"
+                    },
+                    "value": "Sofas&#44; armchairs&#44; chairs and stools"
+                },
+                {
+                    "id": "31",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Table and desklamps (excluding ceiling and wall lights)"
+                    },
+                    "value": "Table and desklamps (excluding ceiling and wall lights)"
+                },
+                {
+                    "id": "32",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Paint and wallpaper"
+                    },
+                    "value": "Paint and wallpaper"
+                },
+                {
+                    "id": "33",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Made to measure curtains and blinds"
+                    },
+                    "value": "Made to measure curtains and blinds"
+                },
+                {
+                    "id": "34",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Tablecloths, table mats and coasters"
+                    },
+                    "value": "Tablecloths&#44; table mats and coasters"
+                },
+                {
+                    "id": "35",
+                    "name":"inputCheck",
+                    "label": {
+                        "text": "Workbenches, trestles (including workbenches with lockable cupboards)"
+                    },
+                    "value": "Workbenches&#44; trestles (including workbenches with lockable cupboards)"
+                }
+            ]
+        })
+    }}
+{% endcall %}
+
+<button type="submit" class="ons-btn" onclick="printChecked()"/>
+  <span class="ons-btn__inner"><span class="ons-btn__text">Save and continue</span>
+  </span>
+</button>
+
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+    function printChecked() {
+        console.log('testing');
+        var items = document.getElementsByName("inputCheck");
+        var Selections = [];
+
+        // Gather newly checked checkboxes
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].type == "checkbox" && items[i].checked == true) {
+                var checkboxValue = items[i].value;
+                Selections.push(checkboxValue);
+            }
+        }
+
+        // Update local storage with selections
+        localStorage.setItem("ddvalue", JSON.stringify(Selections));
+
+        document.forms["myForm"].action = "/features/long-list-checkboxes/more-follow-ups/hub.html";
+    }
+
+</script>
+
+
+
+{% endblock %}
